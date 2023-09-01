@@ -18,8 +18,8 @@ amzn2023cis_section6: true
 amzn2023cis_selinux_disable: false
 amzn2023cis_selinux_state: enforcing
 
-amzn2023cis_level1: true
-amzn2023cis_level2: true
+amzn2023cis_level_1: true
+amzn2023cis_level_2: true
 # to enable rules that may have IO impact on a system e.g. full filesystem scans or CPU heavy
 amzn2023cis_run_heavy_tests: true
 
