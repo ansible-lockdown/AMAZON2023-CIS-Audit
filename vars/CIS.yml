@@ -420,6 +420,10 @@ amzn2023cis_telnet_required: false
 amzn2023cis_openldap_clients_required: false
 amzn2023cis_ftp_client: false
 
+# set firewall type
+amzn2023cis_firewall: firewalld
+amzn2023cis_default_zone: public
+
 ## Section4 vars
 
 # This will allow use of drop in files when CIS adopts them.
@@ -434,6 +438,13 @@ amzn2023cis_sshd:
     # allowgroups: systems dba
     # denyusers:
     # denygroups:
+
+amzn2023cis_sshd_limited: false
+amzn2023cis_sshd_access:
+  - AllowUser
+  - AllowGroup
+  - DenyUser
+  - DenyGroup
 
 # 4.2.5 SSH LogLevel setting. Options are INFO or VERBOSE
 amzn2023cis_ssh_loglevel: INFO
@@ -465,11 +476,17 @@ amzn2023cis_futurepwchgdate_autofix: true
 amzn2023cis_pam_password:
     minlen: 14
     minclass: 4
+amzn2023cis_pam_passwd_retry: "3"
 
 amzn2023cis_pam_faillock:
     unlock_time: 900
     deny: 5
     remember: 5
+
+amzn2023cis_pam_pass:
+    max_days: 365
+    min_days: 7
+    warn_age: 7
 
 ## Section5 vars
 

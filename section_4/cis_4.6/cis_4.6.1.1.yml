@@ -6,7 +6,7 @@ file:
     exists: true
     path: /etc/login.defs
     contents:
-    - '/^PASS_MAX_DAYS\s+{{ .Vars.amzn2023cis_pass_max_days }}/'
+    - '/^PASS_MAX_DAYS\s+{{ .Vars.amzn2023cis_pass.max_days }}/'
     - '!/^PASS_MAX_DAYS\s+(36[6-9]|[4-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9])/'
     - '!/^PASS_MAX_DAYS\s+-1/'
     meta:
