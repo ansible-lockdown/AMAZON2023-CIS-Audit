@@ -6,7 +6,7 @@ based on CIS 1.0.0 - 6th June 2023
 
 This is bespoke to Amazon due to control IDs and associations. Redhat baselines can be more upto date but IDs and controls are not officially Amazon.
 
-Set of configuration files and directories to run the stages of CIS of Amazon Linux 2 servers
+Set of configuration files and directories to run the stages of CIS of Amazon Linux 2023 servers
 
 This is configured in a directory structure level.
 
