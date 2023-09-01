@@ -3,7 +3,7 @@ file:
   /etc/rsyslog.conf:
     title: 5.1.1.5 | Ensure logging is configured
     exists: true
-    contains:
+    contents:
     - '/^mail.\*\s+-/var/log/mail/'
     - '/^auth,authpriv.\*\s+\/var\/log/secure/'
     - '/^mail.info\s+-\/var\/log\/mail.info/'
