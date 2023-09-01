@@ -16,7 +16,7 @@ command:
       CISv8_IG1: NA
       CISv8_IG2: NA
       CISv8_IG3: NA
-       NISTSP800-53-R5:
+      NISTSP800-53-R5:
       - CM-1
       - CM-2
       - CM-6
