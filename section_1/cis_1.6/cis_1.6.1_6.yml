@@ -89,7 +89,7 @@ command:
     title: 1.6.1.4 | Ensure the SELinux mode is not disabled| selinux_status config
     exec: getenforce
     exit-status: 0
-    contents:
+    stdout:
     - '/SELINUX=(enforcing|permissive)/'
     meta:
       server: 1
