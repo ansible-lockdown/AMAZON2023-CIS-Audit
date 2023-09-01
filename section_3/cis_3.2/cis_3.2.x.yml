@@ -1,6 +1,6 @@
 ---
 
-{{ if .Vars.amzn2023cis_level1 }}
+{{ if .Vars.amzn2023cis_level_1 }}
   {{ if not .Vars.amzn2023cis_is_router }}
 kernel-param:
     {{ if .Vars.amzn2023cis_rule_3_2_1 }}

@@ -1,6 +1,6 @@
 ---
 
-{{ if .Vars.amzn2023cis_level2 }}
+{{ if .Vars.amzn2023cis_level_2 }}
   {{ if .Vars.amzn2023cis_rule_3_1_4 }}
 command:
   rds_disabled:

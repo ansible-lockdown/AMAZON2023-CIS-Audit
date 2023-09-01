@@ -2,7 +2,7 @@
 
 {{ if not .Vars.amzn2023cis_rsyncd_server }}
   {{ if .Vars.amzn2023cis_rule_2_2_18 }}
-    {{ if .Vars.amzn2023cis_level1 }}
+    {{ if .Vars.amzn2023cis_level_1 }}
 package:
   rsync:
     title: 2.2.18 | Ensure rsync is not installed or the rsyncd service is masked | Package

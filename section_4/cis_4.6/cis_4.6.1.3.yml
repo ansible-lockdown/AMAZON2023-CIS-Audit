@@ -1,4 +1,4 @@
-{{ if .Vars.amzn2023cis_level1 }}
+{{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_6_1_3 }}
 file:
   login_expire_warn:

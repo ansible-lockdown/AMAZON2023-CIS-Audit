@@ -1,4 +1,4 @@
-{{ if .Vars.amzn2023cis_level1 }}
+{{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_2_16 }}
 file:
   sshd_config_maxauthtries:

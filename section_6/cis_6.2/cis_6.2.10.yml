@@ -1,4 +1,4 @@
-{{ if .Vars.amzn2023cis_level1 }}
+{{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_6_2_10 }}
 command:
   home_dirs_exist:

@@ -1,6 +1,6 @@
 ---
 
-{{ if .Vars.amzn2023cis_level1 }}
+{{ if .Vars.amzn2023cis_level_1 }}
 file:
   {{ if .Vars.amzn2023cis_rule_1_7_1 }}
   motd_message:
