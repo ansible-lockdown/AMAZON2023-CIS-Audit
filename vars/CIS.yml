@@ -4,6 +4,8 @@ benchmark_version: '1.0.0'
 # timeout for each command to run where set - default = 10seconds/10000ms
 timeout_ms: 60000
 
+amzn2023cis_run_heavy_tests: true
+
 #
 host_os_distribution: Amazon2023
 
