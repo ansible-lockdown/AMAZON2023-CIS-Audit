@@ -1,0 +1,23 @@
+---
+
+{{ if .Vars.amzn2023cis_level1 }}
+  {{ if .Vars.amzn2023cis_rule_1_5_3 }}
+file:
+  coredump_storage:
+    title: 1.5.3 | Ensure prelink is disabled
+    path: /etc/systemd/coredump.conf
+    installed: false
+    contents:
+    - '/^Storage=none/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.5.3
+      CISv8: NA
+      CISv8_IG1: NA
+      CISv8_IG2: NA
+      CISv8_IG3: NA
+      NISTSP800-53-R5: CM-7
+  {{ end }}
+{{ end }}

@@ -1,0 +1,25 @@
+{{ if .Vars.rhel9cis_rule_4_2_14 }}
+command:
+  sshd_crypto:
+    title: 4.2.14 | Ensure system-wide crypto policy is not over-ridden
+    exec: grep -Ei "^Crypto_policy" /etc/ssh/sshd_config /etc/ssh/sshd_config.d
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '!/^CRYPTO_POLICY/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.2.14
+      CISv8: 3.10
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - SC-8
+      - IA-5
+      - AC-17
+{{ end }}

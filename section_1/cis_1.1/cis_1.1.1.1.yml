@@ -1,0 +1,40 @@
+---
+
+{{ if .Vars.amzn2023cis_level2 }}
+  {{ if .Vars.amzn2023cis_rule_1_1_1_1 }}
+command:
+  squashfs:
+    title: 1.1.1.1 | Ensure mounting of squashfs filesystems is disabled | modprobe
+    exit-status: 0
+    exec: "modprobe -n -v squashfs | grep -E '(squashfs|install)'"
+    stdout:
+    - install /bin/true
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID: 1.1.1.1
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5: CM-7
+file:
+  blacklist_squashfs:
+    title: 1.1.1.1 | Ensure mounting of squashfs filesystems is disabled | blacklist
+    exists: true
+    path: /etc/modprobe.d/blacklist
+    contents:
+    - '/^blacklist squashfs/'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID: 1.1.1.1
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5: CM-7
+  {{ end }}
+{{ end }}

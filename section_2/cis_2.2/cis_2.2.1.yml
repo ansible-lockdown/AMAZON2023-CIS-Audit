@@ -1,0 +1,21 @@
+---
+
+{{ if .Vars.amzn2023cis_level1 }}
+  {{ if .Vars.amzn2023cis_rule_2_2_1 }}
+package:
+  xorgs-x11-servers:
+    title: 2.2.1 | Ensure X11 Server components are not installed
+    installed: false
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 2.2.1
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5: CM-7
+  {{ end }}
+{{ end }}

@@ -1,0 +1,59 @@
+---
+
+{{ if .Vars.amzn2023cis_level1 }}
+package:
+  {{ if not .Vars.amzn2023cis_telnet_required }}
+    {{ if .Vars.amzn2023cis_rule_2_3_1 }}
+  telnet:
+    title: 2.3.1 | Ensure telnet client is not installed
+    installed: false
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 2.3.1
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5: CM-7
+    {{ end }}
+  {{ end }}
+  {{ if not .Vars.amzn2023cis_openldap_clients_required }}
+    {{ if .Vars.amzn2023cis_rule_2_3_2 }}
+  openldap-clients:
+    title: 2.3.2 | Ensure LDAP client is not installed
+    installed: false
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 2.3.2
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5: CM-7
+    {{ end }}
+  {{ end }}
+  {{ if not .Vars.amzn2023cis_ftp_client }}
+    {{ if .Vars.amzn2023cis_rule_2_3_3 }}
+  ypbind:
+    title: 2.3.3 | Ensure FTP Client is not installed
+    installed: false
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 2.3.3
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5: CM-7
+    {{ end }}
+  {{ end }}
+{{ end }}

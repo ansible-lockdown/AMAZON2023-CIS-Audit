@@ -1,0 +1,38 @@
+---
+
+{{ if .Vars.amzn2023cis_level2 }}
+  {{ if .Vars.amzn2023cis_rule_3_1_4 }}
+command:
+  rds_disabled:
+    title: 3.1.4 | Ensure rds is disabled | modprobe
+    exit-status: 0
+    exec: "modprobe -n -v rds | grep -E '(rds|install)'"
+    stdout:
+    - install /bin/true
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID: 3.1.4
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+file:
+  blacklist_rds:
+    title: 3.1.4 | Ensure mounting of rds filesystems is disabled | blacklist
+    exists: true
+    path: /etc/modprobe.d/blacklist
+    contents:
+    - '/^blacklist rds/'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID: 3.1.4
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: trueNISTSP800-53-R5: CM-7
+  {{ end }}
+{{ end }}

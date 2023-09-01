@@ -1,0 +1,146 @@
+---
+
+{{ if .Vars.amzn2023cis_level1 }}
+file:
+  {{ if .Vars.amzn2023cis_rule_1_7_1 }}
+  motd_message:
+    title: 1.7.1 | Ensure message of the day is configured properly
+    path: /etc/motd
+    exists: true
+    mode: "0644"
+    owner: root
+    group: root
+    contents:
+    - "![Cc]ent[Oo][Ss]"
+    - "![Rr]hel"
+    - "![Rr]ed[Hh]at"
+    - "!x86_64"
+    - "![Ll]inux"
+    - "![Aa]mazon"
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.7.1
+      CISv8: NA
+      CISv8_IG1: NA
+      CISv8_IG2: NA
+      CISv8_IG3: NA
+      NISTSP800-53-R5:
+      - CM-3
+  {{ end }}
+  {{ if .Vars.amzn2023cis_rule_1_7_2 }}
+  etc_issue_message:
+    title: 1.7.2 | Ensure local login warning banner is configured properly
+    exists: true
+    path: /etc/issue
+    contents:
+    - "![Cc]ent[Oo][Ss]"
+    - "![Rr]hel"
+    - "![Rr]ed[Hh]at"
+    - "!x86_64"
+    - "![Ll]inux"
+    - "![Aa]mazon"
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.7.2
+      CISv8:
+      - 3.3
+      - 4.8
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - CM-1
+      - CM-3
+      - CM-6
+  {{ end }}
+  {{ if .Vars.amzn2023cis_rule_1_7_3 }}
+  issue_net_message:
+    title: 1.7.3 & 6 | Ensure remote login warning banner is configured properly
+    exists: true
+    path: /etc/issue.net
+    contents:
+    - "![Cc]ent[Oo][Ss]"
+    - "![Rr]hel"
+    - "![Rr]ed[Hh]at"
+    - "!x86_64"
+    - "![Ll]inux"
+    - "![Aa]mazon"
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.7.3
+      CISv8: NA
+      CISv8_IG1: NA
+      CISv8_IG2: NA
+      CISv8_IG3: NA
+      NISTSP800-53-R5:
+      - CM-1
+      - CM-3
+      - CM-6
+  {{ end }}
+  {{ if .Vars.amzn2023cis_rule_1_7_4 }}
+  motd_perms:
+    title: 1.7.4 | Ensure permissions on /etc/motd are configured
+    path: /etc/motd
+    owner: root
+    group: root
+    mode: '0644'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.7.4
+      CISv8: 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - AC-3
+      - MP-2
+  {{ end }}
+  {{ if .Vars.amzn2023cis_rule_1_7_5 }}
+  etc_issue_perms:
+    title: 1.7.5 | Ensure permissions on /etc/issue are configured
+    path: /etc/issue
+    owner: root
+    group: root
+    mode: '0644'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.7.5
+      CISv8: 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - AC-3
+      - MP-2
+  {{ end }}
+  {{ if .Vars.amzn2023cis_rule_1_7_6 }}
+  etc_issue_net_perms:
+    title: 1.7.6 | Ensure permissions on /etc/issue.net are configured
+    path: /etc/issue.net
+    owner: root
+    group: root
+    mode: '0644'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.7.6
+      CISv8: 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - AC-3
+      - MP-2
+  {{ end }}
+{{ end }}

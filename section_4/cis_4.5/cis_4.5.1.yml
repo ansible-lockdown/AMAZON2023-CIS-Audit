@@ -1,0 +1,61 @@
+{{ if .Vars.amzn2023cis_level1 }}
+  {{ if .Vars.amzn2023cis_rule_4_5_1 }}
+file:
+  password_creation:
+    title: 4.5.1 | Ensure password creation requirements are configured | pwquality
+    path: /etc/security/pwquality.conf
+    exists: true
+    contents:
+    {{ range .Vars.amzn2023cis_pam_password }}
+    - {{ . }}
+    {{ end }}
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.5.1
+      CISv8:
+      - 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - IA-5
+  /etc/pam.d/password-auth:
+    title: 4.5.1 | Ensure password creation requirements are configured | password-auth
+    exists: true
+    skip: {{ .Vars.amzn2023cis_skip_pam_passwd_auth }}
+    contents:
+    - password requisite pam_pwquality.so try_first_pass retry={{ .Vars.amzn2023cis_pam_passwd_retry }}
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.5.1
+      CISv8:
+      - 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - IA-5
+  /etc/pam.d/system-auth:
+    title: 4.5.1 | Ensure password creation requirements are configured | system-auth
+    exists: true
+    skip: {{ .Vars.amzn2023cis_skip_pam_system_auth }}
+    contents:
+    - password requisite pam_pwquality.so try_first_pass retry={{ .Vars.amzn2023cis_pam_passwd_retry }}
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.5.1
+      CISv8:
+      - 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - IA-5
+  {{ end }}
+{{ end }}

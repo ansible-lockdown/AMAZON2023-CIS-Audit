@@ -1,0 +1,20 @@
+{{ if .Vars.amzn2023cis_rule_5_2_2_1 }}
+file:
+  auditd_storage_size:
+    title: 5.2.2.1 | Ensure audit log storage size is configured
+    exists: true
+    path: /etc/audit/auditd.conf
+    contains: ['max_log_file(| )=(| )\d\d\d\d+' ]
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 5.2.2.1
+      CISv8:
+      - 8.3
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - AU-8
+{{ end }}

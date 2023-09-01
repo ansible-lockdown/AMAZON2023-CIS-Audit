@@ -1,0 +1,23 @@
+{{ if .Vars.amzn2023cis_level1 }}
+  {{ if .Vars.amzn2023cis_rule_6_2_2 }}
+file:
+  /etc/passwd:
+    title: 6.2.2 | Ensure /etc/shadow password fields are not empty
+    exists: true
+    contains:
+    - "!/^.*:\\!\\!:.*/"
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 6.2.2
+      CISv8:
+      - 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - IA-5
+  {{ end }}
+{{ end }}
+

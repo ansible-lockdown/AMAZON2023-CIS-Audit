@@ -1,0 +1,42 @@
+---
+
+{{ if .Vars.amzn2023cis_level1 }}
+  {{ if .Vars.amzn2023cis_rule_1_1_9 }}
+command:
+  cramfs:
+    title: 1.1.9 | Disable USB Storage
+    exit-status: 0
+    exec: "modprobe -n -v usb-storage | grep -E '(usb-storage|install)'"
+    stdout:
+    - install /bin/true
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.1.9
+      CISv8:
+      - 10.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5: SI-3
+file:
+  blacklist_udf:
+    title: 1.1.9 | Disable USB Storage | blacklist
+    exists: true
+    path: /etc/modprobe.d/blacklist
+    contents:
+    - '/^blacklist usb-storage/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.1.9
+      CISv8:
+      - 10.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5: SI-3
+  {{ end }}
+{{ end }}

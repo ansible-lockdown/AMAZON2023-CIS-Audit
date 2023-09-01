@@ -1,0 +1,44 @@
+---
+
+{{ if .Vars.amzn2023cis_level2 }}
+  {{ if .Vars.amzn2023cis_rule_3_1_5 }}
+command:
+  tipc_disabled:
+    title: 3.1.5 | Ensure tipc is disabled | modprobe
+    exit-status: 0
+    exec: "modprobe -n -v tipc | grep -E '(tipc|install)'"
+    stdout:
+    - install /bin/true
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID: 3.1.5
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - SI-4
+      - CM-7
+file:
+  blacklist_tipc:
+    title: 3.1.5 | Ensure mounting of tipc filesystems is disabled | blacklist
+    exists: true
+    path: /etc/modprobe.d/blacklist
+    contents:
+    - '/^blacklist tipc/'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID: 3.1.5
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - SI-4
+      - CM-7
+  {{ end }}
+{{ end }}

@@ -1,0 +1,57 @@
+---
+
+mount:
+  {{ if .Vars.amzn2023cis_level_1 }}
+  var_tmp_opts:
+    title: |
+      1.1.4.2 | Ensure noexec option set on /var/tmp partition
+      1.1.4.3 | Ensure nosuid option set on /var/tmp partition
+      1.1.4.4 | Ensure nodev option set on /var/tmp partition
+    exists: true
+    mountpoint: /var/tmp
+    opts:
+    {{ if .Vars.amzn2023cis_rule_1_1_4_2 }}
+    - noexec
+    {{ end }}
+    {{ if .Vars.amzn2023cis_rule_1_1_4_3 }}
+    - nosuid
+    {{ end }}
+    {{ if .Vars.amzn2023cis_rule_1_1_4_4 }}
+    - nodev
+    {{ end }}
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.1.4.2
+      - 1.1.4.3
+      - 1.1.4.4
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - AC-3
+      - MP-2
+  {{ end }}
+{{ if .Vars.amzn2023cis_level_2 }}
+  {{ if .Vars.amzn2023cis_rule_1_1_4_1 }}
+  var_tmp_exists:
+    title: 1.1.4.1 | Ensure /var/tmp is a separate partition
+    exists: true
+    mountpoint: /var/tmp
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 1.1.4.1
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - CM-6
+  {{ end }}
+{{ end }}

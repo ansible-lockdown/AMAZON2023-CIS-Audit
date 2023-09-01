@@ -1,0 +1,36 @@
+extends: default
+
+ignore: |
+    tests/
+    molecule/
+    .github/
+    .gitlab-ci.yml
+    *molecule.yml
+
+rules:
+    empty-values:
+      forbid-in-block-mappings: false
+      forbid-in-flow-mappings: false
+    document-start:
+      present: true
+    indentation:
+        # Requiring consistent indentation within a file, either indented or not
+        indent-spaces: consistent
+        indent-sequences: false
+    braces:
+        max-spaces-inside: 1
+        level: error
+    brackets:
+        max-spaces-inside: 1
+        level: error
+    empty-lines:
+        max: 1
+    line-length: disable
+    key-duplicates: enable
+    new-line-at-end-of-file: enable
+    new-lines:
+        type: unix
+    trailing-spaces: enable
+    truthy:
+        allowed-values: ['true', 'false']
+        check-keys: true

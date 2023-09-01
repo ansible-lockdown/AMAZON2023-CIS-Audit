@@ -1,0 +1,27 @@
+{{ if .Vars.amzn2023cis_rule_5_2_2_3 }}
+file:
+  auditd_logs_full:
+    title: 5.2.2.3 | Ensure system is disabled when audit logs are full
+    path: /etc/audit/auditd.conf
+    exists: true
+    contains:
+    - '/^space_left_action = {{ .Vars.amzn2023cis_auditd.space_left_action }}/'
+    - '/^action_mail_acct = {{ .Vars.amzn2023cis_auditd.action_mail_acct }}/'
+    - '/^admin_space_left_action = {{ .Vars.amzn2023cis_auditd.admin_space_left_action }}/'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 5.2.2.3
+      CISv8:
+      - 8.2
+      - 8.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - AU-2
+      - AU-8
+      - AU-12
+      - SI-5
+{{ end }}

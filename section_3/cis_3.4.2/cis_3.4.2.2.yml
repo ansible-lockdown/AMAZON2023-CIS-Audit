@@ -1,0 +1,25 @@
+---
+
+{{ if .Vars.amzn2023cis_level2 }}
+  {{ if .Vars.azmn2023cis_rule_3_4_2_2 }}
+command:
+  nftables_table_list_manual:
+    title: 3.4.2.2 | Ensure at least one nftables table exists | Manual Check Required
+    exec: echo "Manual test"
+    exit-status: 0
+    stdout:
+    - '!/Manual test/'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 3.4.2.2
+      CISv8:
+      - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - CA-9
+  {{ end }}
+{{ end }}

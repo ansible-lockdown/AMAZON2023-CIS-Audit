@@ -1,0 +1,41 @@
+{{ if .Vars.amzn2023cis_level1 }}
+  {{ if .Vars.amzn2023cis_rule_4_3_4 }}
+file:
+  sudoers_reauth:
+    title: 4.3.4 | Ensure re-authentication for privilege escalation is not disabled globally | config
+    path: /etc/sudoers
+    exists: true
+    contents:
+    - '!/!authenticate/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.3.4
+      CISv8:
+      - 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5: AC-6
+command:
+  log_sudoers_d:
+    title: 4.3.3 | Ensure re-authentication for privilege escalation is not disabled globally | sudoers.d
+    exec: "grep authenticate /etc/sudoers.d/*"
+    exit-status:
+      lt: 3
+    stdout:
+    - '!/!authenticate/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.3.3
+      CISv8:
+      - 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5: AC-6
+  {{ end }}
+{{ end }}

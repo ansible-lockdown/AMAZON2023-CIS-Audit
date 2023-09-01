@@ -1,0 +1,20 @@
+{{ if .Vars.amzn2023cis_rule_5_2_2_2 }}
+file:
+  auditd_log_deleted:
+    title: 5.2.2.2 | Ensure audit logs are not automatically deleted
+    exists: true
+    path: /etc/audit/auditd.conf
+    contains: ['max_log_file_action = keep_logs']
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 5.2.2.2
+      CISv8:
+      - 8.3
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - AU-8
+{{ end }}

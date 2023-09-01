@@ -1,0 +1,24 @@
+{{ if .Vars.amzn2023cis_level1 }}
+  {{ if .Vars.amzn2023cis_rule_6_2_1 }}
+file:
+  /etc/passwd:
+    title: 6.2.1 | Ensure accounts in /etc/passwd use shadowed passwords
+    exists: true
+    contains:
+    - "/^.*:x:*/"
+    - "!/^.*:[a-w][y-z]:.*"
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 6.2.1
+      CISv8:
+      - 3.11
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - IA-5
+  {{ end }}
+{{ end }}
+

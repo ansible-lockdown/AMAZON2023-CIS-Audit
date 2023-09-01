@@ -1,0 +1,27 @@
+{{ if .Vars.amzn2023cis_level1 }}
+  {{ if .Vars.amzn2023cis_rule_4_2_5 }}
+file:
+  sshd_config_loglevel:
+    title: 4.2.5 | Ensure SSH LogLevel is appropriate
+    path: /etc/ssh/sshd_config
+    exists: true
+    contents:
+    - '/LogLevel (VERBOSE|INFO)/'
+    - '!/^LogLevel DEBUG/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.2.5
+      CISv8:
+      - 8.2
+      - 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - AU-2
+      - AU-12
+      - SI-5
+ {{ end }}
+{{ end }}

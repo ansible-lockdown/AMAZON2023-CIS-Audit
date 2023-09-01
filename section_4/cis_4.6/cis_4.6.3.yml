@@ -1,0 +1,24 @@
+{{ if .Vars.amzn2023cis_level1}}
+  {{ if .Vars.amzn2023cis_rule_4_6_3 }}
+file:
+  /etc/profile.d/tmout.sh:
+    title: 4.6.3 | Ensure default user shell timeout is configured | profile.d
+    exists: true
+    contents:
+    - '/TMOUT=([1-8][0-9]{0,2}|900)/'
+    - '/readonly TMOUT/'
+    - '/export TMOUT/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.6.3
+      CISv8:
+      - 4.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - AC-11
+  {{ end }}
+{{ end }}

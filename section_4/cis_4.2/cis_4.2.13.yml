@@ -1,0 +1,28 @@
+{{ if .Vars.amzn2023cis_level2 }}
+  {{ if .Vars.amzn2023cis_rule_4_2_13 }}
+file:
+  sshd_config_tcpforward:
+    title: 4.2.13 | Ensure SSH AllowTcpForwarding is disabled
+    path: /etc/ssh/sshd_config
+    exists: true
+    contents:
+    - '/^AllowTcpForwarding no/'
+    - '!/^AllowTcpForwarding yes/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.2.13
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+  {{ end }}
+{{ end }}

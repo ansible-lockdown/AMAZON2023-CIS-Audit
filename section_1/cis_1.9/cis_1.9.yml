@@ -1,0 +1,23 @@
+---
+
+{{ if .Vars.amzn2023cis_rule_1_9 }}
+file:
+  crypto_policies_config:
+    title: 1.9 | Ensure system-wide crypto policy is not legacy
+    path: /etc/crypto-policies/config
+    exit-status: 0
+    stdout:
+    - '/^(|\s+)(DEFAULT|FUTURE|FIPS)/'
+    - '!/^(|\s+)LEGACY/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.9
+      CISv8:
+      - 3.10
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5: SC-8
+{{ end }}

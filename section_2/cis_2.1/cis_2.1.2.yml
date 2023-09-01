@@ -1,0 +1,28 @@
+---
+
+{{ if .Vars.amzn2023cis_rule_2_1_2 }}
+command:
+  chrony_server_config:
+    title: 2.1.2 | Ensure chrony is configured | server
+    exec: grep -Pr -- '^\h*(server|pool)\h+[^#\n\r]+' /etc/chrony.d/*.conf
+    exit-status:
+    or:
+     - 0
+     - 1
+    std-out:
+    - '/^(server|pool)\s{{ range .Vars.amzn2023cis_time_synchronization_servers }}/'
+    skip: false
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 2.1.2
+      CISv8:
+      - 8.4
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - AU-3
+      - AU-12
+{{ end }}

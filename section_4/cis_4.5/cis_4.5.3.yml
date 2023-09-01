@@ -1,0 +1,40 @@
+{{ if .Vars.amzn2023cis_level1 }}
+  {{ if .Vars.amzn2023cis_rule_4_5_3 }}
+file:
+  password-auth_reuse:
+    title: 4.5.3 | Ensure password reuse is limited | password-auth
+    path: /etc/pam.d/password-auth
+    exists: true
+    contents:
+    - '/^password.*required.*pam_pwhistory.so.*remember=\b(?:[1-5]\d+|5)\b/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.5.3
+      CISv8:
+      - 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - IA-5
+  /etc/pam.d/system-auth:
+    title: 4.5.3 | Ensure password reuse is limited | system-auth
+    exists: true
+    contents:
+    - '/^password.*required.*pam_pwhistory.so.*remember=\b(?:[1-5]\d+|5)\b/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.5.3
+      CISv8:
+      - 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - IA-5
+  {{ end }}
+{{ end }}

@@ -1,0 +1,23 @@
+---
+
+{{ if .Vars.amzn2023cis_level1 }}
+  {{ if .Vars.amzn2023cis_rule_1_5_4 }}
+file:
+  coredump_backtraces:
+    title: 1.5.4 | Ensure core dump backtraces are disabled
+    path: /etc/systemd/coredump.conf
+    installed: false
+    contents:
+    - '/^ProcessSizeMax=0/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.5.4
+      CISv8: NA
+      CISv8_IG1: NA
+      CISv8_IG2: NA
+      CISv8_IG3: NA
+      NISTSP800-53-R5: CM-6
+  {{ end }}
+{{ end }}

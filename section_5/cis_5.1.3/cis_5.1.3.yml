@@ -1,0 +1,23 @@
+{{ if .Vars.amzn2023cis_rule_5_1_3 }}
+command:
+  logfile_configured:
+    title: 5.1.3 | Ensure permissions on all logfiles are configured
+    exec: find /var/log/ -type f -perm /g+wx,o+rwx -exec ls -l "{}" + | grep -Ev "[b,u,w]tmp.*|lastllog"
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout: ['!/.*/']
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 5.1.3
+      CISv8: 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - AC-3
+      - MP-2
+{{ end }}

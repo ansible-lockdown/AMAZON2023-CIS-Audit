@@ -1,0 +1,112 @@
+---
+
+{{ if .Vars.amzn2023cis_level2 }}
+  {{ if .Vars.azmn2023cis_rule_3_4_1_2 }}
+    {{ if eq .Vars.azmn2023cis_firewall "nftables" }}
+file:
+  /etc/systemd/system/firewalld.service:
+    title: 3.4.1.2 | Ensure a single firewall configuration utility is in use | firewalld masked
+    filetype: symlink
+    linked-to: /dev/null
+    exists: true
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 3.4.1.2
+      CISv8:
+      - 4.4
+      - 4.5
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5: NA
+service:
+  firewalld:
+    title: 3.4.1.2 | Ensure a single firewall configuration utility is in use | firewalld service stopped
+    enabled: false
+    running: false
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 3.4.1.2
+      CISv8:
+      - 4.4
+      - 4.5
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5: NA
+  nftables:
+    title: 3.4.1.2 | Ensure a single firewall configuration utility is in use | nftables running
+    enabled: true
+    running: true
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 3.4.1.2
+      CISv8:
+      - 4.4
+      - 4.5
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5: NA
+  {{ end }}
+  {{ if eq .Vars.azmn2023cis_firewall "firewalld" }}
+file:
+  /etc/systemd/system/nftables.service:
+    title: 3.4.1.2 | Ensure a single firewall configuration utility is in use | nftables masked
+    filetype: symlink
+    linked-to: /dev/null
+    exists: true
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 3.4.1.2
+      CISv8:
+      - 4.4
+      - 4.5
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5: NA
+service:
+  firewalld:
+    title: 3.4.1.2 | Ensure a single firewall configuration utility is in use | firewalld running and enabled
+    enabled: true
+    running: true
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 3.4.1.2
+      CISv8:
+      - 4.4
+      - 4.5
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5: NA
+  nftables:
+    title: 3.4.1.2 | Ensure a single firewall configuration utility is in use | nftables stopped
+    enabled: false
+    running: false
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 3.4.1.2
+      CISv8:
+      - 4.4
+      - 4.5
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5: NA
+  {{ end }}
+{{ end }}
+{{ end }}

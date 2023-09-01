@@ -1,0 +1,50 @@
+{{ if .Vars.amzn2023cis_level1 }}
+  {{ if .Vars.rhel9cis_rule_4_4_2 }}
+file:
+  authselect_faillock:
+    title: 4.4.2 | Ensure authselect includes with-faillock
+    path: /etc/authselect/password-auth
+    exists: true
+    contents:
+    - '/auth\s+required\s+pam_failock.so/'
+    - '/auth\s+required\s+pam_failock.so preauth silent/'
+    - '/auth\s+required\s+pam_failock.so authfail/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.4.2
+      CISv8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+   /etc/authselect/system-auth:
+    title: 4.4.2 | Ensure authselect includes with-faillock
+    exists: true
+    contents:
+    - '/auth\s+required\s+pam_failock.so/'
+    - '/auth\s+required\s+pam_failock.so preauth silent/'
+    - '/auth\s+required\s+pam_failock.so authfail/'
+    meta:
+      server: 1
+      workstation: 1
+      CIS_ID:
+      - 4.4.2
+      CISv8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+  {{ end }}
+{{ end }}

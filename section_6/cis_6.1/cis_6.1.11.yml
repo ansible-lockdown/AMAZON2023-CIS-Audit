@@ -1,0 +1,30 @@
+{{ if .Vars.amzn2023cis_run_heavy_tests }}
+  {{ if .Vars.amzn2023cis_level1 }}
+  {{ if .Vars.amzn2023cis_rule_6_1_11 }}
+command:
+  unowned:
+    title: 6.1.11 | Ensure no unowned or ungrouped files or directories exist
+    exec: "df --local -P | awk {'if (NR!=1) print $6'} | xargs -I '{}' find '{}' -xdev -nouser -nogroup"
+    exit-status:
+      or:
+      - 0
+      - 123
+    stdout:
+    - '!/./'
+    timeout: {{ .Vars.timeout_ms }}
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 6.1.11
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - AC-3
+      - MP-2
+    {{ end }}
+  {{ end }}
+{{ end }}

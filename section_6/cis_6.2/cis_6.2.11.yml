@@ -1,0 +1,51 @@
+{{ if .Vars.amzn2023cis_level1 }}
+  {{ if .Vars.amzn2023cis_rule_6_2_11 }}
+command:
+  dot_file_perms:
+    title: 6.2.11 | Ensure local interactive user dot files access is configured | perms
+    exec: 'find /home/ -name "\.*" -perm /g+w,o+w'
+    timeout: {{ .Vars.timeout_ms }}
+    exit-status: 0
+    stdout:
+    - '!/./'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 6.2.11
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+  dot_files_exist:
+    title: 6.2.11 | Ensure local interactive user dot files access is configured | .files exist
+    exec: 'find /home/ -name .forward -name .netrc -name .rhosts'
+    timeout: {{ .Vars.timeout_ms }}
+    exit-status: 0
+    stdout:
+    - '!/./'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 6.2.11
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+  {{ end }}
+{{ end }}
