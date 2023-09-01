@@ -10,9 +10,6 @@ file:
     owner: root
     group: root
     mode: "0600"
-    {{ if .Vars.amzn2023cis_set_boot_pass }}
-    contents: [GRUB2_PASSWORD=<encrypted-password>]
-    {{ end }}
     meta:
       server: 1
       workstation: NA
