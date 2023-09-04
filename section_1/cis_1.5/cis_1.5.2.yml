@@ -21,7 +21,7 @@ command:
   ptrace_scope:
     title: 1.5.2 | Ensure ptrace_scope is restricted | sysctl_configured
     exit-status: 0
-    exec: 'grep "kernel\.randomize_va_space" /etc/sysctl.conf /etc/sysctl.d/* | cut -d ":" -f2'
+    exec: 'grep "kernel\.yama\.ptrace_scope" /etc/sysctl.conf /etc/sysctl.d/* | cut -d ":" -f2'
     stdout:
     - '/^kernel.yama.ptrace_scope(\s|)=(\s|)1/'
     meta:
