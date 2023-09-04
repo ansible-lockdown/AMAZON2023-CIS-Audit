@@ -473,8 +473,8 @@ amzn2023cis_futurepwchgdate_autofix: true
 # 4.5.1
 ## PAM
 amzn2023cis_pam_password:
-    minlen: 14
-    minclass: 4
+    minlen: '14'
+    minclass: '4'
 amzn2023cis_pam_passwd_retry: "3"
 
 amzn2023cis_pam_faillock:
@@ -484,7 +484,7 @@ amzn2023cis_pam_faillock:
 
 amzn2023cis_pass:
     max_days: 365
-    min_days: 7
+    min_days: 1
     warn_age: 7
 
 ## Section5 vars
