@@ -10,6 +10,7 @@
 # 06 Apr 2022 - Added format option in output inline with goss options e.g. json documentation this is for fault finding
 # 03 May 2022 - update for audit variables improvement added by @pavloos - https://github.com/ansible-lockdown/RHEL8-CIS-Audit/pull/29
 # 04 Oct 2022 - Changed default content location to /opt
+# 04 Sep 2023 - change default from from json to blank (it is default)
 
 #!/bin/bash
 
@@ -93,9 +94,9 @@ audit_vars=vars/${BENCHMARK}.yml
 
 # Set variable for format output
 if [ -z $FORMAT ]; then
-  export format="json"
+  export format=""  # Made empty for 0.4.0
 else
-  export format=$FORMAT
+  export format="-f ${FORMAT}"
 fi
 
 # Set variable for autogroup
@@ -171,7 +172,7 @@ echo "#############"
 echo "Audit Started"
 echo "#############"
 echo
-$AUDIT_BIN -g $audit_content_dir/$AUDIT_FILE --vars $varfile_path  --vars-inline $audit_json_vars v -f $format -o pretty > $audit_out
+$AUDIT_BIN -g $audit_content_dir/$AUDIT_FILE --vars $varfile_path  --vars-inline $audit_json_vars v $format > $audit_out
 
 # create screen output
 if [ `grep -c $BENCHMARK $audit_out` != 0 ]; then
