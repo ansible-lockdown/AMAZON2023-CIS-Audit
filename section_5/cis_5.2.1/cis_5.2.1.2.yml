@@ -1,11 +1,11 @@
 {{ if .Vars.amzn2023cis_rule_5_2_1_2 }}
-command:
-  auditd_grub:
+file:
+  grub_enable_audit:
     title: 5.2.1.2 | Ensure auditing for processes that start prior to auditd is enabled
-    exec: grep "^\s*linux" {{ .Vars.amzn2023cis_bootloader_file }} | grep -Evc "(audit=1|rescue)"
-    exit-status: 1
-    stdout:
-    - '0'
+    file: /etc/default/grub
+    exists: true
+    contents:
+    - '/GRUB_CMDLINE_LINUX_DEFAULT=".*audit=1/'
     meta:
       server: 2
       workstation: NA
