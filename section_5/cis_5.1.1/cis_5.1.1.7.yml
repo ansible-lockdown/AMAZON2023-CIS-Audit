@@ -4,7 +4,10 @@ command:
   syslog_imtcp:
     title: 5.1.1.7 | Ensure rsyslog is not configured to receive logs from a remote client | imtcp
     exec: grep '$ModLoad imtcp' /etc/rsyslog.conf /etc/rsyslog.d/*.conf
-    exit-status: 0
+    exit-status:
+      or:
+      - 0
+      - 1
     stdout:
     {{ if .Vars.amzn2023cis_system_is_log_server}}
     - '/.*[^#]?(| )\$ModLoad imtcp/'
@@ -31,7 +34,10 @@ command:
   syslog_TCPServerRun:
     title: 5.1.1.7 | Ensure rsyslog is not configured to receive logs from a remote client | TCPServer
     exec: grep '$InputTCPServerRun' /etc/rsyslog.conf /etc/rsyslog.d/*.conf
-    exit-status: 0
+    exit-status:
+      or:
+      - 0
+      - 1
     stdout:
     - '/.*[^#]?(| )\$InputTCPServerRun/'
     - '/.*:#(| )\$InputTCPServerRun/'

@@ -536,6 +536,7 @@ amzn2023cis_auditd:
     admin_space_left_action: halt
     max_log_file_action: keep_logs
     auditd_backlog_limit: '8192'
+    max_log_file_size: '10'
 
 ## Advanced option found in auditd post
 amzn2023cis_allow_auditd_uid_user_exclusions: false
