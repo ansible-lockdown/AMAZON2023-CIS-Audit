@@ -8,7 +8,7 @@ command:
     exec: echo "Warning - Ensure all services are required - remove or mask if not"
     exit-status: 0
     stdout:
-    - '!/.*/'
+    - '!/Warning/'
     meta:
       server: 1
       workstation: NA
