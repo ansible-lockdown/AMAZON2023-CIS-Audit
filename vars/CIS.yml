@@ -25,7 +25,8 @@ amzn2023cis_level_2: true
 
 # if Bios boot
 amzn2023cis_legacy_boot: true # change to false if uefi bootloader
-
+amzn2023cis_bootloader_file: /boot/grub2/grub.cfg
+amzn2023cis_bootloader_user: /boot/grub2/user.cfg
 
 # These variables correspond with the CIS rule IDs or paragraph numbers defined in
 # the CIS benchmark documents.
