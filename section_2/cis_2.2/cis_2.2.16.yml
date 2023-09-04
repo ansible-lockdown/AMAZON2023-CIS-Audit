@@ -1,8 +1,8 @@
 ---
 
-{{ if not .Vars.amzn2023cis_nfs_server }}
-  {{ if .Vars.amzn2023cis_rule_2_2_16 }}
-    {{ if .Vars.amzn2023cis_level_1 }}
+{{ if .Vars.amzn2023cis_rule_2_2_16 }}
+  {{ if .Vars.amzn2023cis_level_1 }}
+    {{ if eq .Vars.amzn2023cis_nfs_server "remove" }}
 package:
   nfs-utils:
     title: 2.2.16 | Ensure nfs-utils is not installed or the nfs-server service is masked | Installed
@@ -18,6 +18,8 @@ package:
       CISv8_IG2: true
       CISv8_IG3: true
       NISTSP800-53-R5: CM-7
+    {{ end }}
+    {{ if eq .Vars.amzn2023cis_nfs_server "mask" }}
 service:
   nfs-server:
     title: 2.2.16 | Ensure nfs-utils is not installed or the nfs-server service is masked | masked

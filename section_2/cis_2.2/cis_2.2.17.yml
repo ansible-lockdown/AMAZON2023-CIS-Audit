@@ -1,8 +1,8 @@
 ---
 
-{{ if not .Vars.amzn2023cis_rpc_server }}
-  {{ if .Vars.amzn2023cis_rule_2_2_17 }}
-    {{ if .Vars.amzn2023cis_level_1 }}
+{{ if .Vars.amzn2023cis_rule_2_2_17 }}
+  {{ if .Vars.amzn2023cis_level_1 }}
+    {{ if eq .Vars.amzn2023cis_rpc_server "remove" }}
 package:
   rpcbind:
     title: 2.2.17 | Ensure rpcbind is not installed or the rpcbind services are masked | installed
@@ -20,6 +20,8 @@ package:
       NISTSP800-53-R5:
       - CM-6
       - CM-7
+    {{ end }}
+    {{ if eq .Vars.amzn2023cis_rpc_server "mask" }}
 service:
   rpcbind:
     title: 2.2.17 | Ensure rpcbind is not installed or the rpcbind services are masked | masked
