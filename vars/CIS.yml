@@ -483,7 +483,7 @@ amzn2023cis_pam_faillock:
     deny: 5
     remember: 5
 
-amzn2023cis_pam_pass:
+amzn2023cis_pass:
     max_days: 365
     min_days: 7
     warn_age: 7
