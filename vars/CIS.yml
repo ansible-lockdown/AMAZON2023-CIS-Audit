@@ -537,12 +537,7 @@ amzn2023cis_auditd:
     action_mail_acct: root
     admin_space_left_action: halt
     max_log_file_action: keep_logs
-
-# The audit_back_log_limit value should never be below 8192
-amzn2023cis_audit_back_log_limit: 8192
-
-# The max_log_file parameter should be based on your sites policy
-amzn2023cis_max_log_file_size: 10
+    auditd_backlog_limit: '8192'
 
 ## Advanced option found in auditd post
 amzn2023cis_allow_auditd_uid_user_exclusions: false
