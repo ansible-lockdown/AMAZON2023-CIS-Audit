@@ -21,10 +21,10 @@ command:
       CISv8_IG3: true
       NISTSP800-53-R5: SI-3
 file:
-  blacklist_udf:
+  blacklist_usb:
     title: 1.1.9 | Disable USB Storage | blacklist
     exists: true
-    path: /etc/modprobe.d/blacklist
+    path: /etc/modprobe.d/blacklist.conf
     contents:
     - '/^blacklist usb-storage/'
     meta:
