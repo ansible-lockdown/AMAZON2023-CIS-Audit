@@ -22,7 +22,7 @@ file:
   blacklist_rds:
     title: 3.1.4 | Ensure mounting of rds filesystems is disabled | blacklist
     exists: true
-    path: /etc/modprobe.d/blacklist
+    path: /etc/modprobe.d/blacklist.conf
     contents:
     - '/^blacklist rds/'
     meta:
