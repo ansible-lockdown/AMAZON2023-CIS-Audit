@@ -33,12 +33,8 @@ command:
     exec: grep '$InputTCPServerRun' /etc/rsyslog.conf /etc/rsyslog.d/*.conf
     exit-status: 0
     stdout:
-    {{ if .Vars.amzn2023cis_rsyslog_listener }}
     - '/.*[^#]?(| )\$InputTCPServerRun/'
-    {{ end }}
-    {{ if not .Vars.amzn2023cis_rsyslog_listener }}
     - '/.*:#(| )\$InputTCPServerRun/'
-    {{ end }}
     meta:
       server: 1
       workstation: NA
