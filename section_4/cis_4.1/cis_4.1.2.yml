@@ -1,12 +1,13 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_1_2 }}
 file:
-  /etc/crontab:
+  crontab_perms:
     title: 4.1.2 | Ensure permissions on /etc/crontab are configured
     exists: true
+    path: /etc/crontab
     owner: root
     group: root
-    mode: "0600"
+    mode: '0600'
     meta:
       server: 1
       workstation: NA
@@ -22,5 +23,3 @@ file:
       - MP-2
   {{ end }}
 {{ end }}
-
-

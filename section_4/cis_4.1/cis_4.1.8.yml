@@ -1,8 +1,9 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_1_8 }}
 file:
-  /etc/cron.deny:
+  cron_deny_users:
     title: 4.1.8 | Ensure cron is restricted to authorized users
+    path: /etc/cron.deny
     exists: false
     meta:
       server: 1
@@ -19,12 +20,13 @@ file:
       - MP-2NISTSP800-53-R5:
       - AC-3
       - MP-2
-  /etc/cron.allow:
+  cron_allow_users:
     title: 4.1.8 | Ensure cron is restricted to authorized users
+    path: /etc/cron.allow
     exists: true
     owner: root
     group: root
-    mode: "0600"
+    mode: '0600'
     meta:
       server: 1
       workstation: NA
