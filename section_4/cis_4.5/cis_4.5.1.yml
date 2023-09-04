@@ -6,8 +6,8 @@ file:
     path: /etc/security/pwquality.conf
     exists: true
     contents:
-    - {{ .Vars.amzn2023cis_pam_password.minlen }}
-    - {{ .Vars.amzn2023cis_pam_password.minclass }}
+    - '{{ .Vars.amzn2023cis_pam_password.minlen }}'
+    - '{{ .Vars.amzn2023cis_pam_password.minclass }}'
     meta:
       server: 1
       workstation: NA

@@ -6,8 +6,8 @@ file:
     path: /etc/pam.d/password-auth
     exists: true
     contents:
-    - '/^password sufficient pam_unix.so sha512/'
-    - '!/^password sufficient pam_unix.so md5/'
+    - '/^password\s+sufficient\s+pam_unix.so sha512/'
+    - '!/^password\s+sufficient\s+pam_unix.so md5/'
     meta:
       server: 1
       workstation: NA

@@ -25,7 +25,7 @@ command:
     exit-status: 0
     stdout:
     - '/^{{ .Vars.amzn2023cis_sugroup }}:x:\d+:$/'
-    - '!/^{{ .Vars.amzn2023cis_sugroup }}:x:\d+:.*/'
+    - '!/^{{ .Vars.amzn2023cis_sugroup }}:x:\d+:..*$/'
     meta:
       server: 1
       workstation: NA
