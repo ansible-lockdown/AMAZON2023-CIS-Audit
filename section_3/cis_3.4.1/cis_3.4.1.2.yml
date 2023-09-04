@@ -2,7 +2,7 @@
 
 {{ if .Vars.amzn2023cis_level_2 }}
   {{ if .Vars.amzn2023cis_rule_3_4_1_2 }}
-    {{ if eq .Vars.azmn2023cis_firewall "nftables" }}
+    {{ if eq .Vars.amzn2023cis_firewall "nftables" }}
 file:
   /etc/systemd/system/firewalld.service:
     title: 3.4.1.2 | Ensure a single firewall configuration utility is in use | firewalld masked

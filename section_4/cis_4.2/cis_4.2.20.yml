@@ -6,8 +6,8 @@ file:
     path: /etc/ssh/sshd_config
     exists: true
     contents:
-    - '/^ClientAliveInterval {{ .Vars.amzn2023cis_ssh.clientaliveinterval }}/'
-    - '/^ClientAliveCountMax {{ .Vars.amzn2023cis_ssh.clientcountmax }}/'
+    - '/^ClientAliveInterval {{ .Vars.amzn2023cis_sshd.clientaliveinterval }}/'
+    - '/^ClientAliveCountMax {{ .Vars.amzn2023cis_sshd.clientalivecountmax }}/'
     meta:
       server: 1
       workstation: NA
