@@ -5,7 +5,7 @@
 kernel-param:
   kernel.yama.ptrace_scope:
     title: 1.5.2 | Ensure ptrace_scope is restricted | sysctl_live
-    value: '2'
+    value: '1'
     meta:
       server: 1
       workstation: NA
