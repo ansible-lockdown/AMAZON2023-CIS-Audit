@@ -11,7 +11,7 @@ command:
       - 1
     stdout:
     {{ range .Vars.amzn2023cis_time_synchronization_servers }}
-    - '/^(server|pool)\s{{ . }}/'
+    - '/^(server|pool)\s{{ . }} {{.Vars.amzn2023cis_chrony_server_options }}/'
     {{ end }}
     skip: false
     meta:
