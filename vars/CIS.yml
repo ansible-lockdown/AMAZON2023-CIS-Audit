@@ -493,7 +493,7 @@ amzn2023cis_pam_pass:
 ## Preferred method of logging
 ## Whether rsyslog or journald preferred method for local logging
 ## Affects rsyslog cis 4.2.1.3 and journald cis 4.2.2.5
-amzn2023cis_syslog: rsyslog
+amzn2023cis_syslog_service: rsyslog
 amzn2023cis_rsyslog_ansiblemanaged: true
 amzn2023cis_rsyslog_listener: false
 
