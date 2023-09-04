@@ -1,4 +1,4 @@
-{{ if .Vars.amzn2023_rule_5_2_1_4 }}
+{{ if .Vars.amzn2023cis_rule_5_2_1_4 }}
 service:
   auditd:
     title: 5.2.1.4 | Ensure auditd service is enabled
