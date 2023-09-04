@@ -2,7 +2,7 @@
 command:
   sshd_crypto:
     title: 4.2.14 | Ensure system-wide crypto policy is not over-ridden
-    exec: grep -Ei "^Crypto_policy" /etc/ssh/sshd_config /etc/ssh/sshd_config.d
+    exec: grep -Ei "^Crypto_policy" /etc/ssh/sshd_config /etc/ssh/sshd_config.d/*
     exit-status:
       or:
       - 0
