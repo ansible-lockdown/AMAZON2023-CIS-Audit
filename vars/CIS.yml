@@ -4,12 +4,12 @@ benchmark_version: '1.0.0'
 # timeout for each command to run where set - default = 10seconds/10000ms
 timeout_ms: 60000
 
+# to enable rules that may have IO impact on a system e.g. full filesystem scans or CPU heavy
 amzn2023cis_run_heavy_tests: true
 
 #
 host_os_distribution: Amazon2023
 
-amzn2023cis_notauto: false
 amzn2023cis_section1: true
 amzn2023cis_section2: true
 amzn2023cis_section3: true
@@ -19,17 +19,13 @@ amzn2023cis_section6: true
 
 amzn2023cis_selinux_disable: false
 amzn2023cis_selinux_state: enforcing
-amzn2023cis_legacy_boot: true  # change to false if uefi bootloader
 
 amzn2023cis_level_1: true
 amzn2023cis_level_2: true
-# to enable rules that may have IO impact on a system e.g. full filesystem scans or CPU heavy
-amzn2023cis_run_heavy_tests: true
 
 # if Bios boot
-amzn2023cis_legacy_boot: true
-amzn2023cis_bootloader_file: /boot/grub2/grub.cfg
-amzn2023cis_bootloader_user: /boot/grub2/user.cfg
+amzn2023cis_legacy_boot: true # change to false if uefi bootloader
+
 
 # These variables correspond with the CIS rule IDs or paragraph numbers defined in
 # the CIS benchmark documents.
