@@ -2,7 +2,7 @@
 file:
   grub_enable_audit:
     title: 5.2.1.2 | Ensure auditing for processes that start prior to auditd is enabled
-    file: /etc/default/grub
+    path: /etc/default/grub
     exists: true
     contents:
     - '/GRUB_CMDLINE_LINUX_DEFAULT=".*audit=1/'
