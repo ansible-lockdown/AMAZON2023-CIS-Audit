@@ -6,6 +6,7 @@ file:
   coredump_storage:
     title: 1.5.3 | Ensure prelink is disabled
     path: /etc/systemd/coredump.conf
+    exists: true
     contents:
     - '/^Storage=none/'
     meta:
