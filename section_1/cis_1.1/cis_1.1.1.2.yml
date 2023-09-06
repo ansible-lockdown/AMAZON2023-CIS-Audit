@@ -1,6 +1,6 @@
 ---
 
-{{ if .Vars.amzn2023cis_level2 }}
+{{ if .Vars.amzn2023cis_level_2 }}
   {{ if .Vars.amzn2023cis_rule_1_1_1_2 }}
 command:
   cramfs:
@@ -23,7 +23,7 @@ file:
   blacklist_udf:
     title: 1.1.1.2 | Ensure mounting of udf filesystems is disabled | blacklist
     exists: true
-    path: /etc/modprobe.d/blacklist
+    path: /etc/modprobe.d/blacklist.conf
     contents:
     - '/^blacklist udf/'
     meta:

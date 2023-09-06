@@ -1,6 +1,6 @@
 ---
 
-{{ if .Vars.amzn2023cis_level1 }}
+{{ if .Vars.amzn2023cis_level_1 }}
 file:
   {{ if .Vars.amzn2023cis_rule_1_7_1 }}
   motd_message:
@@ -87,6 +87,7 @@ file:
   motd_perms:
     title: 1.7.4 | Ensure permissions on /etc/motd are configured
     path: /etc/motd
+    exists: true
     owner: root
     group: root
     mode: '0644'
@@ -107,6 +108,7 @@ file:
   etc_issue_perms:
     title: 1.7.5 | Ensure permissions on /etc/issue are configured
     path: /etc/issue
+    exists: true
     owner: root
     group: root
     mode: '0644'
@@ -127,6 +129,7 @@ file:
   etc_issue_net_perms:
     title: 1.7.6 | Ensure permissions on /etc/issue.net are configured
     path: /etc/issue.net
+    exists: true
     owner: root
     group: root
     mode: '0644'

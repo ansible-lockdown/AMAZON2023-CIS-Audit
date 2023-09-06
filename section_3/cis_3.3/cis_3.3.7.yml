@@ -1,6 +1,6 @@
 ---
 
-{{ if .Vars.amzn2023cis_level1 }}
+{{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_3_3_7 }}
 kernel-param:
   net.ipv4.conf.all.rp_filter:
@@ -41,4 +41,5 @@ kernel-param:
       - CM-6
       - CM-7
       - IA-5
+  {{ end }}
 {{ end }}

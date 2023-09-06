@@ -1,7 +1,7 @@
 ---
 
-{{ if .Vars.amzn2023cis_level2 }}
-  {{ if .Vars.azmn2023cis_rule_3_4_2_4 }}
+{{ if .Vars.amzn2023cis_level_2 }}
+  {{ if .Vars.amzn2023cis_rule_3_4_2_4 }}
 command:
   firewall_loopback_manual:
     title: 3.4.2.4 | Ensure host based firewall loopback traffic is configured | Manual Check Required

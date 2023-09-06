@@ -1,4 +1,4 @@
-{{ if .Vars.amzn2023cis_level1 }}
+{{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_5_4 }}
 file:
   password-auth_algorithm:
@@ -6,8 +6,8 @@ file:
     path: /etc/pam.d/password-auth
     exists: true
     contents:
-    - '/^password sufficient pam_unix.so sha512/'
-    - '!/^password sufficient pam_unix.so md5/'
+    - '/^password\s+sufficient\s+pam_unix.so sha512/'
+    - '!/^password\s+sufficient\s+pam_unix.so md5/'
     meta:
       server: 1
       workstation: NA
@@ -24,8 +24,8 @@ file:
     title: 4.5.4 | Ensure password hashing algorithm is SHA-512 | system-auth
     exists: true
     contents:
-    - '/^password sufficient pam_unix.so sha512/'
-    - '!/^password sufficient pam_unix.so md5/'
+    - '/^password\s+sufficient\s+pam_unix.so sha512/'
+    - '!/^password\s+ sufficient\s+pam_unix.so md5/'
     meta:
       server: 1
       workstation: NA

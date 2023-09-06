@@ -4,7 +4,7 @@ file:
     title: 5.2.2.3 | Ensure system is disabled when audit logs are full
     path: /etc/audit/auditd.conf
     exists: true
-    contains:
+    contents:
     - '/^space_left_action = {{ .Vars.amzn2023cis_auditd.space_left_action }}/'
     - '/^action_mail_acct = {{ .Vars.amzn2023cis_auditd.action_mail_acct }}/'
     - '/^admin_space_left_action = {{ .Vars.amzn2023cis_auditd.admin_space_left_action }}/'

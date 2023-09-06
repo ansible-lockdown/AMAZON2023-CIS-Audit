@@ -1,4 +1,4 @@
-{{ if .Vars.amzn2023cis_level2 }}
+{{ if .Vars.amzn2023cis_level_2 }}
   {{ if .Vars.amzn2023cis_rule_4_2_12 }}
 file:
   sshd_config_x11:

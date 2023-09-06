@@ -1,7 +1,7 @@
 ---
 
-{{ if .Vars.amzn2023cis_level2 }}
-  {{ if .Vars.azmn2023cis_rule_3_4_1_1}}
+{{ if .Vars.amzn2023cis_level_2 }}
+  {{ if .Vars.amzn2023cis_rule_3_4_1_1 }}
 package:
   nftables:
     title: 3.4.1.1 | Ensure nftables package is installed
@@ -18,4 +18,5 @@ package:
       NISTSP800-53-R5:
       - CM-7
       - CA-9
+  {{ end }}
 {{ end }}

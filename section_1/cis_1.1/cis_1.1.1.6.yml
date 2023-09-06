@@ -1,6 +1,6 @@
 ---
 
-{{ if .Vars.amzn2023cis_level1 }}
+{{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_1_1_1_6 }}
 command:
   hfs:
@@ -23,7 +23,7 @@ file:
   blacklis_hfs:
     title: 1.1.1.6 | Ensure mounting of hfs filesystems is disabled | blacklist
     exists: true
-    path: /etc/modprobe.d/blacklist
+    path: /etc/modprobe.d/blacklist.conf
     contents:
     - '/^blacklist hfs/'
     meta:

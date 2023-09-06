@@ -1,12 +1,12 @@
-{{ if .Vars.amzn2023cis_level1 }}
+{{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_6_5 }}
 file:
   /etc/profile:
     title: 4.6.5 | Ensure default user umask is 027 or more restrictive
     exists: true
     contents:
-    - '/^\s+umask\s0(2|7)(2|7)/'
-    - '!/^\s+umask\s[1-7][0-7][0-7]/'
+    - '/^(\s+|)umask\s0(2|7)(2|7)/'
+    - '!/^(\s+|)umask\s[1-7][0-7][0-7]/'
     meta:
       server: 1
       workstation: NA

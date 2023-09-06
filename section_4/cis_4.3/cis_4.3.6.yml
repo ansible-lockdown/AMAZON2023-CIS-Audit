@@ -5,7 +5,7 @@ file:
     path: /etc/pam.d/su
     exists: true
     contents:
-      - '/^auth.*required.*pam_wheel.so\suse_uid$\sgroup={{ .Vars.amzn2023cis_sugroup }}/'
+      - '/^auth.*required.*pam_wheel.so\suse_uid\sgroup={{ .Vars.amzn2023cis_sugroup }}/'
     meta:
       server: 1
       workstation: NA
@@ -25,7 +25,7 @@ command:
     exit-status: 0
     stdout:
     - '/^{{ .Vars.amzn2023cis_sugroup }}:x:\d+:$/'
-    - '!/^{{ .Vars.amzn2023cis_sugroup }}:x:\d+:.*/'
+    - '!/^{{ .Vars.amzn2023cis_sugroup }}:x:\d+:..*$/'
     meta:
       server: 1
       workstation: NA

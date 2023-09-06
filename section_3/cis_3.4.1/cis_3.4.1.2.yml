@@ -1,8 +1,8 @@
 ---
 
-{{ if .Vars.amzn2023cis_level2 }}
-  {{ if .Vars.azmn2023cis_rule_3_4_1_2 }}
-    {{ if eq .Vars.azmn2023cis_firewall "nftables" }}
+{{ if .Vars.amzn2023cis_level_2 }}
+  {{ if .Vars.amzn2023cis_rule_3_4_1_2 }}
+    {{ if eq .Vars.amzn2023cis_firewall "nftables" }}
 file:
   /etc/systemd/system/firewalld.service:
     title: 3.4.1.2 | Ensure a single firewall configuration utility is in use | firewalld masked
@@ -55,7 +55,7 @@ service:
       CISv8_IG3: true
       NISTSP800-53-R5: NA
   {{ end }}
-  {{ if eq .Vars.azmn2023cis_firewall "firewalld" }}
+  {{ if eq .Vars.amzn2023cis_firewall "firewalld" }}
 file:
   /etc/systemd/system/nftables.service:
     title: 3.4.1.2 | Ensure a single firewall configuration utility is in use | nftables masked

@@ -1,7 +1,7 @@
 ---
 
-{{ if .Vars.amzn2023cis_level2 }}
-  {{ if .Vars.azmn2023cis_rule_3_4_2_2 }}
+{{ if .Vars.amzn2023cis_level_2 }}
+  {{ if .Vars.amzn2023cis_rule_3_4_2_2 }}
 command:
   nftables_table_list_manual:
     title: 3.4.2.2 | Ensure at least one nftables table exists | Manual Check Required

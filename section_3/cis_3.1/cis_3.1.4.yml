@@ -1,6 +1,6 @@
 ---
 
-{{ if .Vars.amzn2023cis_level2 }}
+{{ if .Vars.amzn2023cis_level_2 }}
   {{ if .Vars.amzn2023cis_rule_3_1_4 }}
 command:
   rds_disabled:
@@ -22,7 +22,7 @@ file:
   blacklist_rds:
     title: 3.1.4 | Ensure mounting of rds filesystems is disabled | blacklist
     exists: true
-    path: /etc/modprobe.d/blacklist
+    path: /etc/modprobe.d/blacklist.conf
     contents:
     - '/^blacklist rds/'
     meta:
@@ -33,6 +33,7 @@ file:
       - 4.8
       CISv8_IG1: false
       CISv8_IG2: true
-      CISv8_IG3: trueNISTSP800-53-R5: CM-7
+      CISv8_IG3: true
+      NISTSP800-53-R5: CM-7
   {{ end }}
 {{ end }}

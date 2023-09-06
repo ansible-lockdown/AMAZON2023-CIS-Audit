@@ -1,15 +1,15 @@
 ---
 
-{{ if .Vars.amzn2023cis_level2 }}
-  {{ if .Vars.azmn2023cis_rule_3_4_2_1 }}
-    {{ if eq .Vars.azmn2023cis_firewall "firewalld" }}
+{{ if .Vars.amzn2023cis_level_2 }}
+  {{ if .Vars.amzn2023cis_rule_3_4_2_1 }}
+    {{ if eq .Vars.amzn2023cis_firewall "firewalld" }}
 command:
   default_zone:
     title: 3.4.2.1 | Ensure firewalld default zone is set
     exec: firewall-cmd --get-default-zone
     exit-status: 0
     stdout:
-    - '{{ .Vars.azmn2023cis_default_zone }}'
+    - '{{ .Vars.amzn2023cis_default_zone }}'
     meta:
       server: 2
       workstation: NA

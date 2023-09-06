@@ -1,6 +1,6 @@
 ---
 
-{{ if .Vars.amzn2023cis_level1 }}
+{{ if .Vars.amzn2023cis_level_1 }}
 package:
   {{ if .Vars.amzn2023cis_rule_1_6_1_7 }}
   setroubleshoot:

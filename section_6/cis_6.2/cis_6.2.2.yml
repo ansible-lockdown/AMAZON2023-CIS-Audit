@@ -1,10 +1,10 @@
-{{ if .Vars.amzn2023cis_level1 }}
+{{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_6_2_2 }}
 file:
   /etc/passwd:
     title: 6.2.2 | Ensure /etc/shadow password fields are not empty
     exists: true
-    contains:
+    contents:
     - "!/^.*:\\!\\!:.*/"
     meta:
       server: 1

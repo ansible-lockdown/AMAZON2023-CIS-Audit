@@ -1,4 +1,4 @@
-{{ if .Vars.amzn2023cis_level1 }}
+{{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_6_2 }}
 command:
   secure_system_accts:

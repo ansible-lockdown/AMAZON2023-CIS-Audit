@@ -5,8 +5,8 @@ file:
   crypto_policies_config:
     title: 1.9 | Ensure system-wide crypto policy is not legacy
     path: /etc/crypto-policies/config
-    exit-status: 0
-    stdout:
+    exists: true
+    contents:
     - '/^(|\s+)(DEFAULT|FUTURE|FIPS)/'
     - '!/^(|\s+)LEGACY/'
     meta:

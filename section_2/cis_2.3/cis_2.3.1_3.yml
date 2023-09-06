@@ -1,6 +1,6 @@
 ---
 
-{{ if .Vars.amzn2023cis_level1 }}
+{{ if .Vars.amzn2023cis_level_1 }}
 package:
   {{ if not .Vars.amzn2023cis_telnet_required }}
     {{ if .Vars.amzn2023cis_rule_2_3_1 }}

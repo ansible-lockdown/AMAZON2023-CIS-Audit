@@ -1,6 +1,6 @@
 ---
 
-{{ if .Vars.amzn2023cis_level1 }}
+{{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_2_4 }}
 command:
   essential_pkgs:
@@ -8,7 +8,7 @@ command:
     exec: echo "Warning - Ensure all services are required - remove or mask if not"
     exit-status: 0
     stdout:
-    - '!/.*/'
+    - '!/Warning/'
     meta:
       server: 1
       workstation: NA
