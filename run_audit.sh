@@ -9,10 +9,11 @@
 # 02 Mar 2022 - Updated benchmark variable naming
 # 06 Apr 2022 - Added format option in output inline with goss options e.g. json documentation this is for fault finding
 # 03 May 2022 - update for audit variables improvement added by @pavloos - https://github.com/ansible-lockdown/RHEL8-CIS-Audit/pull/29
-# 04 Oct 2022 - Changed default content location to /opt
-# 04 Sep 2023 - change default from from json to blank (it is default)
+# 10 Jun 2022 - added format output for different type - supports json,documentation or rspecish
+
 
 #!/bin/bash
+
 
 # Variables in upper case tend to be able to be adjusted
 # lower case variables are discovered or built from other variables
@@ -24,9 +25,9 @@ AUDIT_CONTENT_LOCATION="${AUDIT_CONTENT_LOCATION:-/opt}"  # Location of the audi
 
 
 # Goss benchmark variables (these should not need changing unless new release)
-BENCHMARK=CIS # Benchmark Name aligns to the audit
-BENCHMARK_VER=1.0.0
-BENCHMARK_OS=Amazon2023
+BENCHMARK=CIS  # Benchmark Name aligns to the audit
+BENCHMARK_VER=v1.0.0
+BENCHMARK_OS=AMAZON2023
 
 # help output
 Help()
@@ -36,7 +37,7 @@ Help()
    echo
    echo "Syntax: $0 [-f|-g|-o|-v|-w|-h]"
    echo "options:"
-   echo "-f     optional - change the format output (default value = json)"
+   echo "-f     optional - change the format output (default value = json) other working options documentation, rspecish"
    echo "-g     optional - Add a group that the server should be grouped with (default value = ungrouped)"
    echo "-o     optional - file to output audit data"
    echo "-v     optional - relative path to thevars file to load (default e.g. $AUDIT_CONTENT_LOCATION/RHEL7-$BENCHMARK/vars/$BENCHMARK.yml)"
@@ -44,6 +45,7 @@ Help()
    echo "-h     Print this Help."
    echo
 }
+
 
 # Default vars that can be set
 host_system_type=Server
@@ -78,10 +80,7 @@ fi
 
 # Discover OS version aligning with audit
 # Define os_vendor variable
-if [[ "$BENCHMARK_OS" == AmazonLinux2 ]]; then
-   os_vendor="AMAZON"
-elif
-   [ `grep -c rhel /etc/os-release` != 0 ]; then
+if [ `grep -Ec "rhel|oracle" /etc/os-release` != 0 ]; then
     os_vendor="RHEL"
 else
     os_vendor=`hostnamectl | grep Oper | cut -d : -f2 | awk '{print $1}' | tr a-z A-Z`
@@ -94,9 +93,9 @@ audit_vars=vars/${BENCHMARK}.yml
 
 # Set variable for format output
 if [ -z $FORMAT ]; then
-  export format=""  # Made empty for 0.4.0
+  export format="json"
 else
-  export format="-f ${FORMAT}"
+  export format=$FORMAT
 fi
 
 # Set variable for autogroup
@@ -118,6 +117,7 @@ if [ -z "$VARS_PATH" ]; then
      exit 1
    fi
 fi
+
 
 ## System variables captured for metadata
 
@@ -158,6 +158,7 @@ else
    echo "WARNING - the $audit_content_dir/$AUDIT_FILE is not available"; export FAILURE=2
 fi
 
+
 if [ `echo $FAILURE` != 0 ]; then
    echo "## Pre-checks failed please see output"
    exit 1
@@ -167,18 +168,34 @@ else
    echo
 fi
 
+# format output
+#json, rspecish = grep -A 4 \"summary\": $audit_out
+# tap junit no output as no summary
+#documentation = tail -2 $audit_out
+
+# defaults
+output_summary="tail -2 $audit_out"
+format_output="-f $format"
+
+if [ $format = json ]; then
+   format_output="-f json -o pretty"
+   output_summary="grep -A 4 \"summary\": $audit_out"
+elif [ $format = junit ] || [ $format = tap ]; then
+   output_summary=""
+fi
+
+
+
 ## Run commands
 echo "#############"
 echo "Audit Started"
 echo "#############"
 echo
-$AUDIT_BIN -g $audit_content_dir/$AUDIT_FILE --vars $varfile_path  --vars-inline $audit_json_vars v $format > $audit_out
+$AUDIT_BIN -g $audit_content_dir/$AUDIT_FILE --vars $varfile_path  --vars-inline $audit_json_vars v $format_output > $audit_out
 
 # create screen output
-if [ `grep -c $BENCHMARK $audit_out` != 0 ]; then
-echo "
-`tail -7 $audit_out`
-
+if [ `grep -c $BENCHMARK $audit_out` != 0 ] || [ $format = junit ] || [ $format = tap ]; then
+echo "`$output_summary`
 Completed file can be found at $audit_out"
 echo "###############"
 echo "Audit Completed"
