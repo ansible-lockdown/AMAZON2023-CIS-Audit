@@ -370,17 +370,9 @@ amzn2023cis_xwindows_required: false
 # Whether or not to run tasks related to auditing/patching the desktop environment
 amzn2023cis_gui: false
 
-
-# IPv6 required
-amzn2023cis_ipv6_required: false
-
-# System network parameters (host only OR host and router)
-amzn2023cis_is_router: false
-
 # Time Synchronization
 amzn2023cis_time_synchronization: chrony
 #  amzn2023cis_time_synchronization: ntp
-
 
 ### 2.3 Special Purposes
 ##### Service configuration booleans set true to keep service
@@ -407,12 +399,9 @@ amzn2023cis_rpc_server: mask
 amzn2023cis_rsync_server: mask
 # snmp can be a dependacy for many packages - it is masked only by default if installed
 
-
 # Note the options
 # Packages are used for client services and Server- only remove if you dont use the client service
 #
-
-
 
 #### 2.3 Service clients
 amzn2023cis_telnet_required: false
@@ -452,7 +441,6 @@ amzn2023cis_ssh_loglevel: INFO
 amzn2023cis_ssh_maxsessions: 4
 amzn2023cis_inactivelock:
     lock_days: 30
-
 
 # 4.3.3 var log location variable
 amzn2023cis_sudolog_location: "/var/log/sudo.log"
