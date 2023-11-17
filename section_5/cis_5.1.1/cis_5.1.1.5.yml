@@ -1,7 +1,8 @@
 {{ if .Vars.amzn2023cis_rule_5_1_1_5 }}
 file:
-  /etc/rsyslog.conf:
+  rsyslog_logging_config:
     title: 5.1.1.5 | Ensure logging is configured
+    path: /etc/rsyslog.conf
     exists: true
     contents:
     - '/^mail.\*\s+-/var/log/mail/'
