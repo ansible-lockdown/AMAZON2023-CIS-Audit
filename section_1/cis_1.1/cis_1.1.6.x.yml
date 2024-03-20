@@ -2,13 +2,12 @@
 
 mount:
   {{ if .Vars.amzn2023cis_level_1 }}
-  var_log_audit_opts:
+  /var/log/audit:
     title: |
       1.1.6.2 | Ensure noexec option set on /var/log/audit partition
       1.1.6.3 | Ensure nodev option set on /var/log/audit partition
       1.1.6.4 | Ensure nosuid option set on /var/log/audit partition
     exists: true
-    mountpoint: /var/log/audit
     opts:
     {{ if .Vars.amzn2023cis_rule_1_1_6_2 }}
     - noexec
@@ -37,10 +36,9 @@ mount:
   {{ end }}
 {{ if .Vars.amzn2023cis_level_2 }}
   {{ if .Vars.amzn2023cis_rule_1_1_6_1 }}
-  var_log_audit_exists:
+  /var/log/audit:
     title: 1.1.6.1 | Ensure /var/log/audit is a separate partition
     exists: true
-    mountpoint: /var/log/audit
     meta:
       server: 2
       workstation: NA
