@@ -6,7 +6,7 @@ file:
   /etc/systemd/coredump.conf:
     title: 1.5.3 | Ensure prelink is disabled
     exists: true
-    contents:
+    contains:
     - '/^Storage=none/'
     meta:
       server: 1

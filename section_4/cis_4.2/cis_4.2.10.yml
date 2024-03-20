@@ -4,7 +4,7 @@ file:
   /etc/ssh/sshd_config:
     title: 4.2.10 | Ensure SSH PermitUserEnvironment is disabled
     exists: true
-    contents:
+    contains:
     - '/^PermitUserEnvironment no/'
     - '!/^PermitUserEnvironment yes/'
     meta:

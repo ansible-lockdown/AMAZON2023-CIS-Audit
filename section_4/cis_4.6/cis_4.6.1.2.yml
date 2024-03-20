@@ -4,7 +4,7 @@ file:
   /etc/login.defs:
     title: 4.6.1.2 | Ensure minimum days between password changes is configured
     exists: true
-    contents:
+    contains:
     - '/^PASS_MIN_DAYS\s+{{ .Vars.amzn2023cis_pass.min_days }}/'
     - '!/^PASS_MIN_DAYS\s+0/'
     meta:

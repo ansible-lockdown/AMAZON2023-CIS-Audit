@@ -4,7 +4,7 @@ file:
   /etc/passwd:
     title: 6.2.1 | Ensure accounts in /etc/passwd use shadowed passwords
     exists: true
-    contents:
+    contains:
     - "/^.*:x:*/"
     - "!/^.*:[a-w][y-z]:.*"
     meta:

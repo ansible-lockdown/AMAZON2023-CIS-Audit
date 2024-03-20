@@ -4,7 +4,7 @@ file:
   /etc/ssh/sshd_config:
     title: 4.2.8 | Ensure SSH HostbasedAuthentication is disabled
     exists: true
-    contents:
+    contains:
     - 'HostbasedAuthentication no'
     - '!/^HostbasedAuthentication yes/'
     meta:

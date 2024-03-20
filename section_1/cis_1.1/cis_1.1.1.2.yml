@@ -23,7 +23,7 @@ file:
   /etc/modprobe.d/blacklist.conf:
     title: 1.1.1.2 | Ensure mounting of udf filesystems is disabled | blacklist
     exists: true
-    contents:
+    contains:
     - '/^blacklist udf/'
     meta:
       server: 2

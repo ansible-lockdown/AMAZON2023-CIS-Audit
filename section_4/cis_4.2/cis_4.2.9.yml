@@ -4,7 +4,7 @@ file:
   /etc/ssh/sshd_config:
     title: 4.2.9 | Ensure SSH PermitEmptyPasswords is disabled
     exists: true
-    contents:
+    contains:
     - '/^PermitEmptyPasswords no/'
     - '!/^PermitEmptyPasswords yes/'
     meta:

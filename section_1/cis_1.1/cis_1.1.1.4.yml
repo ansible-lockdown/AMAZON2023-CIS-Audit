@@ -23,7 +23,7 @@ file:
   /etc/modprobe.d/blacklist.conf:
     title: 1.1.1.4 | Ensure mounting of freevxfs filesystems is disabled | blacklist
     exists: true
-    contents:
+    contains:
     - '/^blacklist freevxfs/'
     meta:
       server: 1

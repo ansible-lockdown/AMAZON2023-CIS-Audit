@@ -4,7 +4,7 @@ file:
   /etc/ssh/sshd_config:
     title: 4.2.13 | Ensure SSH AllowTcpForwarding is disabled
     exists: true
-    contents:
+    contains:
     - '/^AllowTcpForwarding no/'
     - '!/^AllowTcpForwarding yes/'
     meta:

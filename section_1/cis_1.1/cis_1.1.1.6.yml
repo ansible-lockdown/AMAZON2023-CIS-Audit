@@ -23,7 +23,7 @@ file:
   /etc/modprobe.d/blacklist.conf:
     title: 1.1.1.6 | Ensure mounting of hfs filesystems is disabled | blacklist
     exists: true
-    contents:
+    contains:
     - '/^blacklist hfs/'
     meta:
       server: 1

@@ -4,7 +4,7 @@ file:
   /etc/authselect/password-auth:
     title: 4.4.2 | Ensure authselect includes with-faillock
     exists: true
-    contents:
+    contains:
     - '/auth\s+required\s+pam_failock.so/'
     - '/auth\s+required\s+pam_failock.so preauth silent/'
     - '/auth\s+required\s+pam_failock.so authfail/'
@@ -26,7 +26,7 @@ file:
   /etc/authselect/system-auth:
     title: 4.4.2 | Ensure authselect includes with-faillock
     exists: true
-    contents:
+    contains:
     - '/auth\s+required\s+pam_failock.so/'
     - '/auth\s+required\s+pam_failock.so preauth silent/'
     - '/auth\s+required\s+pam_failock.so authfail/'

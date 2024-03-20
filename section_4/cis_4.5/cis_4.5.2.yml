@@ -4,7 +4,7 @@ file:
   /etc/pam.d/password-auth:
     title: 4.5.2 | Ensure lockout for failed password attempts is configured | password-auth
     exists: true
-    contents:
+    contains:
     - '/^account\s*required\s*pam_faillock.so/'
     meta:
       server: 1
@@ -22,7 +22,7 @@ file:
   /etc/pam.d/system-auth:
     title: 4.5.2 | Ensure lockout for failed password attempts is configured | system-auth
     exists: true
-    contents:
+    contains:
     - '/^account\s*required\s*pam_faillock.so/'
     meta:
       server: 1

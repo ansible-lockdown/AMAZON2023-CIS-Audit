@@ -4,7 +4,7 @@ file:
   /etc/security/pwquality.conf:
     title: 4.5.1 | Ensure password creation requirements are configured | pwquality
     exists: true
-    contents:
+    contains:
     - '{{ .Vars.amzn2023cis_pam_password.minlen }}'
     - '{{ .Vars.amzn2023cis_pam_password.minclass }}'
     meta:
@@ -22,7 +22,7 @@ file:
   /etc/pam.d/password-auth:
     title: 4.5.1 | Ensure password creation requirements are configured | password-auth
     exists: true
-    contents:
+    contains:
     - '/password\s+requisite\s+pam_pwquality.so try_first_pass local_users_only enforce_for_root retry={{ .Vars.amzn2023cis_pam_passwd_retry }}/'
     meta:
       server: 1
@@ -39,7 +39,7 @@ file:
   /etc/pam.d/system-auth:
     title: 4.5.1 | Ensure password creation requirements are configured | system-auth
     exists: true
-    contents:
+    contains:
     - '/password\s+requisite\s+pam_pwquality.so try_first_pass local_users_only enforce_for_root retry={{ .Vars.amzn2023cis_pam_passwd_retry }}/'
     meta:
       server: 1

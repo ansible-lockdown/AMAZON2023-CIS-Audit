@@ -3,7 +3,7 @@ file:
   /etc/audit/auditd.conf:
     title: 5.2.2.2 | Ensure audit logs are not automatically deleted
     exists: true
-    contents:
+    contains:
     - 'max_log_file_action = keep_logs'
     meta:
       server: 2

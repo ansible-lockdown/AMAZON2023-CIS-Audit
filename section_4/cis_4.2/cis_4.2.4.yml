@@ -5,7 +5,7 @@ file:
   /etc/ssh/sshd_config:
     title: 4.2.4 | Ensure SSH access is limited
     exists: true
-    contents:
+    contains:
     {{ range .Vars.amzn2023cis_sshd_access }}
     - {{ . }}
     {{ end }}

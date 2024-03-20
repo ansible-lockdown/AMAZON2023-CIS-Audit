@@ -4,7 +4,7 @@ file:
   /etc/ssh/sshd_config:
     title: 4.2.16 | Ensure SSH MaxAuthTries is set to 4 or less
     exists: true
-    contents:
+    contains:
     - '/MaxAuthTries [1-4]/'
     - '!/MaxAuthTries (0|[5-9])/'
     meta:

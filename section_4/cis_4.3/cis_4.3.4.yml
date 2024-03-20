@@ -4,7 +4,7 @@ file:
   /etc/sudoers:
     title: 4.3.4 | Ensure re-authentication for privilege escalation is not disabled globally | config
     exists: true
-    contents:
+    contains:
     - '!/!authenticate/'
     meta:
       server: 1

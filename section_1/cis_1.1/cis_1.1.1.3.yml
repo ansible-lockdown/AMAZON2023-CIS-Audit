@@ -23,7 +23,7 @@ file:
   /etc/modprobe.d/blacklist.conf:
     title: 1.1.1.3 | Ensure mounting of cramfs filesystems is disabled | blacklist
     exists: true
-    contents:
+    contains:
     - '/^blacklist cramfs/'
   {{ end }}
 {{ end }}

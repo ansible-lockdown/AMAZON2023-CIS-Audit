@@ -3,7 +3,7 @@ file:
   /etc/rsyslog.conf:
     title: 5.1.1.4 | Ensure rsyslog default file permissions configured
     exists: true
-    contents:
+    contains:
     - '/\$FileCreateMode 0[0,6][0,4]0/'
     meta:
       server: 1

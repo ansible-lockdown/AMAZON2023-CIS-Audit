@@ -4,7 +4,7 @@ file:
   /etc/login.defs:
     title: 4.6.1.3 | Ensure password expiration warning days is 7 or more
     exists: true
-    contents:
+    contains:
     - '/^PASS_WARN_AGE\s*{{ .Vars.amzn2023cis_pass.warn_age }}/'
     - '!/^PASS_WARN_AGE\s*[1-6]/'
     meta:

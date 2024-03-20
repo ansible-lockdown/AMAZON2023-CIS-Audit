@@ -3,7 +3,7 @@ file:
   /etc/default/grub:
     title: 5.2.1.3 | Ensure audit_backlog_limit is sufficient
     exists: true
-    contents:
+    contains:
     - '/GRUB_CMDLINE_LINUX_DEFAULT=".*audit_backlog_limit={{ .Vars.amzn2023cis_auditd.auditd_backlog_limit }}/'
     meta:
       server: 2

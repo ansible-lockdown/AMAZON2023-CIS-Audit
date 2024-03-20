@@ -4,7 +4,7 @@ file:
   /etc/ssh/sshd_config:
     title: 4.2.6 | Ensure SSH PAM is enabled
     exists: true
-    contents:
+    contains:
     - '/^UsePAM yes/'
     - '!/^UsePAM no/'
     meta:

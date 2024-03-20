@@ -23,7 +23,7 @@ file:
   /etc/modprobe.d/blacklist.conf:
     title: 1.1.1.7 | Ensure mounting of hfsplus filesystems is disabled | blacklist
     exists: true
-    contents:
+    contains:
     - '/^blacklist hfsplus/'
     meta:
       server: 1

@@ -4,7 +4,7 @@ file:
   /etc/ssh/sshd_config:
     title: 4.2.11 | Ensure SSH IgnoreRhosts is enabled
     exists: true
-    contents:
+    contains:
     - '/IgnoreRhosts yes/'
     - '!/^IgnoreRhosts no/'
     meta:

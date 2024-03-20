@@ -4,7 +4,7 @@ file:
   /etc/ssh/sshd_config:
     title: 4.2.19 | Ensure SSH LoginGraceTime is set to one minute or less
     exists: true
-    contents:
+    contains:
     - '/^LoginGraceTime ([1-9]|[1-5][0-9])/'
     meta:
       server: 1

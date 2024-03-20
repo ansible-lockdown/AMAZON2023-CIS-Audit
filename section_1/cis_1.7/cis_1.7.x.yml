@@ -9,7 +9,7 @@ file:
     mode: "0644"
     owner: root
     group: root
-    contents:
+    contains:
     - "![Cc]ent[Oo][Ss]"
     - "![Rr]hel"
     - "![Rr]ed[Hh]at"
@@ -32,7 +32,7 @@ file:
   /etc/issue:
     title: 1.7.2 | Ensure local login warning banner is configured properly
     exists: true
-    contents:
+    contains:
     - "![Cc]ent[Oo][Ss]"
     - "![Rr]hel"
     - "![Rr]ed[Hh]at"
@@ -59,7 +59,7 @@ file:
   /etc/issue.net:
     title: 1.7.3 & 6 | Ensure remote login warning banner is configured properly
     exists: true
-    contents:
+    contains:
     - "![Cc]ent[Oo][Ss]"
     - "![Rr]hel"
     - "![Rr]ed[Hh]at"

@@ -4,7 +4,7 @@ file:
   /etc/ssh/sshd_config:
     title: 4.2.12 | Ensure SSH X11 forwarding is disabled
     exists: true
-    contents:
+    contains:
     - '/^X11Forwarding no/'
     - '!/^X11Forwarding yes/'
     meta:

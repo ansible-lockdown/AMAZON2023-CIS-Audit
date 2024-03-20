@@ -4,7 +4,7 @@ file:
   /etc/ssh/sshd_config:
     title: 4.2.7 | Ensure SSH root login is disabled
     exists: true
-    contents:
+    contains:
     - '/^PermitRootLogin no/'
     - '!/^PermitRootLogin yes/'
     meta:

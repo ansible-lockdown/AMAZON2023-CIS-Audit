@@ -4,7 +4,7 @@ file:
   /etc/ssh/sshd_config:
     title: 4.2.5 | Ensure SSH LogLevel is appropriate
     exists: true
-    contents:
+    contains:
     - '/LogLevel (VERBOSE|INFO)/'
     - '!/^LogLevel DEBUG/'
     meta:

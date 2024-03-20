@@ -3,7 +3,7 @@ file:
   /etc/audit/auditd.conf:
     title: 5.2.2.1 | Ensure audit log storage size is configured
     exists: true
-    contents:
+    contains:
     - '/^max_log_file(| )=(| ){{ .Vars.amzn2023cis_auditd.max_log_file_size }}/'
     - '/max_log_file(| )=(| )\d{1,6}/'
     meta:

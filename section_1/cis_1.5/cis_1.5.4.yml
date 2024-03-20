@@ -6,7 +6,7 @@ file:
   /etc/systemd/coredump.conf:
     title: 1.5.4 | Ensure core dump backtraces are disabled
     exists: true
-    contents:
+    contains:
     - '/^ProcessSizeMax=0/'
     meta:
       server: 1

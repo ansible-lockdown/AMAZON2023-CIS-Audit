@@ -4,7 +4,7 @@ file:
   /etc/ssh/sshd_config:
     title: 4.2.18 | Ensure SSH MaxSessions is limited
     exists: true
-    contents:
+    contains:
     - '/^MaxSessions ([2-9]|10)/'
     - '!/^MaxSessions (1|[1-9]{2,5})/'
     meta:

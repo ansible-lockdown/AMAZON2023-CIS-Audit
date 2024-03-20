@@ -4,7 +4,7 @@ file:
   /etc/pam.d/password-auth:
     title: 4.5.4 | Ensure password hashing algorithm is SHA-512 | password-auth
     exists: true
-    contents:
+    contains:
     - '/^password\s+sufficient\s+pam_unix.so sha512/'
     - '!/^password\s+sufficient\s+pam_unix.so md5/'
     meta:
@@ -22,7 +22,7 @@ file:
   /etc/pam.d/system-auth:
     title: 4.5.4 | Ensure password hashing algorithm is SHA-512 | system-auth
     exists: true
-    contents:
+    contains:
     - '/^password\s+sufficient\s+pam_unix.so sha512/'
     - '!/^password\s+ sufficient\s+pam_unix.so md5/'
     meta:
