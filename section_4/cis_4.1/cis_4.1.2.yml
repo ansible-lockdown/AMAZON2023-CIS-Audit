@@ -4,7 +4,6 @@ file:
   /etc/crontab:
     title: 4.1.2 | Ensure permissions on /etc/crontab are configured
     exists: true
-    path: /etc/crontab
     owner: root
     group: root
     mode: '0600'
