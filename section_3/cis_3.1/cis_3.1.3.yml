@@ -22,10 +22,9 @@ command:
       - SI-4
       - CM-7
 file:
-  blacklist_sctp:
+  /etc/modprobe.d/blacklist.conf:
     title: 3.1.3 | Ensure mounting of sctp filesystems is disabled | blacklist
     exists: true
-    path: /etc/modprobe.d/blacklist.conf
     contents:
     - '/^blacklist sctp/'
     meta:

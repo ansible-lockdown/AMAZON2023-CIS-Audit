@@ -1,9 +1,8 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_2_19 }}
 file:
-  sshd_config_logingrace:
+  /etc/ssh/sshd_config:
     title: 4.2.19 | Ensure SSH LoginGraceTime is set to one minute or less
-    path: /etc/ssh/sshd_config
     exists: true
     contents:
     - '/^LoginGraceTime ([1-9]|[1-5][0-9])/'

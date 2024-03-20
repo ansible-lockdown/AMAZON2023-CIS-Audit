@@ -19,10 +19,9 @@ command:
       CISv8_IG2: true
       CISv8_IG3: true
 file:
-  blacklist_rds:
+  /etc/modprobe.d/blacklist.conf:
     title: 3.1.4 | Ensure mounting of rds filesystems is disabled | blacklist
     exists: true
-    path: /etc/modprobe.d/blacklist.conf
     contents:
     - '/^blacklist rds/'
     meta:

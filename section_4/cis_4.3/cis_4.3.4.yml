@@ -1,9 +1,8 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_3_4 }}
 file:
-  sudoers_reauth:
+  /etc/sudoers:
     title: 4.3.4 | Ensure re-authentication for privilege escalation is not disabled globally | config
-    path: /etc/sudoers
     exists: true
     contents:
     - '!/!authenticate/'

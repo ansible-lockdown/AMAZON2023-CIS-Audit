@@ -20,10 +20,9 @@ command:
       CISv8_IG3: true
       NISTSP800-53-R5: CM-7
 file:
-  blacklist_udf:
+  /etc/modprobe.d/blacklist.conf:
     title: 1.1.1.2 | Ensure mounting of udf filesystems is disabled | blacklist
     exists: true
-    path: /etc/modprobe.d/blacklist.conf
     contents:
     - '/^blacklist udf/'
     meta:

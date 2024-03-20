@@ -20,10 +20,9 @@ command:
       CISv8_IG3: true
       NISTSP800-53-R5: CM-7
 file:
-  blacklist_cramfs:
+  /etc/modprobe.d/blacklist.conf:
     title: 1.1.1.3 | Ensure mounting of cramfs filesystems is disabled | blacklist
     exists: true
-    path: /etc/modprobe.d/blacklist.conf
     contents:
     - '/^blacklist cramfs/'
   {{ end }}

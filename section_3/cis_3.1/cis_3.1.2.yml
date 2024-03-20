@@ -22,10 +22,9 @@ command:
       - SI-4
       - CM-7
 file:
-  blacklist_dccp:
+  /etc/modprobe.d/blacklist.conf:
     title: 3.1.2 | Ensure mounting of dccp filesystems is disabled | blacklist
     exists: true
-    path: /etc/modprobe.d/blacklist.conf
     contents:
     - '/^blacklist dccp/'
     meta:

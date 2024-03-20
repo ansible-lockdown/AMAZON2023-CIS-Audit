@@ -3,9 +3,8 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_1_5_3 }}
 file:
-  coredump_storage:
+  /etc/systemd/coredump.conf:
     title: 1.5.3 | Ensure prelink is disabled
-    path: /etc/systemd/coredump.conf
     exists: true
     contents:
     - '/^Storage=none/'

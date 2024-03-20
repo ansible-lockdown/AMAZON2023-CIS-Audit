@@ -1,9 +1,8 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_2_7 }}
 file:
-  sshd_config_disable_root:
+  /etc/ssh/sshd_config:
     title: 4.2.7 | Ensure SSH root login is disabled
-    path: /etc/ssh/sshd_config
     exists: true
     contents:
     - '/^PermitRootLogin no/'

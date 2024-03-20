@@ -1,9 +1,8 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_4_2 }}
 file:
-  authselect_faillock:
+  /etc/authselect/password-auth:
     title: 4.4.2 | Ensure authselect includes with-faillock
-    path: /etc/authselect/password-auth
     exists: true
     contents:
     - '/auth\s+required\s+pam_failock.so/'

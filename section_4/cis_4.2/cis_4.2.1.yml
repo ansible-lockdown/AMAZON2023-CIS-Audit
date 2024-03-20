@@ -1,9 +1,8 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_2_1 }}
 file:
-  sshconfig_perms:
+  /etc/ssh/sshd_config:
     title: 4.2.1 | Ensure permissions on /etc/ssh/sshd_config are configured
-    path: /etc/ssh/sshd_config
     exists: true
     mode: "0600"
     owner: root

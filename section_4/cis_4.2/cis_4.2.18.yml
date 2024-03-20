@@ -1,9 +1,8 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_2_18}}
 file:
-  sshd_config_maxsessions:
+  /etc/ssh/sshd_config:
     title: 4.2.18 | Ensure SSH MaxSessions is limited
-    path: /etc/ssh/sshd_config
     exists: true
     contents:
     - '/^MaxSessions ([2-9]|10)/'

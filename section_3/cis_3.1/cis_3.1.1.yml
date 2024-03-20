@@ -49,9 +49,8 @@ kernel-param:
       CISv8_IG3: true
       NISTSP800-53-R5: CM-7
 file:
-  grub_ipv6:
+  /etc/default/grub:
     title: 3.1.1 | Disable IPv6 | default_grub
-    path: /etc/default/grub
     exists: true
     contents:
     - '/(?=\S+\s(ipv6\.disable=1.*)$)^GRUB_CMDLINE_LINUX="/'

@@ -1,9 +1,8 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_2_8 }}
 file:
-  sshd_config_hostauth:
+  /etc/ssh/sshd_config:
     title: 4.2.8 | Ensure SSH HostbasedAuthentication is disabled
-    path: /etc/ssh/sshd_config
     exists: true
     contents:
     - 'HostbasedAuthentication no'

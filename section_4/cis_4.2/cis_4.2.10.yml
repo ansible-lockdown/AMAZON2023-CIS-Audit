@@ -1,9 +1,8 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_2_10 }}
 file:
-  sshd_config_userenv:
+  /etc/ssh/sshd_config:
     title: 4.2.10 | Ensure SSH PermitUserEnvironment is disabled
-    path: /etc/ssh/sshd_config
     exists: true
     contents:
     - '/^PermitUserEnvironment no/'

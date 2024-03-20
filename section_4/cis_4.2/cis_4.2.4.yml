@@ -2,9 +2,8 @@
   {{ if .Vars.amzn2023cis_rule_4_2_4 }}
    {{ if .Vars.amzn2023cis_sshd_limited }}
 file:
-  limit_sshd_config:
+  /etc/ssh/sshd_config:
     title: 4.2.4 | Ensure SSH access is limited
-    path: /etc/ssh/sshd_config
     exists: true
     contents:
     {{ range .Vars.amzn2023cis_sshd_access }}

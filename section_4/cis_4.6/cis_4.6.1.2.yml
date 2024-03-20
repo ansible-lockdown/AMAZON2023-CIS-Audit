@@ -1,9 +1,8 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_6_1_2 }}
 file:
-  login_passwd_change:
+  /etc/login.defs:
     title: 4.6.1.2 | Ensure minimum days between password changes is configured
-    path: /etc/login.defs
     exists: true
     contents:
     - '/^PASS_MIN_DAYS\s+{{ .Vars.amzn2023cis_pass.min_days }}/'

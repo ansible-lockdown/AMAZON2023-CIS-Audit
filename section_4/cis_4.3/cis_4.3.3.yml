@@ -1,9 +1,8 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_3_3 }}
 file:
-  sudoers_log:
+  /etc/sudoers:
     title: 4.3.3 | Ensure sudo log file exists | config
-    path: /etc/sudoers
     exists: true
     contents:
     - '/^Defaults\s+logfile="/var/log/sudo.log"/'

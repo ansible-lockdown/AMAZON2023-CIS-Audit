@@ -1,10 +1,9 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_1_9 }}
 file:
-  at_deny_users:
+  /etc/at.deny:
     title: 4.1.9 | Ensure at is restricted to authorized users
     exists: false
-    path: /etc/at.deny
     meta:
       server: 1
       workstation: NA
@@ -18,10 +17,9 @@ file:
       NISTSP800-53-R5:
       - AC-3
       - MP-2
-  at_allow_users:
+  /etc/at.allow:
     title: 4.1.9 | Ensure at is restricted to authorized users
     exists: true
-    path: /etc/at.allow
     owner: root
     group: root
     mode: '0600'

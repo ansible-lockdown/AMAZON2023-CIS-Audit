@@ -1,9 +1,8 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_5_1 }}
 file:
-  password_creation:
+  /etc/security/pwquality.conf:
     title: 4.5.1 | Ensure password creation requirements are configured | pwquality
-    path: /etc/security/pwquality.conf
     exists: true
     contents:
     - '{{ .Vars.amzn2023cis_pam_password.minlen }}'
@@ -20,9 +19,8 @@ file:
       CISv8_IG3: true
       NISTSP800-53-R5:
       - IA-5
-  password_creation_reqs:
+  /etc/pam.d/password-auth:
     title: 4.5.1 | Ensure password creation requirements are configured | password-auth
-    path: /etc/pam.d/password-auth
     exists: true
     contents:
     - '/password\s+requisite\s+pam_pwquality.so try_first_pass local_users_only enforce_for_root retry={{ .Vars.amzn2023cis_pam_passwd_retry }}/'
@@ -38,9 +36,8 @@ file:
       CISv8_IG3: true
       NISTSP800-53-R5:
       - IA-5
-  passwd_creation_system:
+  /etc/pam.d/system-auth:
     title: 4.5.1 | Ensure password creation requirements are configured | system-auth
-    path: /etc/pam.d/system-auth
     exists: true
     contents:
     - '/password\s+requisite\s+pam_pwquality.so try_first_pass local_users_only enforce_for_root retry={{ .Vars.amzn2023cis_pam_passwd_retry }}/'

@@ -3,9 +3,8 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_1_5_4 }}
 file:
-  coredump_backtraces:
+  /etc/systemd/coredump.conf:
     title: 1.5.4 | Ensure core dump backtraces are disabled
-    path: /etc/systemd/coredump.conf
     exists: true
     contents:
     - '/^ProcessSizeMax=0/'

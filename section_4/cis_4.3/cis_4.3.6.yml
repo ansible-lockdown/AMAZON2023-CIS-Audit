@@ -1,8 +1,7 @@
 {{ if .Vars.amzn2023cis_rule_4_3_6 }}
 file:
-  su_restricted:
+  /etc/pam.d/su:
     title: 4.3.6 | Ensure access to the su command is restricted
-    path: /etc/pam.d/su
     exists: true
     contents:
       - '/^auth.*required.*pam_wheel.so\suse_uid\sgroup={{ .Vars.amzn2023cis_sugroup }}/'

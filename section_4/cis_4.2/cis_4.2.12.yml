@@ -1,9 +1,8 @@
 {{ if .Vars.amzn2023cis_level_2 }}
   {{ if .Vars.amzn2023cis_rule_4_2_12 }}
 file:
-  sshd_config_x11:
+  /etc/ssh/sshd_config:
     title: 4.2.12 | Ensure SSH X11 forwarding is disabled
-    path: /etc/ssh/sshd_config
     exists: true
     contents:
     - '/^X11Forwarding no/'

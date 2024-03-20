@@ -1,9 +1,8 @@
 {{ if .Vars.amzn2023cis_level_2 }}
   {{ if .Vars.amzn2023cis_rule_4_2_13 }}
 file:
-  sshd_config_tcpforward:
+  /etc/ssh/sshd_config:
     title: 4.2.13 | Ensure SSH AllowTcpForwarding is disabled
-    path: /etc/ssh/sshd_config
     exists: true
     contents:
     - '/^AllowTcpForwarding no/'

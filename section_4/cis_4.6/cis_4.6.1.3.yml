@@ -1,9 +1,8 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_6_1_3 }}
 file:
-  login_expire_warn:
+  /etc/login.defs:
     title: 4.6.1.3 | Ensure password expiration warning days is 7 or more
-    path: /etc/login.defs
     exists: true
     contents:
     - '/^PASS_WARN_AGE\s*{{ .Vars.amzn2023cis_pass.warn_age }}/'

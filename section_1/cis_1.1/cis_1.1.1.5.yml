@@ -20,10 +20,9 @@ command:
       CISv8_IG3: true
       NISTSP800-53-R5: CM-7
 file:
-  blacklist_jffs2:
+  /etc/modprobe.d/blacklist.conf:
     title: 1.1.1.5 | Ensure mounting of jffs2 filesystems is disabled | blacklist
     exists: true
-    path: /etc/modprobe.d/blacklist.conf
     contents:
     - '/^blacklist jffs2/'
     meta:

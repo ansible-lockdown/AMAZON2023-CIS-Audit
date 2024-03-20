@@ -3,9 +3,8 @@
 {{ if .Vars.amzn2023cis_level_1 }}
 file:
   {{ if .Vars.amzn2023cis_rule_1_7_1 }}
-  motd_message:
+  /etc/motd:
     title: 1.7.1 | Ensure message of the day is configured properly
-    path: /etc/motd
     exists: true
     mode: "0644"
     owner: root
@@ -30,10 +29,9 @@ file:
       - CM-3
   {{ end }}
   {{ if .Vars.amzn2023cis_rule_1_7_2 }}
-  etc_issue_message:
+  /etc/issue:
     title: 1.7.2 | Ensure local login warning banner is configured properly
     exists: true
-    path: /etc/issue
     contents:
     - "![Cc]ent[Oo][Ss]"
     - "![Rr]hel"
@@ -58,10 +56,9 @@ file:
       - CM-6
   {{ end }}
   {{ if .Vars.amzn2023cis_rule_1_7_3 }}
-  issue_net_message:
+  /etc/issue.net:
     title: 1.7.3 & 6 | Ensure remote login warning banner is configured properly
     exists: true
-    path: /etc/issue.net
     contents:
     - "![Cc]ent[Oo][Ss]"
     - "![Rr]hel"
@@ -84,9 +81,8 @@ file:
       - CM-6
   {{ end }}
   {{ if .Vars.amzn2023cis_rule_1_7_4 }}
-  motd_perms:
+  /etc/motd:
     title: 1.7.4 | Ensure permissions on /etc/motd are configured
-    path: /etc/motd
     exists: true
     owner: root
     group: root
@@ -105,9 +101,8 @@ file:
       - MP-2
   {{ end }}
   {{ if .Vars.amzn2023cis_rule_1_7_5 }}
-  etc_issue_perms:
+  /etc/issue:
     title: 1.7.5 | Ensure permissions on /etc/issue are configured
-    path: /etc/issue
     exists: true
     owner: root
     group: root
@@ -126,9 +121,8 @@ file:
       - MP-2
   {{ end }}
   {{ if .Vars.amzn2023cis_rule_1_7_6 }}
-  etc_issue_net_perms:
+  /etc/issue.net:
     title: 1.7.6 | Ensure permissions on /etc/issue.net are configured
-    path: /etc/issue.net
     exists: true
     owner: root
     group: root

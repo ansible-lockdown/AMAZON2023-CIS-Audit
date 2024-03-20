@@ -2,9 +2,8 @@
 
 {{ if .Vars.amzn2023cis_rule_1_9 }}
 file:
-  crypto_policies_config:
+  /etc/crypto-policies/config:
     title: 1.9 | Ensure system-wide crypto policy is not legacy
-    path: /etc/crypto-policies/config
     exists: true
     contents:
     - '/^(|\s+)(DEFAULT|FUTURE|FIPS)/'

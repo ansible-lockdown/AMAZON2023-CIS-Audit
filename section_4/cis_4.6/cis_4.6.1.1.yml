@@ -1,10 +1,9 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_6_1_1 }}
 file:
-  login_passwd_expiry:
+  /etc/login.defs:
     title: 4.6.1.1 | Ensure password expiration is 365 days or less
     exists: true
-    path: /etc/login.defs
     contents:
     - '/^PASS_MAX_DAYS\s+{{ .Vars.amzn2023cis_pass.max_days }}/'
     - '!/^PASS_MAX_DAYS\s+(36[6-9]|[4-9][0-9][0-9]|[1-9][0-9][0-9][0-9]|[1-9][0-9][0-9][0-9][0-9])/'

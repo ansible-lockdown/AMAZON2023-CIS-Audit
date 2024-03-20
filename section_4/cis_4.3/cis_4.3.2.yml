@@ -1,9 +1,8 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_3_2 }}
 file:
-  sudoers_pty:
+  /etc/sudoers:
     title: 4.3.2 | Ensure sudo commands use pty | Config
-    path: /etc/sudoers
     exists: true
     contents:
     - '/^Defaults.*\suse_pty/'

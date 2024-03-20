@@ -1,9 +1,8 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_5_2 }}
 file:
-  password_auth_failed:
+  /etc/pam.d/password-auth:
     title: 4.5.2 | Ensure lockout for failed password attempts is configured | password-auth
-    path: /etc/pam.d/password-auth
     exists: true
     contents:
     - '/^account\s*required\s*pam_faillock.so/'

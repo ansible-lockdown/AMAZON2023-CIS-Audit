@@ -1,9 +1,8 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_2_6 }}
 file:
-  sshd_config_pam_enable:
+  /etc/ssh/sshd_config:
     title: 4.2.6 | Ensure SSH PAM is enabled
-    path: /etc/ssh/sshd_config
     exists: true
     contents:
     - '/^UsePAM yes/'
