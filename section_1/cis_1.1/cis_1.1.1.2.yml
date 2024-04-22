@@ -3,7 +3,7 @@
 {{ if .Vars.amzn2023cis_level2 }}
   {{ if .Vars.amzn2023cis_rule_1_1_1_2 }}
 command:
-  cramfs:
+  udf:
     title: 1.1.1.2 | Ensure mounting of udf filesystems is disabled | modprobe
     exit-status: 0
     exec: "modprobe -n -v udf | grep -E '(udf|install)'"
