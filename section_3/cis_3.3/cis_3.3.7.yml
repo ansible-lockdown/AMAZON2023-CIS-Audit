@@ -22,7 +22,7 @@ kernel-param:
       - CM-6
       - CM-7
       - IA-5
-  net.ipv4.conf.all.rp_filter:
+  net.ipv4.conf.default.rp_filter:
     title: 3.3.7 | Ensure Reverse Path Filtering is enabled | default
     value: '1'
     meta:
