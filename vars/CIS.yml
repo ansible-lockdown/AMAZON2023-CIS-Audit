@@ -413,6 +413,10 @@ amzn2023cis_telnet_required: false
 amzn2023cis_openldap_clients_required: false
 amzn2023cis_ftp_client: false
 
+## Section 3
+
+amzn2023cis_firewall: iptables
+
 ## Section4 vars
 
 # This will allow use of drop in files when CIS adopts them.
