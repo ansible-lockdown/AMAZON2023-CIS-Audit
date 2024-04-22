@@ -1,4 +1,6 @@
-{{ if .Vars.amzn2023cis_level1 }}
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_1_3 }}
 file:
   /etc/cron.hourly:
@@ -22,7 +24,6 @@ file:
       - MP-2
   {{ end }}
   {{ if .Vars.amzn2023cis_rule_4_1_4 }}
-file:
   /etc/cron.daily:
     title: 4.1.4 | Ensure permissions on /etc/cron.daily are configured
     exists: true
@@ -44,7 +45,6 @@ file:
       - MP-2
   {{ end }}
   {{ if .Vars.amzn2023cis_rule_4_1_5 }}
-file:
   /etc/cron.weekly:
     title: 4.1.5 | Ensure permissions on /etc/cron.weekly are configured
     exists: true
@@ -66,7 +66,6 @@ file:
       - MP-2
   {{ end }}
   {{ if .Vars.amzn2023cis_rule_4_1_6 }}
-file:
   /etc/cron.monthly:
     title: 4.1.6 | Ensure permissions on /etc/cron.monthly are configured
     exists: true
@@ -88,7 +87,6 @@ file:
       - MP-2
   {{ end }}
   {{ if .Vars.amzn2023cis_rule_4_1_7 }}
-file:
   /etc/cron.d:
     title: 4.1.7 | Ensure permissions on /etc/cron.d are configured
     exists: true
