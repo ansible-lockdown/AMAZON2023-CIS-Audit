@@ -1,8 +1,9 @@
 {{ if .Vars.amzn2023cis_level1 }}
   {{ if .Vars.amzn2023cis_rule_6_2_2 }}
 file:
-  /etc/passwd:
+  no_empty_passwds:
     title: 6.2.2 | Ensure /etc/shadow password fields are not empty
+    path: /etc/passwd
     exists: true
     contains:
     - "!/^.*:\\!\\!:.*/"

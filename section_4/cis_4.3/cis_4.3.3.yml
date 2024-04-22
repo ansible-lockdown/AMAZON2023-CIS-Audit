@@ -19,7 +19,7 @@ file:
       CISv8_IG3: true
       NISTSP800-53-R5: NA
 command:
-  log_sudoers_d:
+  sudoers.d_log:
     title: 4.3.3 | Ensure sudo log file exists | sudoers.d
     exec: "grep -c '^Defaults logfile=/var/log/*.log' /etc/sudoers.d/.*/"
     exit-status:

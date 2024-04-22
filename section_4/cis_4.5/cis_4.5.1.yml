@@ -21,8 +21,9 @@ file:
       CISv8_IG3: true
       NISTSP800-53-R5:
       - IA-5
-  /etc/pam.d/password-auth:
+ password-auth_creation:
     title: 4.5.1 | Ensure password creation requirements are configured | password-auth
+    path: /etc/pam.d/password-auth
     exists: true
     skip: {{ .Vars.amzn2023cis_skip_pam_passwd_auth }}
     contents:
@@ -39,8 +40,9 @@ file:
       CISv8_IG3: true
       NISTSP800-53-R5:
       - IA-5
-  /etc/pam.d/system-auth:
+  system-auth_creation:
     title: 4.5.1 | Ensure password creation requirements are configured | system-auth
+    path: /etc/pam.d/system-auth
     exists: true
     skip: {{ .Vars.amzn2023cis_skip_pam_system_auth }}
     contents:

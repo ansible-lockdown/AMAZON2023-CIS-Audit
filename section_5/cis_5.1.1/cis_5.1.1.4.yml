@@ -1,8 +1,9 @@
 {{ if .Vars.amzn2023cis_runs_rsyslog }}
   {{ if .Vars.amzn2023cis_rule_5_1_1_4 }}
 file:
-  /etc/rsyslog.conf:
+  rsyslog_conf_create_file_perms:
     title: 5.1.1.4 | Ensure rsyslog default file permissions configured
+    path: /etc/rsyslog.conf
     exists: true
     contains:
     - '/\$FileCreateMode 0[0,6][0,4]0/'
