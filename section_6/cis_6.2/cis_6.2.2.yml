@@ -5,7 +5,7 @@ file:
     title: 6.2.2 | Ensure /etc/shadow password fields are not empty
     path: /etc/passwd
     exists: true
-    contains:
+    contents:
     - "!/^.*:\\!\\!:.*/"
     meta:
       server: 1
