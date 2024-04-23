@@ -188,7 +188,7 @@ format_output="-f $format"
 
 if [ "$format" = json ]; then
    format_output="-f json -o pretty"
-   output_summary="'grep -A 4 \"summary\": $audit_out'"
+   output_summary='grep -A 4 \"summary\": $audit_out'
 elif [ "$format" = junit ] || [ "$format" = tap ]; then
    output_summary=""
 fi
