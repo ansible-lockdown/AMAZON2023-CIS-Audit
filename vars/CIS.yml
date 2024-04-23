@@ -432,6 +432,9 @@ amzn2023cis_sshd:
     # denyusers:
     # denygroups:
 
+# 4.2.4 if you are setting allow users groups etc
+amzn2023cis_sshd_limited: false
+
 # 4.2.5 SSH LogLevel setting. Options are INFO or VERBOSE
 amzn2023cis_ssh_loglevel: INFO
 
@@ -462,6 +465,7 @@ amzn2023cis_futurepwchgdate_autofix: true
 amzn2023cis_pam_password:
     minlen: 14
     minclass: 4
+    retry: 3
 
 amzn2023cis_pam_faillock:
     unlock_time: 900

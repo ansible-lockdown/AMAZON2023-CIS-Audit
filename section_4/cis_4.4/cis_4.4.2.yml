@@ -24,7 +24,7 @@ file:
       - CM-6
       - CM-7
       - IA-5
-   /etc/authselect/system-auth:
+  /etc/authselect/system-auth:
     title: 4.4.2 | Ensure authselect includes with-faillock
     exists: true
     contents:
