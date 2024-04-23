@@ -1,8 +1,8 @@
 ---
 
 {{ if .Vars.amzn2023cis_level2 }}
-  {{ if .Vars.azmn2023cis_rule_3_4_2_7 }}
-    {{ if eq .Vars.azmn2023cis_firewall "nftables" }}
+  {{ if .Vars.amzn2023cis_rule_3_4_2_7 }}
+    {{ if eq .Vars.amzn2023cis_firewall "nftables" }}
 command:
   nftables_default_deny_input:
     title: 3.4.2.7 | Ensure nftables default deny firewall policy | nftables

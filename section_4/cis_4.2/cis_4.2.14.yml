@@ -1,4 +1,4 @@
-{{ if .Vars.rhel9cis_rule_4_2_14 }}
+{{ if .Vars.amzn2023cis_rule_4_2_14 }}
 command:
   sshd_crypto:
     title: 4.2.14 | Ensure system-wide crypto policy is not over-ridden

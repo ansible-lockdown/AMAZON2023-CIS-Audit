@@ -34,5 +34,6 @@ package:
       CISv8_IG2: true
       CISv8_IG3: true
       NISTSP800-53-R5: CM-7
+    {{ end }}
   {{ end }}
 {{ end }}

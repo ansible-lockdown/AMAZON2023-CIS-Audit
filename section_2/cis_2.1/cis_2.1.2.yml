@@ -6,11 +6,11 @@ command:
     title: 2.1.2 | Ensure chrony is configured | server
     exec: grep -Pr -- '^\h*(server|pool)\h+[^#\n\r]+' /etc/chrony.d/*.conf
     exit-status:
-    or:
-     - 0
-     - 1
-    std-out:
-    - '/^(server|pool)\s{{ range .Vars.amzn2023cis_time_synchronization_servers }}/'
+      or:
+      - 0
+      - 1
+    stdout:
+    - '/^(server|pool)\s{{ range .Vars.amzn2023cis_time_synchronization_servers }}{{ end }}/'
     skip: false
     meta:
       server: 1

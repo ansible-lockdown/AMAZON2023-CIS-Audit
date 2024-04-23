@@ -19,7 +19,7 @@ file:
       CISv8_IG3: true
       NISTSP800-53-R5: AC-6
 command:
-  log_sudoers_d:
+  sudoers.d_reauth:
     title: 4.3.3 | Ensure re-authentication for privilege escalation is not disabled globally | sudoers.d
     exec: "grep authenticate /etc/sudoers.d/*"
     exit-status:

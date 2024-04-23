@@ -4,9 +4,9 @@
   {{ if .Vars.amzn2023cis_rule_1_5_3 }}
 file:
   coredump_storage:
-    title: 1.5.3 | Ensure prelink is disabled
+    title: 1.5.3 | Ensure core dump storage is disabled
     path: /etc/systemd/coredump.conf
-    installed: false
+    exists: false
     contents:
     - '/^Storage=none/'
     meta:

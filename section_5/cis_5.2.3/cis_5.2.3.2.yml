@@ -1,6 +1,6 @@
 {{ if .Vars.amzn2023cis_rule_5_2_3_2 }}
 command:
-  auditd_admin_scope_cnf:
+  auditd_other_user_cnf:
     title: 5.2.3.2 | Ensure actions as another user are always logged | conf_check
     exec: grep user_emu /etc/audit/rules.d/*.rules
     exit-status: 0
@@ -18,7 +18,7 @@ command:
       CISv8_IG3: true
       NISTSP800-53-R5:
       - AU-3
-  auditd_admin_scope_live:
+  auditd_other_user_live:
     title: 5.2.3.2 | Ensure actions as another user are always logged | running
     exec: auditctl -l | grep user_emu
     exit-status: 0

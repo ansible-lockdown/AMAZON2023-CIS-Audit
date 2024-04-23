@@ -1,4 +1,6 @@
-{{ if .Vars.amzn2023cis_rule_5_1_1_6 }}
+---
+
+  {{ if .Vars.amzn2023cis_rule_5_1_1_6 }}
 command:
   remote_syslog:
     title: 5.1.1.6 | Ensure rsyslog is configured to send logs to a remote host

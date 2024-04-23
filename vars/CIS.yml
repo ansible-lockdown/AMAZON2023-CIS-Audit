@@ -322,6 +322,9 @@ amzn2023cis_tmp_svc: false
 #### 1.1.9
 amzn2023cis_allow_autofs: false
 
+## 1.4.1
+amzn2023cis_set_boot_pass: true
+
 # 1.9 Set crypto policy (LEGACY, DEFAULT, FUTURE, FIPS)
 # Control 1.9 states do not use LEGACY
 amzn2023cis_crypto_policy: 'DEFAULT'
@@ -370,13 +373,6 @@ amzn2023cis_xwindows_required: false
 # Whether or not to run tasks related to auditing/patching the desktop environment
 amzn2023cis_gui: false
 
-
-# IPv6 required
-amzn2023cis_ipv6_required: false
-
-# System network parameters (host only OR host and router)
-amzn2023cis_is_router: false
-
 # Time Synchronization
 amzn2023cis_time_synchronization: chrony
 #  amzn2023cis_time_synchronization: ntp
@@ -417,6 +413,10 @@ amzn2023cis_telnet_required: false
 amzn2023cis_openldap_clients_required: false
 amzn2023cis_ftp_client: false
 
+## Section 3
+
+amzn2023cis_firewall: iptables
+
 ## Section4 vars
 
 # This will allow use of drop in files when CIS adopts them.
@@ -431,6 +431,9 @@ amzn2023cis_sshd:
     # allowgroups: systems dba
     # denyusers:
     # denygroups:
+
+# 4.2.4 if you are setting allow users groups etc
+amzn2023cis_sshd_limited: false
 
 # 4.2.5 SSH LogLevel setting. Options are INFO or VERBOSE
 amzn2023cis_ssh_loglevel: INFO
@@ -462,6 +465,7 @@ amzn2023cis_futurepwchgdate_autofix: true
 amzn2023cis_pam_password:
     minlen: 14
     minclass: 4
+    retry: 3
 
 amzn2023cis_pam_faillock:
     unlock_time: 900
@@ -517,9 +521,7 @@ amzn2023cis_auditd:
     action_mail_acct: root
     admin_space_left_action: halt
     max_log_file_action: keep_logs
-
-# The audit_back_log_limit value should never be below 8192
-amzn2023cis_audit_back_log_limit: 8192
+    auditd_backlog_limit: 8192
 
 # The max_log_file parameter should be based on your sites policy
 amzn2023cis_max_log_file_size: 10

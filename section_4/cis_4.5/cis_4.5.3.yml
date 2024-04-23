@@ -19,9 +19,10 @@ file:
       CISv8_IG3: true
       NISTSP800-53-R5:
       - IA-5
-  /etc/pam.d/system-auth:
+  system-auth_reuse:
     title: 4.5.3 | Ensure password reuse is limited | system-auth
     exists: true
+    path: /etc/pam.d/system-auth
     contents:
     - '/^password.*required.*pam_pwhistory.so.*remember=\b(?:[1-5]\d+|5)\b/'
     meta:
