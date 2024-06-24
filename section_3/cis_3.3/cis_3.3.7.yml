@@ -22,24 +22,5 @@ kernel-param:
       - CM-6
       - CM-7
       - IA-5
-  net.ipv4.conf.all.rp_filter:
-    title: 3.3.7 | Ensure Reverse Path Filtering is enabled | default
-    value: '1'
-    meta:
-      server: 1
-      workstation: NA
-      CIS_ID:
-      - 3.3.7
-      CISv8:
-      - 4.1
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
-      NISTSP800-53-R5:
-      - CM-1
-      - CM-2
-      - CM-6
-      - CM-7
-      - IA-5
   {{ end }}
 {{ end }}
