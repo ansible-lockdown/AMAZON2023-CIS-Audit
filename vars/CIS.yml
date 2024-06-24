@@ -370,13 +370,6 @@ amzn2023cis_xwindows_required: false
 # Whether or not to run tasks related to auditing/patching the desktop environment
 amzn2023cis_gui: false
 
-
-# IPv6 required
-amzn2023cis_ipv6_required: false
-
-# System network parameters (host only OR host and router)
-amzn2023cis_is_router: false
-
 # Time Synchronization
 amzn2023cis_time_synchronization: chrony
 #  amzn2023cis_time_synchronization: ntp
@@ -396,7 +389,7 @@ amzn2023cis_httpd_server: false
 amzn2023cis_is_mail_server: false
 amzn2023cis_nginx_server: false
 amzn2023cis_imap_server: false
-amzn2023cis_samba_server: false
+amzn2023cis_samba_server: false~
 amzn2023cis_squid_server: false
 amzn2023cis_snmp_server: false
 amzn2023cis_telnet_server: false
