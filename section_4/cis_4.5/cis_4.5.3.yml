@@ -1,8 +1,9 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_5_3 }}
 file:
-  /etc/pam.d/system-auth:
+  system-auth-reuse:
     title: 4.5.3 | Ensure password reuse is limited | system-auth
+    path: /etc/pam.d/system-auth
     exists: true
     contents:
     - '/^password\s+(requisite|sufficient)\s+pam_pwhistory.so.*remember=\b(?:[1-5]\d+|5)\b/'

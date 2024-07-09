@@ -20,8 +20,9 @@ file:
       CISv8_IG3: true
       NISTSP800-53-R5:
       - IA-5
-  /etc/pam.d/system-auth:
+  system-auth_algorithm:
     title: 4.5.4 | Ensure password hashing algorithm is SHA-512 | system-auth
+    path: /etc/pam.d/system-auth
     exists: true
     contents:
     - '/^password\s+sufficient\s+pam_unix.so sha512/'

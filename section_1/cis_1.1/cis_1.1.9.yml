@@ -3,7 +3,7 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_1_1_9 }}
 command:
-  cramfs:
+  usb-storage:
     title: 1.1.9 | Disable USB Storage
     exit-status: 0
     exec: "modprobe -n -v usb-storage | grep -E '(usb-storage|install)'"
