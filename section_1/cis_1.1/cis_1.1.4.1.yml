@@ -1,0 +1,23 @@
+---
+
+{{ if .Vars.amzn2023cis_level_2 }}
+  {{ if .Vars.amzn2023cis_rule_1_1_4_1 }}
+mount:
+  var_tmp_exists:
+    title: 1.1.4.1 | Ensure /var/tmp is a separate partition
+    exists: true
+    mountpoint: /var/tmp
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 1.1.4.1
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - CM-6
+  {{ end }}
+{{ end }}

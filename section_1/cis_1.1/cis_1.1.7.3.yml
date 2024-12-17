@@ -1,0 +1,25 @@
+---
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_1_1_7_3 }}
+mount:
+  home_mount_nosuid_opts:
+    title: 1.1.7.3 | Ensure nonosuid option set on /home partition
+    exists: true
+    mountpoint: /home
+    opts:
+    - nonosuid
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 1.1.7.3
+      CISv8:
+      - 3.3
+      CISv8_IG1: truee
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - AC-3
+      - MP-2
+  {{ end }}
+{{ end }}

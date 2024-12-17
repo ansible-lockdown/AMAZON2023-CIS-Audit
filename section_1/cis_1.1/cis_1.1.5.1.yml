@@ -1,0 +1,23 @@
+---
+
+{{ if .Vars.amzn2023cis_level_2 }}
+  {{ if .Vars.amzn2023cis_rule_1_1_5_1 }}
+mount:
+  var_log_exists:
+    title: 1.1.5.1 | Ensure /var/log is a separate partition
+    exists: true
+    mountpoint: /var/log
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 1.1.5.1
+      CISv8:
+      - 8.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NISTSP800-53-R5:
+      - CM-6
+  {{ end }}
+{{ end }}
