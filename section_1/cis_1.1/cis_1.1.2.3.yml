@@ -7,6 +7,7 @@ mount:
     title: 1.1.2.3 | Ensure noexec option set on /tmp partition
     exists: true
     mountpoint: /tmp
+    opts:
     - noexec
     meta:
       server: 1
