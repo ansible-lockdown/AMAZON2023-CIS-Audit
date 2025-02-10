@@ -3,12 +3,12 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_1_1_5_3 }}
 mount:
-  var_log_nodev_opts:
-    title: 1.1.5.3 | Ensure nodev option set on /var/log partition
+  var_log_noexec_opts:
+    title: 1.1.5.3 | Ensure noexec option set on /var/log partition
     exists: true
     mountpoint: /var/log
     opts:
-    - nodev
+    - noexec
     meta:
       server: 1
       workstation: NA
