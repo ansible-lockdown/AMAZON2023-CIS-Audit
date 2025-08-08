@@ -10,12 +10,13 @@ command:
         - 0
         - 2
     stdout:
-      - '/sbin/auditctl p+i+n+u+g+s+b+acl+xattrs+sha512'
-      - '/sbin/auditd p+i+n+u+g+s+b+acl+xattrs+sha512'
-      - '/sbin/ausearch p+i+n+u+g+s+b+acl+xattrs+sha512'
-      - '/sbin/aureport p+i+n+u+g+s+b+acl+xattrs+sha512'
-      - '/sbin/autrace p+i+n+u+g+s+b+acl+xattrs+sha512'
-      - '/sbin/augenrules p+i+n+u+g+s+b+acl+xattrs+sha512'
+      - '/sbin/auditctl p+i+n+u+g+s+b+acl+selinux+xattrs+sha512'
+      - '/sbin/auditd p+i+n+u+g+s+b+acl+selinux+xattrs+sha512'
+      - '/sbin/ausearch p+i+n+u+g+s+b+acl+selinux+xattrs+sha512'
+      - '/sbin/aureport p+i+n+u+g+s+b+acl+selinux+xattrs+sha512'
+      - '/sbin/autrace p+i+n+u+g+s+b+acl+selinux+xattrs+sha512'
+      - '/sbin/augenrules p+i+n+u+g+s+b+acl+selinux+xattrs+sha512'
+      - '/sbin/audispd p+i+n+u+g+s+b+acl+selinux+xattrs+sha512'
     meta:
       server: 1
       workstation: 1
