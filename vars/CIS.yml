@@ -73,10 +73,6 @@ amzn2023cis_rule_1_1_8_1: true
 amzn2023cis_rule_1_1_8_2: true
 amzn2023cis_rule_1_1_8_3: true
 amzn2023cis_rule_1_1_8_4: true
-amzn2023cis_rule_1_1_18: true
-amzn2023cis_rule_1_1_19: true
-amzn2023cis_rule_1_1_20: true
-amzn2023cis_rule_1_1_21: true
 amzn2023cis_rule_1_1_9: true
 amzn2023cis_rule_1_2_1: true
 amzn2023cis_rule_1_2_2: true
@@ -86,7 +82,6 @@ amzn2023cis_rule_1_3_1: true
 amzn2023cis_rule_1_3_2: true
 amzn2023cis_rule_1_3_3: true
 amzn2023cis_rule_1_4_1: true
-amzn2023cis_rule_1_4_2: true
 amzn2023cis_rule_1_5_1: true
 amzn2023cis_rule_1_5_2: true
 amzn2023cis_rule_1_5_3: true
@@ -132,7 +127,6 @@ amzn2023cis_rule_2_2_18: true
 amzn2023cis_rule_2_3_1: true
 amzn2023cis_rule_2_3_2: true
 amzn2023cis_rule_2_3_3: true
-amzn2023cis_rule_2_3_4: true
 amzn2023cis_rule_2_4: true
 
 # Section 3 rules
