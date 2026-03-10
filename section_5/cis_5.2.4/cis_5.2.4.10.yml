@@ -3,7 +3,7 @@
 {{ if .Vars.amzn2023cis_rule_5_2_4_10 }}
 command:
   audit_tools_group:
-    title: 5.2.4.10 | Ensure audit tools are owned by root
+    title: 5.2.4.10 | Ensure audit tools belong to group root
     exec: stat -c "%n_%G" /sbin/auditctl /sbin/aureport /sbin/ausearch /sbin/autrace /sbin/auditd /sbin/augenrules
     exit-status: 0
     stdout:
@@ -13,11 +13,6 @@ command:
       workstation: NA
       CIS_ID:
       - 5.2.4.10
-      CISv8:
-      - 3.3
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5:
       - AU-3
 {{ end }}

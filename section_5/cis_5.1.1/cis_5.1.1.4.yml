@@ -3,7 +3,7 @@
 {{ if .Vars.amzn2023cis_rule_5_1_1_4 }}
 file:
   rsyslog_perms:
-    title: 5.1.1.4 | Ensure rsyslog default file permissions configured
+    title: 5.1.1.4 | Ensure rsyslog default file permissions are configured
     path: /etc/rsyslog.conf
     exists: true
     contents:
@@ -13,12 +13,6 @@ file:
       workstation: NA
       CIS_ID:
       - 5.1.1.4
-      CISv8:
-      - 3.3
-      - 8.2
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5:
       - AC-3
       - AC-6

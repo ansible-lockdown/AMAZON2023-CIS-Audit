@@ -11,11 +11,6 @@ package:
       workstation: NA
       CIS_ID:
       - 4.1.1
-      CISv8:
-      - 4.1
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5:
       - CM-1
       - CM-2
@@ -24,7 +19,7 @@ package:
       - IA-5
 service:
   crond:
-    title: 4.1.1 | Ensure cron daemon is enabled and running | crond
+    title: 4.1.1 | Ensure cron daemon is installed and enabled | crond
     running: true
     enabled: true
     meta:
@@ -32,11 +27,6 @@ service:
       workstation: NA
       CIS_ID:
       - 4.1.1
-      CISv8:
-      - 4.1
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5:
       - CM-1
       - CM-2

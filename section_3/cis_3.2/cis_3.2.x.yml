@@ -12,11 +12,6 @@ kernel-param:
         workstation: NA
         CIS_ID:
         - 3.2.1
-        CISv8:
-        - 4.1
-        CISv8_IG1: true
-        CISv8_IG2: true
-        CISv8_IG3: true
         NISTSP800-53-R5:
         - CM-1
         - CM-2
@@ -32,11 +27,6 @@ kernel-param:
         workstation: NA
         CIS_ID:
         - 3.2.1
-        CISv8:
-        - 4.1
-        CISv8_IG1: true
-        CISv8_IG2: true
-        CISv8_IG3: true
         NISTSP800-53-R5:
         - CM-1
         - CM-2
@@ -54,11 +44,6 @@ kernel-param:
         workstation: NA
         CIS_ID:
         - 3.2.2
-        CISv8:
-        - 4.1
-        CISv8_IG1: true
-        CISv8_IG2: true
-        CISv8_IG3: true
         NISTSP800-53-R5:
         - CM-1
         - CM-2
@@ -73,11 +58,6 @@ kernel-param:
         workstation: NA
         CIS_ID:
         - 3.2.2
-        CISv8:
-        - 4.1
-        CISv8_IG1: true
-        CISv8_IG2: true
-        CISv8_IG3: true
         NISTSP800-53-R5:
         - CM-1
         - CM-2

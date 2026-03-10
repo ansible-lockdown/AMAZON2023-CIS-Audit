@@ -4,7 +4,7 @@
   {{ if .Vars.amzn2023cis_rule_1_1_6_1 }}
 mount:
   var_log_audit_exists:
-    title: 1.1.6.1 | Ensure /var/log/audit is a separate partition
+    title: 1.1.6.1 | Ensure separate partition exists for /var/log/audit
     exists: true
     mountpoint: /var/log/audit
     meta:
@@ -12,11 +12,6 @@ mount:
       workstation: NA
       CIS_ID:
       - 1.1.6.1
-      CISv8:
-      - 8.3
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5:
       - CM-6
   {{ end }}

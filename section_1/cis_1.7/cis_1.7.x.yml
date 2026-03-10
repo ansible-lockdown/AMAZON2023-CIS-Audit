@@ -22,10 +22,6 @@ file:
       workstation: NA
       CIS_ID:
       - 1.7.1
-      CISv8: NA
-      CISv8_IG1: NA
-      CISv8_IG2: NA
-      CISv8_IG3: NA
       NISTSP800-53-R5:
       - CM-3
   {{ end }}
@@ -46,12 +42,6 @@ file:
       workstation: NA
       CIS_ID:
       - 1.7.2
-      CISv8:
-      - 3.3
-      - 4.8
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5:
       - CM-1
       - CM-3
@@ -74,10 +64,6 @@ file:
       workstation: NA
       CIS_ID:
       - 1.7.3
-      CISv8: NA
-      CISv8_IG1: NA
-      CISv8_IG2: NA
-      CISv8_IG3: NA
       NISTSP800-53-R5:
       - CM-1
       - CM-3
@@ -96,10 +82,6 @@ file:
       workstation: NA
       CIS_ID:
       - 1.7.4
-      CISv8: 3.3
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5:
       - AC-3
       - MP-2
@@ -117,10 +99,6 @@ file:
       workstation: NA
       CIS_ID:
       - 1.7.5
-      CISv8: 3.3
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5:
       - AC-3
       - MP-2
@@ -138,10 +116,6 @@ file:
       workstation: NA
       CIS_ID:
       - 1.7.6
-      CISv8: 3.3
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5:
       - AC-3
       - MP-2

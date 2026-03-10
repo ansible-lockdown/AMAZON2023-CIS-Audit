@@ -14,11 +14,6 @@ file:
       workstation: NA
       CIS_ID:
       - 4.3.2
-      CISv8:
-      - 4.1
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5: NA
 command:
   pty_sudoers_d:
@@ -32,11 +27,6 @@ command:
       workstation: NA
       CIS_ID:
       - 4.3.2
-      CISv8:
-      - 4.1
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5: NA
   {{ end }}
 {{ end }}
