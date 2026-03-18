@@ -7,7 +7,7 @@ file:
     exists: true
     path: /etc/audit/auditd.conf
     contents:
-    - '/^max_log_file(| )=(| ){{ .Vars.amzn2023cis_auditd.max_log_file_size }}/'
+    - '/^max_log_file(| )=(| ){{ .Vars.amzn2023cis_auditd_max_log_file_size }}/'
     - '/max_log_file(| )=(| )\d{1,6}/'
     meta:
       server: 2

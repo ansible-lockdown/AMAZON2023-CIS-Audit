@@ -7,9 +7,9 @@ file:
     path: /etc/audit/auditd.conf
     exists: true
     contents:
-    - '/^space_left_action = {{ .Vars.amzn2023cis_auditd.space_left_action }}/'
-    - '/^action_mail_acct = {{ .Vars.amzn2023cis_auditd.action_mail_acct }}/'
-    - '/^admin_space_left_action = {{ .Vars.amzn2023cis_auditd.admin_space_left_action }}/'
+    - '/^space_left_action = {{ .Vars.amzn2023cis_auditd_space_left_action }}/'
+    - '/^action_mail_acct = {{ .Vars.amzn2023cis_auditd_action_mail_acct }}/'
+    - '/^admin_space_left_action = {{ .Vars.amzn2023cis_auditd_admin_space_left_action }}/'
     meta:
       server: 2
       workstation: NA
