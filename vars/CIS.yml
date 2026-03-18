@@ -352,14 +352,10 @@ amzn2023cis_aide_cron:
 
 # SELinux policy
 amzn2023cis_selinux_pol: targeted
-# chose onf or enfocing or permissive
-amzn2023cis_selinux_enforce: enforcing
+
 # Warning Banner Content (issue, issue.net, motd)
 amzn2023cis_warning_banner: Authorized uses only. All activity may be monitored and reported.
 # End Banner
-
-# Set to 'true' if X Windows is needed in your environment
-amzn2023cis_xwindows_required: false
 
 # Whether or not to run tasks related to auditing/patching the desktop environment
 amzn2023cis_gui: false
@@ -415,18 +411,13 @@ amzn2023cis_sshd:
     clientalivecountmax: 0
     clientaliveinterval: 900
     logingracetime: 60
-    # WARNING: make sure you understand the precedence when working with these values!!
-    # allowusers:
-    # allowgroups: systems dba
-    # denyusers:
-    # denygroups:
 
-amzn2023cis_sshd_limited: false
-amzn2023cis_sshd_access:
-  - AllowUser
-  - AllowGroup
-  - DenyUser
-  - DenyGroup
+
+# Note the following to understand precedence and layout
+amzn2023cis_sshd_allowusers: vagrant
+amzn2023cis_sshd_allowgroups:
+amzn2023cis_sshd_denyusers: nobody
+amzn2023cis_sshd_denygroups:
 
 # 4.2.5 SSH LogLevel setting. Options are INFO or VERBOSE
 amzn2023cis_ssh_loglevel: INFO

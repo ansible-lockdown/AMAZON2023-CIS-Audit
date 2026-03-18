@@ -2,24 +2,26 @@
 
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_2_4 }}
-   {{ if .Vars.amzn2023cis_sshd_limited }}
-file:
-  limit_sshd_config:
+command:
+  sshd_access_limited:
     title: 4.2.4 | Ensure SSH access is limited
-    path: /etc/ssh/sshd_config
-    exists: true
-    contents:
-    {{ range .Vars.amzn2023cis_sshd_access }}
-    - {{ . }}
-    {{ end }}
+    exec: grep -Ei "^(Allow|Deny)(Users|Groups)" /etc/ssh/sshd_config /etc/ssh/sshd_config.d/*.conf
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '/(?i)AllowUsers: {{ .Vars.amzn2023cis_sshd_allowusers }}/'
+    - '/(?i)AllowGroups: {{ .Vars.amzn2023cis_sshd_allowgroups }}/'
+    - '/(?i)DenyUsers: {{ .Vars.amzn2023cis_sshd_denyusers }}/'
+    - '/(?i)DenyGroups: {{ .Vars.amzn2023cis_sshd_denygroups }}/'
     meta:
       server: 1
-      workstation: NA
+      workstation: 1
       CIS_ID:
       - 4.2.4
       NISTSP800-53-R5:
       - AC-3
       - MP-2
-    {{ end }}
   {{ end }}
 {{ end }}
