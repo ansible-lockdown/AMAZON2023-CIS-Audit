@@ -2,7 +2,7 @@
 
 {{ if .Vars.amzn2023cis_level_1 }}
 command:
-  {{ if .Vars.amzn2023cis_run_heavy_tests }}
+  {{ if .Vars.audit_run_heavy_tests }}
     {{ if .Vars.amzn2023cis_rule_1_2_3 }}
   repos_configured:
     title: 1.2.3 | Ensure package manager repositories are configured

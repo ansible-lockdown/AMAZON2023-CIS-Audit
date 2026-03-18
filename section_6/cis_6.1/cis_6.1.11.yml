@@ -1,6 +1,6 @@
 ---
 
-{{ if .Vars.amzn2023cis_run_heavy_tests }}
+{{ if .Vars.audit_run_heavy_tests }}
   {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_6_1_11 }}
 command:

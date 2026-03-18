@@ -7,7 +7,7 @@ benchmark_version: 'v1.0.0'
 timeout_ms: 60000
 
 # to enable rules that may have IO impact on a system e.g. full filesystem scans or CPU heavy
-amzn2023cis_run_heavy_tests: true
+audit_run_heavy_tests: true
 
 #
 host_os_distribution: Amazon2023
