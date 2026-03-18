@@ -1,0 +1,38 @@
+---
+{{ if not .Vars.amzn2023cis_selinux_disable }}
+  {{ if .Vars.amzn2023cis_level_2 }}
+    {{ if .Vars.amzn2023cis_selinux_enforce }}
+      {{ if .Vars.amzn2023cis_rule_1_6_1_5 }}
+command:
+  selinux_run_enforcing:
+    title: 1.6.1.5 | Ensure the SELinux mode is enforcing | running
+    exit-status: 0
+    exec: "getenforce"
+    stdout:
+    - "Enforcing"
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 1.6.1.5
+      NISTSP800-53-R5:
+      - AC-3
+      - SI-6
+  selinux_config_enforcing:
+    title: 1.6.1.5 | Ensure the SELinux mode is enforcing | config
+    exit-status: 0
+    exec: 'grep -Ei "^\s*SELINUX=[Ee]nforcing" /etc/selinux/config'
+    stdout:
+    - SELINUX=enforcing
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.6.1.5
+      NISTSP800-53-R5:
+      - AC-3
+      - SI-6
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}

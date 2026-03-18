@@ -1,0 +1,15 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+package:
+  {{ if .Vars.amzn2023cis_rule_1_6_1_8 }}
+  mcstrans:
+    title: 1.6.1.8 | Ensure the MCS Translation Service (mcstrans) is not installed
+    installed: false
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.6.1.8
+  {{ end }}
+{{ end }}
