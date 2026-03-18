@@ -7,7 +7,7 @@ file:
     path: /etc/default/grub
     exists: true
     contents:
-    - '/GRUB_CMDLINE_LINUX_DEFAULT=".*audit_backlog_limit={{ .Vars.amzn2023cis_auditd_auditd_backlog_limit }}/'
+    - '/GRUB_CMDLINE_LINUX_DEFAULT=".*audit_backlog_limit={{ .Vars.amzn2023cis_auditd_back_log_limit }}/'
     meta:
       server: 2
       workstation: NA

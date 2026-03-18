@@ -507,7 +507,7 @@ amzn2023cis_auditd_space_left_action: email
 amzn2023cis_auditd_action_mail_acct: root
 amzn2023cis_auditd_admin_space_left_action: halt
 amzn2023cis_auditd_max_log_file_action: keep_logs
-amzn2023cis_auditd_auditd_backlog_limit: '8192'
+amzn2023cis_auditd_back_log_limit: '8192'
 amzn2023cis_auditd_max_log_file_size: '10'
 
 ## Advanced option found in auditd post
