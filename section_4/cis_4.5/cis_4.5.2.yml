@@ -1,3 +1,5 @@
+---
+
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_5_2 }}
 file:
@@ -12,11 +14,6 @@ file:
       workstation: NA
       CIS_ID:
       - 4.5.2
-      CISv8:
-      - 6.2
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5:
       - AC-1
       - AC-2
@@ -31,11 +28,6 @@ file:
       workstation: NA
       CIS_ID:
       - 4.5.2
-      CISv8:
-      - 6.2
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5:
       - AC-1
       - AC-2

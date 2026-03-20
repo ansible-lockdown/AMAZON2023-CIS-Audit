@@ -1,3 +1,5 @@
+---
+
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_5_1 }}
 file:
@@ -6,18 +8,13 @@ file:
     path: /etc/security/pwquality.conf
     exists: true
     contents:
-    - '{{ .Vars.amzn2023cis_pam_password.minlen }}'
-    - '{{ .Vars.amzn2023cis_pam_password.minclass }}'
+    - '{{ .Vars.amzn2023cis_pam_password_minlen }}'
+    - '{{ .Vars.amzn2023cis_pam_password_minclass }}'
     meta:
       server: 1
       workstation: NA
       CIS_ID:
       - 4.5.1
-      CISv8:
-      - 5.2
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5:
       - IA-5
   password_creation_reqs:
@@ -25,17 +22,12 @@ file:
     path: /etc/pam.d/password-auth
     exists: true
     contents:
-    - '/password\s+requisite\s+pam_pwquality.so try_first_pass local_users_only enforce_for_root retry={{ .Vars.amzn2023cis_pam_passwd_retry }}/'
+    - '/password\s+requisite\s+pam_pwquality.so try_first_pass local_users_only enforce_for_root retry=[3-5]/'
     meta:
       server: 1
       workstation: NA
       CIS_ID:
       - 4.5.1
-      CISv8:
-      - 5.2
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5:
       - IA-5
   passwd_creation_system:
@@ -43,17 +35,12 @@ file:
     path: /etc/pam.d/system-auth
     exists: true
     contents:
-    - '/password\s+requisite\s+pam_pwquality.so try_first_pass local_users_only enforce_for_root retry={{ .Vars.amzn2023cis_pam_passwd_retry }}/'
+    - '/password\s+requisite\s+pam_pwquality.so try_first_pass local_users_only enforce_for_root retry=[3-5]/'
     meta:
       server: 1
       workstation: NA
       CIS_ID:
       - 4.5.1
-      CISv8:
-      - 5.2
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5:
       - IA-5
   {{ end }}

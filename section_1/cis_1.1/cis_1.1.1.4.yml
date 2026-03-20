@@ -13,11 +13,6 @@ command:
       server: 1
       workstation: NA
       CIS_ID: 1.1.1.4
-      CISv8:
-      - 9.2
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5: CM-7
 file:
   blacklist_freevxfs:
@@ -30,11 +25,6 @@ file:
       server: 1
       workstation: NA
       CIS_ID: 1.1.1.4
-      CISv8:
-      - 9.2
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5: CM-7
   {{ end }}
 {{ end }}

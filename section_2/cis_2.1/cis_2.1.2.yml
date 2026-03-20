@@ -19,11 +19,6 @@ command:
       workstation: NA
       CIS_ID:
       - 2.1.2
-      CISv8:
-      - 8.4
-      CISv8_IG1: false
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5:
       - AU-3
       - AU-12

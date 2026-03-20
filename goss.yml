@@ -1,3 +1,5 @@
+---
+
 gossfile:
   {{ if .Vars.amzn2023cis_section1 }}
   section_1/cis_1.*/*.yml: {}
