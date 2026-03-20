@@ -8,7 +8,7 @@ file:
     path: /etc/login.defs
     exists: true
     contents:
-    - '/^PASS_MIN_DAYS\s+{{ .Vars.amzn2023cis_pass.min_days }}/'
+    - '/^PASS_MIN_DAYS\s+{{ .Vars.amzn2023cis_pass_min_days }}/'
     - '!/^PASS_MIN_DAYS\s+0/'
     meta:
       server: 1
