@@ -408,9 +408,9 @@ amzn2023cis_default_zone: public
 amzn2023cis_sshd_config_file: /etc/ssh/sshd_config
 
 amzn2023cis_sshd:
-    clientalivecountmax: 0
-    clientaliveinterval: 900
-    logingracetime: 60
+amzn2023cis_sshd_clientalivecountmax: 3
+amzn2023cis_sshd_clientaliveinterval: 15
+amzn2023cis_sshd_logingracetime: 60
 
 
 # Note the following to understand precedence and layout
