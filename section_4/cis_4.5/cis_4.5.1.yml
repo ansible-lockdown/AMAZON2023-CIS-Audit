@@ -35,7 +35,7 @@ file:
     path: /etc/pam.d/system-auth
     exists: true
     contents:
-    - '/password\s+requisite\s+pam_pwquality.so try_first_pass local_users_only enforce_for_root retry={{ .Vars.amzn2023cis_pam_passwd_retry }}/'
+    - '/password\s+requisite\s+pam_pwquality.so try_first_pass local_users_only enforce_for_root retry=[3-5]/'
     meta:
       server: 1
       workstation: NA
