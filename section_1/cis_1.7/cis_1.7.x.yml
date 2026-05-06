@@ -89,7 +89,7 @@ file:
   {{ if .Vars.amzn2023cis_rule_1_7_5 }}
   etc_issue_perms:
     title: 1.7.5 | Ensure permissions on /etc/issue are configured
-    path: /usr/lib/issue
+    path: /etc/issue
     exists: true
     owner: root
     group: root
@@ -106,7 +106,7 @@ file:
   {{ if .Vars.amzn2023cis_rule_1_7_6 }}
   etc_issue_net_perms:
     title: 1.7.6 | Ensure permissions on /etc/issue.net are configured
-    path: /usr/lib/issue.net
+    path: /etc/issue.net
     exists: true
     owner: root
     group: root
