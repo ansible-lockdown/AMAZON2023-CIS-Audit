@@ -8,4 +8,4 @@
   - Fixed LICENSE company name casing: MindPoint Group (capital P)
   - Aligned with remediation repo v1.3.0 QA pass
   - Fixed cis_4.2.20: ClientAliveInterval/CountMax variable references were swapped
-  - Fixed cis_1.7.x: /etc/issue and /etc/issue.net permission checks now target /usr/lib/ paths (symlinks report 777)
+  - Reverted cis_1.7.x permission check paths back to /etc/issue and /etc/issue.net per CIS benchmark (remediation now removes symlinks and writes regular files)
