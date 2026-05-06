@@ -1,6 +1,6 @@
 # Amazon 2023 CIS Audit - 26th June 2023
 
-## 1.3.0 based on v1.0.0
+## 1.3.0 based on v1.0.0 - Branch 2026_MAY_QA
 
 - 2026_MAY_QA branch
   - Added missing toggle: amzn2023cis_rule_6_1_13 to vars/CIS.yml
