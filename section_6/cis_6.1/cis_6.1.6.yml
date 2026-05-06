@@ -3,9 +3,9 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_6_1_6 }}
 command:
-  shadow-_perms:
-    title: 6.1.6 | Ensure permissions on /etc/shadow are configured
-    exec:  stat -L -c "%a %U %G" /etc/shadow-
+  shadow_perms:
+    title: 6.1.6 | Ensure permissions on /etc/group- are configured
+    exec:  stat -L -c "%a %U %G" /etc/shadow
     exit-status: 0
     stdout:
     -  '/0 root root/'

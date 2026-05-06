@@ -3,9 +3,9 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_6_1_2 }}
 command:
-  passwd-_perms:
+  passwd_perms_6_1_2:
     title: 6.1.2 | Ensure permissions on /etc/passwd are configured
-    exec:  stat -L -c "%a %U %G" /etc/passwd-
+    exec:  stat -L -c "%a %U %G" /etc/passwd
     exit-status: 0
     stdout:
     -  '/6[0,4][0,4] root root/'

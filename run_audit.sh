@@ -86,7 +86,7 @@ fi
 
 # Discover OS version aligning with audit
 # Define os_vendor variable
-if [ "$(uname -a | grep -c amzn)" -ge 1 ]; then
+if [ "$(uname -a | grep -c amzn)" -ge 1 ] || [ "$(grep -Ec 'amzn|Amazon Linux' /etc/os-release)" -ge 1 ]; then
     os_vendor="AMAZON"
 elif [ "$(grep -Ec "rhel|oracle" /etc/os-release)" != 0 ]; then
   os_vendor="RHEL"
