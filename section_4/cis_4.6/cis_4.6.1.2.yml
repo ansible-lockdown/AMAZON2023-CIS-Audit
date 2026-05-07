@@ -1,3 +1,5 @@
+---
+
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_6_1_2 }}
 file:
@@ -6,18 +8,13 @@ file:
     path: /etc/login.defs
     exists: true
     contents:
-    - '/^PASS_MIN_DAYS\s+{{ .Vars.amzn2023cis_pass.min_days }}/'
+    - '/^PASS_MIN_DAYS\s+{{ .Vars.amzn2023cis_pass_min_days }}/'
     - '!/^PASS_MIN_DAYS\s+0/'
     meta:
       server: 1
       workstation: NA
       CIS_ID:
       - 4.6.1.2
-      CISv8:
-      - 4.1
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5:
       - CM-1
       - CM-2

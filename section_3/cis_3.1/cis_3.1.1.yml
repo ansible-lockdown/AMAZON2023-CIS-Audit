@@ -7,18 +7,13 @@ command:
   ipv6_grub:
     title: 3.1.1 | Ensure IPv6 status is identified | grub
     exit-status: 0
-    exec: 'grep "^\s*linux" {{ .Vars.amzn2023cis_bootloader_file }} | grep -v ipv6.disable=1'
+    exec: 'grep "^\s*linux" /boot/grub2/grub.cfg | grep -v ipv6.disable=1'
     stdout: ['!/./']
     meta:
       server: 1
       workstation: NA
       CIS_ID:
       - 3.1.1
-      CISv8:
-      - 4.8
-      CISv8_IG1: false
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5: CM-7
 kernel-param:
   net.ipv6.conf.all.disable_ipv6:
@@ -29,11 +24,6 @@ kernel-param:
       workstation: NA
       CIS_ID:
       - 3.1.1
-      CISv8:
-      - 4.8
-      CISv8_IG1: false
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5: CM-7
   net.ipv6.conf.default.disable_ipv6:
     value: '1'
@@ -42,11 +32,6 @@ kernel-param:
       workstation: NA
       CIS_ID:
       - 3.1.1
-      CISv8:
-      - 4.8
-      CISv8_IG1: false
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5: CM-7
 file:
   grub_ipv6:
@@ -60,11 +45,6 @@ file:
       workstation: NA
       CIS_ID:
       - 3.1.1
-      CISv8:
-      - 4.8
-      CISv8_IG1: false
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5: CM-7
     {{ end }}
   {{ end }}

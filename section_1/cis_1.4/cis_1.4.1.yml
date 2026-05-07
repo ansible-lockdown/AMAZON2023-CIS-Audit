@@ -4,7 +4,7 @@
 {{ if .Vars.amzn2023cis_rule_1_4_1 }}
   {{ if .Vars.amzn2023cis_legacy_boot }}
 file:
-  {{ .Vars.amzn2023cis_bootloader_file }}:
+  /boot/grub2/grub.cfg:
     title: 1.4.1 | Ensure permissions on bootloader config are configured | grub file
     exists: true
     owner: root
@@ -15,11 +15,6 @@ file:
       workstation: NA
       CIS_ID:
       - 1.4.1
-      CISv8:
-      - 4.1
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5: NA
   {{ end }}
 {{ if not .Vars.amzn2023cis_legacy_boot }}
@@ -35,11 +30,6 @@ command:
       workstation: NA
       CIS_ID:
       - 1.4.1
-      CISv8:
-      - 4.1
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5: NA
   {{ end }}
 {{ end }}

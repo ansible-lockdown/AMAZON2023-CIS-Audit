@@ -1,11 +1,13 @@
+---
+
 ## metadata for Audit benchmark
-benchmark_version: '1.0.0'
+benchmark_version: 'v1.0.0'
 
 # timeout for each command to run where set - default = 10seconds/10000ms
 timeout_ms: 60000
 
 # to enable rules that may have IO impact on a system e.g. full filesystem scans or CPU heavy
-amzn2023cis_run_heavy_tests: true
+audit_run_heavy_tests: true
 
 #
 host_os_distribution: Amazon2023
@@ -18,15 +20,13 @@ amzn2023cis_section5: true
 amzn2023cis_section6: true
 
 amzn2023cis_selinux_disable: false
-amzn2023cis_selinux_state: enforcing
+amzn2023cis_selinux_enforce: true
 
 amzn2023cis_level_1: true
 amzn2023cis_level_2: true
 
 # if Bios boot
 amzn2023cis_legacy_boot: true # change to false if uefi bootloader
-amzn2023cis_bootloader_file: /boot/grub2/grub.cfg
-amzn2023cis_bootloader_user: /boot/grub2/user.cfg
 
 # These variables correspond with the CIS rule IDs or paragraph numbers defined in
 # the CIS benchmark documents.
@@ -71,10 +71,6 @@ amzn2023cis_rule_1_1_8_1: true
 amzn2023cis_rule_1_1_8_2: true
 amzn2023cis_rule_1_1_8_3: true
 amzn2023cis_rule_1_1_8_4: true
-amzn2023cis_rule_1_1_18: true
-amzn2023cis_rule_1_1_19: true
-amzn2023cis_rule_1_1_20: true
-amzn2023cis_rule_1_1_21: true
 amzn2023cis_rule_1_1_9: true
 amzn2023cis_rule_1_2_1: true
 amzn2023cis_rule_1_2_2: true
@@ -84,7 +80,6 @@ amzn2023cis_rule_1_3_1: true
 amzn2023cis_rule_1_3_2: true
 amzn2023cis_rule_1_3_3: true
 amzn2023cis_rule_1_4_1: true
-amzn2023cis_rule_1_4_2: true
 amzn2023cis_rule_1_5_1: true
 amzn2023cis_rule_1_5_2: true
 amzn2023cis_rule_1_5_3: true
@@ -130,7 +125,6 @@ amzn2023cis_rule_2_2_18: true
 amzn2023cis_rule_2_3_1: true
 amzn2023cis_rule_2_3_2: true
 amzn2023cis_rule_2_3_3: true
-amzn2023cis_rule_2_3_4: true
 amzn2023cis_rule_2_4: true
 
 # Section 3 rules
@@ -298,6 +292,7 @@ amzn2023cis_rule_6_1_9: true
 amzn2023cis_rule_6_1_10: true
 amzn2023cis_rule_6_1_11: true
 amzn2023cis_rule_6_1_12: true
+amzn2023cis_rule_6_1_13: true
 amzn2023cis_rule_6_2_1: true
 amzn2023cis_rule_6_2_2: true
 amzn2023cis_rule_6_2_3: true
@@ -358,14 +353,10 @@ amzn2023cis_aide_cron:
 
 # SELinux policy
 amzn2023cis_selinux_pol: targeted
-# chose onf or enfocing or permissive
-amzn2023cis_selinux_enforce: enforcing
+
 # Warning Banner Content (issue, issue.net, motd)
 amzn2023cis_warning_banner: Authorized uses only. All activity may be monitored and reported.
 # End Banner
-
-# Set to 'true' if X Windows is needed in your environment
-amzn2023cis_xwindows_required: false
 
 # Whether or not to run tasks related to auditing/patching the desktop environment
 amzn2023cis_gui: false
@@ -418,21 +409,16 @@ amzn2023cis_default_zone: public
 amzn2023cis_sshd_config_file: /etc/ssh/sshd_config
 
 amzn2023cis_sshd:
-    clientalivecountmax: 0
-    clientaliveinterval: 900
-    logingracetime: 60
-    # WARNING: make sure you understand the precedence when working with these values!!
-    # allowusers:
-    # allowgroups: systems dba
-    # denyusers:
-    # denygroups:
+amzn2023cis_sshd_clientalivecountmax: 3
+amzn2023cis_sshd_clientaliveinterval: 15
+amzn2023cis_sshd_logingracetime: 60
 
-amzn2023cis_sshd_limited: false
-amzn2023cis_sshd_access:
-  - AllowUser
-  - AllowGroup
-  - DenyUser
-  - DenyGroup
+
+# Note the following to understand precedence and layout
+amzn2023cis_sshd_allowusers: vagrant
+amzn2023cis_sshd_allowgroups:
+amzn2023cis_sshd_denyusers: nobody
+amzn2023cis_sshd_denygroups:
 
 # 4.2.5 SSH LogLevel setting. Options are INFO or VERBOSE
 amzn2023cis_ssh_loglevel: INFO
@@ -460,20 +446,16 @@ amzn2023cis_futurepwchgdate_autofix: true
 
 # 4.5.1
 ## PAM
-amzn2023cis_pam_password:
-    minlen: '14'
-    minclass: '4'
-amzn2023cis_pam_passwd_retry: "3"
+amzn2023cis_pam_password_minlen: '14'
+amzn2023cis_pam_password_minclass: '4'
 
-amzn2023cis_pam_faillock:
-    unlock_time: 900
-    deny: 5
-    remember: 5
+amzn2023cis_pam_faillock_unlock_time: 900
+amzn2023cis_pam_faillock_deny: 5
+amzn2023cis_pam_faillock_remember: 5
 
-amzn2023cis_pass:
-    max_days: 365
-    min_days: 1
-    warn_age: 7
+amzn2023cis_pass_max_days: 365
+amzn2023cis_pass_min_days: 1
+amzn2023cis_pass_warn_age: 7
 
 ## Section5 vars
 
@@ -518,13 +500,12 @@ amzn2023cis_logrotate: "daily"
 
 ### Configure System Accounting
 #### Configure Data Retention
-amzn2023cis_auditd:
-    space_left_action: email
-    action_mail_acct: root
-    admin_space_left_action: halt
-    max_log_file_action: keep_logs
-    auditd_backlog_limit: '8192'
-    max_log_file_size: '10'
+amzn2023cis_auditd_space_left_action: email
+amzn2023cis_auditd_action_mail_acct: root
+amzn2023cis_auditd_admin_space_left_action: halt
+amzn2023cis_auditd_max_log_file_action: keep_logs
+amzn2023cis_auditd_back_log_limit: '8192'
+amzn2023cis_auditd_max_log_file_size: '10'
 
 ## Advanced option found in auditd post
 amzn2023cis_allow_auditd_uid_user_exclusions: false

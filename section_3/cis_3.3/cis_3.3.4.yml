@@ -11,11 +11,6 @@ kernel-param:
       workstation: NA
       CIS_ID:
       - 3.3.4
-      CISv8:
-      - 8.5
-      CISv8_IG1: false
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5:
       - AU-3
   net.ipv4.conf.default.log_martians:
@@ -26,11 +21,6 @@ kernel-param:
       workstation: NA
       CIS_ID:
       - 3.3.4
-      CISv8:
-      - 8.5
-      CISv8_IG1: false
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5:
       - AU-3
   {{ end }}

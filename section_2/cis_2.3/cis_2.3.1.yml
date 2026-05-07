@@ -1,0 +1,18 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+package:
+  {{ if not .Vars.amzn2023cis_telnet_required }}
+    {{ if .Vars.amzn2023cis_rule_2_3_1 }}
+  telnet:
+    title: 2.3.1 | Ensure telnet client is not installed
+    installed: false
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 2.3.1
+      NISTSP800-53-R5: CM-7
+    {{ end }}
+  {{ end }}
+{{ end }}

@@ -1,6 +1,6 @@
 ---
 
-{{ if .Vars.amzn2023cis_run_heavy_tests }}
+{{ if .Vars.audit_run_heavy_tests }}
   {{ if .Vars.amzn2023cis_level_1 }}
     {{ if .Vars.amzn2023cis_rule_1_8}}
 command:
@@ -17,12 +17,6 @@ command:
       workstation: NA
       CIS_ID:
       - 1.8
-      CISv8:
-      - 7.3
-      - 7.4
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5: SI-2
     {{ end }}
   {{ end }}

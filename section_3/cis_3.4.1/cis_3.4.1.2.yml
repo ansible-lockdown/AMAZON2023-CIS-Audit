@@ -14,12 +14,6 @@ file:
       workstation: NA
       CIS_ID:
       - 3.4.1.2
-      CISv8:
-      - 4.4
-      - 4.5
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5: NA
 service:
   firewalld:
@@ -31,12 +25,6 @@ service:
       workstation: NA
       CIS_ID:
       - 3.4.1.2
-      CISv8:
-      - 4.4
-      - 4.5
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5: NA
   nftables:
     title: 3.4.1.2 | Ensure a single firewall configuration utility is in use | nftables running
@@ -47,12 +35,6 @@ service:
       workstation: NA
       CIS_ID:
       - 3.4.1.2
-      CISv8:
-      - 4.4
-      - 4.5
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5: NA
   {{ end }}
   {{ if eq .Vars.amzn2023cis_firewall "firewalld" }}
@@ -67,12 +49,6 @@ file:
       workstation: NA
       CIS_ID:
       - 3.4.1.2
-      CISv8:
-      - 4.4
-      - 4.5
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5: NA
 service:
   firewalld:
@@ -84,12 +60,6 @@ service:
       workstation: NA
       CIS_ID:
       - 3.4.1.2
-      CISv8:
-      - 4.4
-      - 4.5
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5: NA
   nftables:
     title: 3.4.1.2 | Ensure a single firewall configuration utility is in use | nftables stopped
@@ -100,12 +70,6 @@ service:
       workstation: NA
       CIS_ID:
       - 3.4.1.2
-      CISv8:
-      - 4.4
-      - 4.5
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
       NISTSP800-53-R5: NA
   {{ end }}
 {{ end }}

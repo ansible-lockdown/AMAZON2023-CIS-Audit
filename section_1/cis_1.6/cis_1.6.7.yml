@@ -1,0 +1,18 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+package:
+  {{ if .Vars.amzn2023cis_rule_1_6_1_7 }}
+  setroubleshoot:
+    title: 1.6.1.7 | Ensure SETroubleshoot is not installed
+    installed: false
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.6.1.7
+      NISTSP800-53-R5:
+      - AC-3
+      - SI-6
+  {{ end }}
+{{ end }}

@@ -11,10 +11,5 @@ kernel-param:
       workstation: NA
       CIS_ID:
       - 3.3.8
-      CISv8:
-      - 4.1
-      CISv8_IG1: true
-      CISv8_IG2: true
-      CISv8_IG3: true
   {{ end }}
 {{ end }}
