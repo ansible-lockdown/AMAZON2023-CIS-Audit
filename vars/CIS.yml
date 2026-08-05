@@ -355,7 +355,7 @@ amzn2023cis_aide_cron:
 amzn2023cis_selinux_pol: targeted
 
 # Warning Banner Content (issue, issue.net, motd)
-amzn2023cis_warning_banner: Authorized uses only. All activity may be monitored and reported.
+amzn2023cis_warning_banner: Authorized users only. All activity may be monitored and reported.
 # End Banner
 
 # Whether or not to run tasks related to auditing/patching the desktop environment

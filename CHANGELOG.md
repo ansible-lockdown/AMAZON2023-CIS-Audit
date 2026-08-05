@@ -1,5 +1,11 @@
 # Amazon 2023 CIS Audit - 26th June 2023
 
+## 1.3.1 based on v1.0.0
+
+- 2026 May follow-up QA pass
+  - Fixed amzn2023cis_warning_banner typo in vars/CIS.yml: "Authorized uses" -> "Authorized users"
+  - Aligned with remediation repo v1.3.1
+
 ## 1.3.0 based on v1.0.0 - Branch 2026_MAY_QA
 
 - 2026_MAY_QA branch
