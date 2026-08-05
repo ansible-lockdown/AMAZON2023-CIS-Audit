@@ -5,7 +5,7 @@
     {{ if .Vars.amzn2023cis_rule_6_1_11 }}
 command:
   world_writable:
-    title: 6.1.11 | Audit system file permissions
+    title: 6.1.11 | Ensure world writable files and directories are secured
     exec: "df --local -P | awk '{if (NR!=1) print $6}' | xargs -I '{}' find '{}' -xdev -perm -0002"
     exit-status:
       or:

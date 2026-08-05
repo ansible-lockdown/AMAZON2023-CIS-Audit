@@ -23,7 +23,33 @@ file:
     exists: true
     contents:
     - '/^password\s+sufficient\s+pam_unix.so sha512/'
-    - '!/^password\s+ sufficient\s+pam_unix.so md5/'
+    - '!/^password\s+sufficient\s+pam_unix.so md5/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.5.4
+      NISTSP800-53-R5:
+      - IA-5
+  libuser_algorithm:
+    title: 4.5.4 | Ensure password hashing algorithm is SHA-512 | libuser.conf
+    path: /etc/libuser.conf
+    exists: true
+    contents:
+    - '/^\s*crypt_style\s*=\s*sha512\s*$/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.5.4
+      NISTSP800-53-R5:
+      - IA-5
+  login_defs_algorithm:
+    title: 4.5.4 | Ensure password hashing algorithm is SHA-512 | login.defs
+    path: /etc/login.defs
+    exists: true
+    contents:
+    - '/^\s*ENCRYPT_METHOD\s+SHA512\s*$/'
     meta:
       server: 1
       workstation: NA
