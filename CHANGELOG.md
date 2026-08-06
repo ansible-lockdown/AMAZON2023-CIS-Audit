@@ -17,6 +17,8 @@
   - .yamllint: invalid indent-spaces key replaced, repo now lints
   - vars/CIS.yml: comment spacing
   - goss links updated
+  - 1.4.1 and 3.3.3: removed blank line before the --- document start
+  - .gitignore: secrets, QA artefact and .ansible patterns added
 
 ## 2026_MAY_QA2
 
