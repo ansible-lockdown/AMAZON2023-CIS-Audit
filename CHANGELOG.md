@@ -16,6 +16,7 @@
   - 1.2.4: yum.conf -> dnf.conf
   - .yamllint: invalid indent-spaces key replaced, repo now lints
   - vars/CIS.yml: comment spacing
+  - goss links updated
 
 ## 2026_MAY_QA2
 
