@@ -1,5 +1,32 @@
 # Amazon 2023 CIS Audit - 26th June 2023
 
+## 1.3.1 based on v1.0.0
+
+- Aug26_align branch
+  - 4.4.2: pam_failock -> pam_faillock, repointed to /etc/pam.d files
+  - 1.1.7.3: nonosuid -> nosuid
+  - 4.5.4: stray space in md5 negation regex
+  - 4.3.4: sudoers.d check had 4.3.3 rule ID and title
+  - 15 titles realigned to v1.0.0 benchmark, including 6.1.3-6.1.9 and 6.1.11-6.1.12 off-by-one
+  - 1.1.9 and 3.1.1 retitled from legacy short forms
+  - 6.1.13: SUID and SGID sub-checks disambiguated
+  - 4.5.2: faillock.conf deny and unlock_time checks added
+  - 4.5.4: libuser.conf and login.defs checks added
+  - 4.2.14: /etc/sysconfig/sshd added to exec
+  - 1.2.4: yum.conf -> dnf.conf
+  - .yamllint: invalid indent-spaces key replaced, repo now lints
+  - vars/CIS.yml: comment spacing
+  - goss links updated
+  - 1.4.1 and 3.3.3: removed blank line before the --- document start
+  - .gitignore: secrets, QA artefact and .ansible patterns added
+  - README updates and updated contributing and contributors
+
+## 2026_MAY_QA2
+
+- 2026 May follow-up QA pass
+  - Fixed amzn2023cis_warning_banner typo in vars/CIS.yml: "Authorized uses" -> "Authorized users"
+  - Aligned with remediation repo 2026_MAY_QA2
+
 ## 1.3.0 based on v1.0.0 - Branch 2026_MAY_QA
 
 - 2026_MAY_QA branch

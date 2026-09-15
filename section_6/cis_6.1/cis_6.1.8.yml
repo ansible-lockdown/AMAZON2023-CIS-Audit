@@ -4,7 +4,7 @@
   {{ if .Vars.amzn2023cis_rule_6_1_8 }}
 command:
   gshadow_perms:
-    title: 6.1.8 | Ensure permissions on /etc/shadow- are configured
+    title: 6.1.8 | Ensure permissions on /etc/gshadow are configured
     exec:  stat -L -c "%a %U %G" /etc/gshadow
     exit-status: 0
     stdout:
