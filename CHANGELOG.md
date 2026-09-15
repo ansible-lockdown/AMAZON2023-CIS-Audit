@@ -19,6 +19,7 @@
   - goss links updated
   - 1.4.1 and 3.3.3: removed blank line before the --- document start
   - .gitignore: secrets, QA artefact and .ansible patterns added
+  - README updates and updated contributing and contributors
 
 ## 2026_MAY_QA2
 
