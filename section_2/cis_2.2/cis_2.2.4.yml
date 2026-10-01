@@ -4,7 +4,7 @@
   {{ if .Vars.amzn2023cis_level_1 }}
     {{ if .Vars.amzn2023cis_rule_2_2_4 }}
 package:
-  dhcp:
+  dhcp-server:
     title: 2.2.4 | Ensure a dhcp server is not installed
     installed: false
     meta:

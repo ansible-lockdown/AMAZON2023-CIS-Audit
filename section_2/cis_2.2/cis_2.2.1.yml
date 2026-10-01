@@ -1,13 +1,13 @@
 ---
 
-{{ if .Vars.amzn2023cis_level_1 }}
+{{ if .Vars.amzn2023cis_level_2 }}
   {{ if .Vars.amzn2023cis_rule_2_2_1 }}
 package:
-  xorgs-x11-servers:
+  xorg-x11-server-common:
     title: 2.2.1 | Ensure xorg-x11-server-common is not installed
     installed: false
     meta:
-      server: 1
+      server: 2
       workstation: NA
       CIS_ID:
       - 2.2.1

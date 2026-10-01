@@ -1,13 +1,17 @@
 ---
 
 {{ if .Vars.amzn2023cis_rule_5_1_1_6 }}
+  {{ if .Vars.amzn2023cis_remote_log_server }}
 command:
   remote_syslog:
     title: 5.1.1.6 | Ensure rsyslog is configured to send logs to a remote log host
-    exec: 'grep "^*.*[^I][^I]*@" /etc/rsyslog.conf /etc/rsyslog.d/*.conf'
-    exit-status: 0
+    exec: 'grep -hE "^\s*\*\.\*\s+(action\(|@)" /etc/rsyslog.conf /etc/rsyslog.d/*.conf'
+    exit-status:
+      or:
+      - 0
+      - 2
     stdout:
-    - '/\*\.\* @@*./'
+    - '/(action\(type="omfwd".*target="{{ .Vars.amzn2023cis_remote_log_host }}"|@@?{{ .Vars.amzn2023cis_remote_log_host }})/'
     meta:
       server: 1
       workstation: NA
@@ -15,5 +19,6 @@ command:
       - 5.1.1.6
       NISTSP800-53-R5:
       - AU-6
+  {{ end }}
 {{ end }}
 

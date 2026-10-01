@@ -1,6 +1,6 @@
 ---
 
-{{ if .Vars.amzn2023cis_level_1 }}
+{{ if .Vars.amzn2023cis_level_2 }}
   {{ if .Vars.amzn2023cis_rule_1_1_7_1 }}
 mount:
   home_mount_exists:

@@ -5,16 +5,25 @@
 command:
   sshd_access_limited:
     title: 4.2.4 | Ensure SSH access is limited
-    exec: grep -Ei "^(Allow|Deny)(Users|Groups)" /etc/ssh/sshd_config /etc/ssh/sshd_config.d/*.conf
+    exec: grep -hEi "^\s*(Allow|Deny)(Users|Groups)\s" /etc/ssh/sshd_config /etc/ssh/sshd_config.d/*.conf
     exit-status:
       or:
       - 0
-      - 1
+      - 2
     stdout:
-    - '/(?i)AllowUsers: {{ .Vars.amzn2023cis_sshd_allowusers }}/'
-    - '/(?i)AllowGroups: {{ .Vars.amzn2023cis_sshd_allowgroups }}/'
-    - '/(?i)DenyUsers: {{ .Vars.amzn2023cis_sshd_denyusers }}/'
-    - '/(?i)DenyGroups: {{ .Vars.amzn2023cis_sshd_denygroups }}/'
+    - '/(?i)^\s*(Allow|Deny)(Users|Groups)\s+\S+/'
+    {{ if .Vars.amzn2023cis_sshd_allowusers }}
+    - '/(?i)^\s*AllowUsers\s+{{ .Vars.amzn2023cis_sshd_allowusers }}/'
+    {{ end }}
+    {{ if .Vars.amzn2023cis_sshd_allowgroups }}
+    - '/(?i)^\s*AllowGroups\s+{{ .Vars.amzn2023cis_sshd_allowgroups }}/'
+    {{ end }}
+    {{ if .Vars.amzn2023cis_sshd_denyusers }}
+    - '/(?i)^\s*DenyUsers\s+{{ .Vars.amzn2023cis_sshd_denyusers }}/'
+    {{ end }}
+    {{ if .Vars.amzn2023cis_sshd_denygroups }}
+    - '/(?i)^\s*DenyGroups\s+{{ .Vars.amzn2023cis_sshd_denygroups }}/'
+    {{ end }}
     meta:
       server: 1
       workstation: 1

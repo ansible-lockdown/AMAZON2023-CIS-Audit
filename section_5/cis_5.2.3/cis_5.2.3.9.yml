@@ -7,12 +7,12 @@ command:
     exec: grep perm_mod /etc/audit/rules.d/*.rules
     exit-status: 0
     stdout:
-    - '/-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=(unset|4294967295) -F key=perm_mod/'
-    - '/-a always,exit -F arch=b32 -S chmod,fchmod,fchmodat -F auid>=1000 -F auid!=(unset|4294967295) -F key=perm_mod/'
-    - '/-a always,exit -F arch=b64 -S chown,fchown,lchown,fchownat -F auid>=1000 -F auid!=(unset|4294967295) -F key=perm_mod/'
-    - '/-a always,exit -F arch=b32 -S lchown,fchown,chown,fchownat -F auid>=1000 -F auid!=(unset|4294967295) -F key=perm_mod/'
-    - '/-a always,exit -F arch=b64 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=(unset|4294967295) -F key=perm_mod/'
-    - '/-a always,exit -F arch=b32 -S setxattr,lsetxattr,fsetxattr,removexattr,lremovexattr,fremovexattr -F auid>=1000 -F auid!=(unset|4294967295) -F key=perm_mod/'
+    - '/-a always,exit -F arch=b64 -S [a-z0-9_,]*(chmod|fchmod|fchmodat)[a-z0-9_,]* -F auid>=1000 -F auid!=(unset|-1|4294967295) (-k |-F key=)perm_mod/'
+    - '/-a always,exit -F arch=b32 -S [a-z0-9_,]*(chmod|fchmod|fchmodat)[a-z0-9_,]* -F auid>=1000 -F auid!=(unset|-1|4294967295) (-k |-F key=)perm_mod/'
+    - '/-a always,exit -F arch=b64 -S [a-z0-9_,]*(chown|fchown|lchown|fchownat)[a-z0-9_,]* -F auid>=1000 -F auid!=(unset|-1|4294967295) (-k |-F key=)perm_mod/'
+    - '/-a always,exit -F arch=b32 -S [a-z0-9_,]*(chown|fchown|lchown|fchownat)[a-z0-9_,]* -F auid>=1000 -F auid!=(unset|-1|4294967295) (-k |-F key=)perm_mod/'
+    - '/-a always,exit -F arch=b64 -S [a-z0-9_,]*(setxattr|lsetxattr|fsetxattr|removexattr|lremovexattr|fremovexattr)[a-z0-9_,]* -F auid>=1000 -F auid!=(unset|-1|4294967295) (-k |-F key=)perm_mod/'
+    - '/-a always,exit -F arch=b32 -S [a-z0-9_,]*(setxattr|lsetxattr|fsetxattr|removexattr|lremovexattr|fremovexattr)[a-z0-9_,]* -F auid>=1000 -F auid!=(unset|-1|4294967295) (-k |-F key=)perm_mod/'
     meta:
       server: 2
       workstation: NA

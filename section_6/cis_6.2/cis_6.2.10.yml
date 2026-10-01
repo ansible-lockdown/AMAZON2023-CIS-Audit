@@ -7,7 +7,11 @@ command:
     title: 6.2.10 | Ensure local interactive user home directories are configured | exist
     exec: "set -o pipefail; pwck -r | grep -P \"^user '(?P<user>.*)': directory '(?P<dir>.*)' does not exist$\""
     timeout: {{ .Vars.timeout_ms }}
-    exit-status: 2
+    exit-status:
+      or:
+      - 0
+      - 1
+      - 2
     stdout:
     - '!/./'
     meta:
@@ -23,7 +27,7 @@ command:
       - IA-5
   home_dirs_owned:
     title: 6.2.10 | Ensure local interactive user home directories are configured
-    exec: "getent passwd {1000..60000} |  awk -F: '{ print $1  \" \"  $6 }' | while read user dir; do if [ $user != 'ftpd' ]; then owner=$(stat -L -c \"%U\" \"$dir\"); if [ \"$owner\" != \"$user\" ]; then echo \"home dir for $user owned by $owner\"; fi; fi; done"
+    exec: "getent passwd | awk -F: '$3 >= 1000 && $3 < 65534 && $7 !~ /(nologin|false)$/ { print $1 \" \" $6 }' | while read user dir; do [ -d \"$dir\" ] || continue; owner=$(stat -L -c \"%U\" \"$dir\"); if [ \"$owner\" != \"$user\" ]; then echo \"home dir for $user owned by $owner\"; fi; done"
     timeout: {{ .Vars.timeout_ms }}
     exit-status: 0
     stdout:
@@ -41,11 +45,11 @@ command:
       - IA-5
   home_dirs_perms:
     title: 6.2.10 | Ensure local interactive user home directories are configured
-    exec: "for i in `getent passwd {1000..60000} |  awk '{split($0,a,\":\");print a[6]}'`; do stat -c \"%a %n\" $i ; done"
+    exec: "getent passwd | awk -F: '$3 >= 1000 && $3 < 65534 && $7 !~ /(nologin|false)$/ { print $6 }' | while read dir; do [ -d \"$dir\" ] && find \"$dir\" -maxdepth 0 -perm /027; done; true"
     timeout: {{ .Vars.timeout_ms }}
     exit-status: 0
     stdout:
-    - '/7[0,5]0\s/'
+    - '!/./'
     meta:
       server: 1
       workstation: NA

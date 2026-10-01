@@ -2,6 +2,33 @@
 
 ## 1.3.1 based on v1.0.0
 
+- 4.6.5: checks login.defs and every shell initialization file for weak umask
+- 2.2.17: masked rpcbind.socket accepted (is-enabled exits 1)
+- 6.2.2: checks empty password fields, not locked accounts
+- 6.1.11: symlinks excluded, sticky-bit directories allowed
+- 6.2.10: no false fail without interactive users, pwck exit codes accepted
+- 4.3.3: broken sudoers.d check removed
+- 4.4.1: skipped unless custom profile create and select are enabled
+- 1.6.1.x: goss files renamed to match their control IDs
+- 1.7.x, 3.2.x, 5.1.1.1-2: split into one file per control
+- 1.7.3: stray "& 6" removed from title
+- 2.2.9: cyrus-imapd package name typo, package parent no longer gated on dovecot
+- 5.1.1.2: own rule gate and CIS_ID
+- 4.2.3: perms test variable typo and 0133 mask
+- 4.6.2: benchmark audit commands, exec no longer calls /awk
+- 3.4.2.7: exit-status accepts 1 when grep -v returns nothing
+- 3.1.1: grub ipv6.disable tests removed, sysctl method only
+- 5.2.3.5, 5.2.3.9, 5.2.3.13, 5.2.3.19: rule file patterns accept -k and filtered syscall lists
+- 5.2.3.13: b64 rule checked
+- 1.6.1.4: getenforce output pattern
+- 2.1.2: grep -h so server anchors match
+- 4.2.4: directive patterns without colon, gated per variable
+- 5.1.1.6: gated on remote_log_server, omfwd target matched
+- 2.2.1, 2.2.4, 2.3.3: package names xorg-x11-server-common, dhcp-server, ftp
+- 1.1.7.1, 1.2.4, 2.2.1: level_2 gates
+- 6.1.10: rpm -Va output piped instead of redirected
+- run_audit.sh: os-release fallback for report metadata
+- LICENSE: MindPoint Group - A Quantum Sky Company
 - Aug26_align branch
   - 4.4.2: pam_failock -> pam_faillock, repointed to /etc/pam.d files
   - 1.1.7.3: nonosuid -> nosuid

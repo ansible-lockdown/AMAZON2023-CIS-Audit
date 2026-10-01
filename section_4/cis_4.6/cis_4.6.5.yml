@@ -3,12 +3,43 @@
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_6_5 }}
 file:
-  /etc/profile:
-    title: 4.6.5 | Ensure default user umask is 027 or more restrictive
+  /etc/login.defs:
+    title: 4.6.5 | Ensure default user umask is 027 or more restrictive | login.defs
     exists: true
     contents:
-    - '/^(\s+|)umask\s0(2|7)(2|7)/'
-    - '!/^(\s+|)umask\s[1-7][0-7][0-7]/'
+    - '/^\s*UMASK\s+0?[0-7][2367]7\b/'
+    - '/^\s*USERGROUPS_ENAB\s+no\b/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 4.6.5
+      NISTSP800-53-R5:
+      - AC-3
+      - MP-2
+command:
+  umask_profile_scripts:
+    title: 4.6.5 | Ensure default user umask is 027 or more restrictive | shell initialization files
+    exec: |
+      l_floor=23
+      l_set=""
+      for l_file in /etc/profile /etc/bashrc /etc/profile.d/*.sh; do
+        [ -r "$l_file" ] || continue
+        for l_arg in $(grep -Poi -- '^\h*umask\h+\K[^[:space:]#;]+' "$l_file"); do
+          if printf '%s' "$l_arg" | grep -Eq '^[0-7]{3,4}$' && [ $(( 8#$l_arg & l_floor )) -eq "$l_floor" ]; then
+            l_set=1
+          else
+            echo "FAIL: $l_file: umask $l_arg"
+          fi
+        done
+      done
+      [ -n "$l_set" ] && echo "umask_set"
+      echo "scan_done"
+    exit-status: 0
+    stdout:
+    - '/^umask_set$/'
+    - '/^scan_done$/'
+    - '!/^FAIL:/'
     meta:
       server: 1
       workstation: NA
