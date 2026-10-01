@@ -5,8 +5,9 @@
 command:
   secure_system_accts:
     title: 4.6.2 | Ensure system accounts are secured
-    exec: "/awk -F: '$3<1000' /etc/passwd | egrep -v 'root|sync|halt|shutdown|/sbin/nologin|/bin/false'/"
-    exit-status: 1
+    exec: |
+      awk -F: '($1!~/^(root|halt|sync|shutdown|nfsnobody)$/ && ($3<'"$(awk '/^\s*UID_MIN/{print $2}' /etc/login.defs)"' || $3 == 65534) && $7!~/^(\/usr)?\/sbin\/nologin$/) { print $1 }' /etc/passwd
+    exit-status: 0
     stdout:
     - '!/./'
     meta:
@@ -21,10 +22,11 @@ command:
       - MP-2
   secure_system_LK:
     title: 4.6.2 | Ensure system accounts are secured
-    exec: "/awk -F: '$3<1000' /etc/passwd | egrep -wv 'root' | cut -d: -f1 | xargs -I '{}' passwd -S '{}' | egrep -cvw 'LK|L'/"
-    exit-status: 1
+    exec: |
+      awk -F: '/nologin/ {print $1}' /etc/passwd | xargs -I '{}' passwd -S '{}' | awk '($2!="L" && $2!="LK") {print $1}'
+    exit-status: 0
     stdout:
-    - '0'
+    - '!/./'
     meta:
       server: 1
       workstation: NA

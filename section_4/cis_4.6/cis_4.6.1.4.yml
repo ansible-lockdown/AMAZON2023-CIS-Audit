@@ -8,7 +8,7 @@ command:
     exec: useradd -D | grep INACTIVE
     exit-status: 0
     stdout:
-    - '/^INACTIVE=[1-30]/'
+    - '/^INACTIVE=([1-9]|[12][0-9]|30)$/'
     meta:
       server: 1
       workstation: NA
@@ -22,7 +22,7 @@ command:
       - IA-5
   inactive_users:
     title: 4.6.1.4 | Ensure inactive password lock is 30 days or less | users
-    exec: 'grep -E ^[^:]+:[^\!*] /etc/shadow | grep -vw root | cut -d : -f1,7'
+    exec: "awk -F: '($2 ~ /^\\$.+\\$/) && ($7 == \"\" || $7 < 0 || $7 > 30) {print $1 \":\" $7}' /etc/shadow"
     stdout:
     - '!/./'
     exit-status: 0

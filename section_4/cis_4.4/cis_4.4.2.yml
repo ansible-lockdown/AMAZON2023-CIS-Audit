@@ -5,12 +5,12 @@
 file:
   authselect_faillock:
     title: 4.4.2 | Ensure authselect includes with-faillock
-    path: /etc/authselect/password-auth
+    path: /etc/pam.d/password-auth
     exists: true
     contents:
-    - '/auth\s+required\s+pam_failock.so/'
-    - '/auth\s+required\s+pam_failock.so preauth silent/'
-    - '/auth\s+required\s+pam_failock.so authfail/'
+    - '/auth\s+required\s+pam_faillock.so/'
+    - '/auth\s+required\s+pam_faillock.so preauth silent/'
+    - '/auth\s+required\s+pam_faillock.so authfail/'
     meta:
       server: 1
       workstation: 1
@@ -22,13 +22,13 @@ file:
       - CM-6
       - CM-7
       - IA-5
-  /etc/authselect/system-auth:
+  /etc/pam.d/system-auth:
     title: 4.4.2 | Ensure authselect includes with-faillock
     exists: true
     contents:
-    - '/auth\s+required\s+pam_failock.so/'
-    - '/auth\s+required\s+pam_failock.so preauth silent/'
-    - '/auth\s+required\s+pam_failock.so authfail/'
+    - '/auth\s+required\s+pam_faillock.so/'
+    - '/auth\s+required\s+pam_faillock.so preauth silent/'
+    - '/auth\s+required\s+pam_faillock.so authfail/'
     meta:
       server: 1
       workstation: 1

@@ -4,7 +4,7 @@
 command:
   chrony_server_config:
     title: 2.1.2 | Ensure chrony is configured | server
-    exec: grep -Pr -- '^\h*(server|pool)\h+[^#\n\r]+' /etc/chrony.conf /etc/chrony.d/*.conf
+    exec: grep -Phr -- '^\h*(server|pool)\h+[^#\n\r]+' /etc/chrony.conf /etc/chrony.d/*.conf
     exit-status:
       or:
       - 0

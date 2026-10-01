@@ -1,4 +1,3 @@
-
 ---
 
 {{ if .Vars.amzn2023cis_rule_1_4_1 }}

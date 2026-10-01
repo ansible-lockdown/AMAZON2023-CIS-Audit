@@ -6,10 +6,10 @@
 command:
   rpm_filecheck:
     title: 6.1.10 | Audit system file permissions
-    exec: "rpm -Va --nomtime --nosize --nomd5 --nolinkto > /tmp/cis_rpmcheck | grep -vw c && cat /tmp/cis_rpmcheck | wc -l"
-    exit-status: 1
+    exec: "rpm -Va --nomtime --nosize --nomd5 --nolinkto 2>/dev/null | grep -vw c | wc -l"
+    exit-status: 0
     stdout:
-    - '0'
+    - '/^0$/'
     timeout: {{ .Vars.timeout_ms }}
     meta:
       server: 2

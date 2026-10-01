@@ -7,7 +7,7 @@ mount:
     exists: true
     mountpoint: /home
     opts:
-    - nonosuid
+    - nosuid
     meta:
       server: 2
       workstation: NA

@@ -12,6 +12,11 @@ command:
       - 1
     stdout:
     - '/^custom\/.*/'
+    {{ if and .Vars.amzn2023cis_authselect_custom_profile_create .Vars.amzn2023cis_authselect_custom_profile_select }}
+    skip: false
+    {{ else }}
+    skip: true
+    {{ end }}
     meta:
       server: 1
       workstation: 1

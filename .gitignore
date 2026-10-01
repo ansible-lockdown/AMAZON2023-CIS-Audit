@@ -44,3 +44,26 @@ test_inv
 
 # ignore refactr pipeline test conf
 .github/
+
+# Secrets / keys
+*.vault
+*.key
+*.pem
+*.p12
+*.pfx
+*.keystore
+*.jks
+*.credentials
+*vault_pass*
+.vault_pass
+
+# QA / working artefacts
+*qa_report*
+prompt.md
+plan.md
+*history.md
+*plan.md
+*.pdf
+
+# ansible-lint
+.ansible/

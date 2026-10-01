@@ -4,7 +4,7 @@
 package:
   {{ if not .Vars.amzn2023cis_ftp_client }}
     {{ if .Vars.amzn2023cis_rule_2_3_3 }}
-  ypbind:
+  ftp:
     title: 2.3.3 | Ensure FTP client is not installed
     installed: false
     meta:

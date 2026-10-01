@@ -1,0 +1,22 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_1_7_6 }}
+file:
+  etc_issue_net_perms:
+    title: 1.7.6 | Ensure permissions on /etc/issue.net are configured
+    path: /etc/issue.net
+    exists: true
+    owner: root
+    group: root
+    mode: '0644'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.7.6
+      NISTSP800-53-R5:
+      - AC-3
+      - MP-2
+  {{ end }}
+{{ end }}

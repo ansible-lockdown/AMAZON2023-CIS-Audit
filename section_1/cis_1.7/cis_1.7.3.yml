@@ -1,0 +1,27 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_1_7_3 }}
+file:
+  issue_net_message:
+    title: 1.7.3 | Ensure remote login warning banner is configured properly
+    exists: true
+    path: /etc/issue.net
+    contents:
+    - "![Cc]ent[Oo][Ss]"
+    - "![Rr]hel"
+    - "![Rr]ed[Hh]at"
+    - "!x86_64"
+    - "![Ll]inux"
+    - "![Aa]mazon"
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.7.3
+      NISTSP800-53-R5:
+      - CM-1
+      - CM-3
+      - CM-6
+  {{ end }}
+{{ end }}

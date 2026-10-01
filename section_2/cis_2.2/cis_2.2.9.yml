@@ -2,8 +2,9 @@
 
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_2_2_9 }}
-    {{ if not .Vars.amzn2023cis_dovecot_server }}
+    {{ if or (not .Vars.amzn2023cis_dovecot_server) (not .Vars.amzn2023cis_imap_server) }}
 package:
+      {{ if not .Vars.amzn2023cis_dovecot_server }}
   dovecot:
     title: 2.2.9 | Ensure IMAP and POP3 server is not installed | dovecot
     installed: false
@@ -13,9 +14,9 @@ package:
       CIS_ID:
       - 2.2.9
       NISTSP800-53-R5: CM-7
-    {{ end }}
-    {{ if not .Vars.amzn2023cis_imap_server }}
-  cyrus-impad:
+      {{ end }}
+      {{ if not .Vars.amzn2023cis_imap_server }}
+  cyrus-imapd:
     title: 2.2.9 | Ensure IMAP and POP3 server is not installed | cyrus-imapd
     installed: false
     meta:
@@ -24,6 +25,7 @@ package:
       CIS_ID:
       - 2.2.9
       NISTSP800-53-R5: CM-7
+      {{ end }}
     {{ end }}
   {{ end }}
 {{ end }}

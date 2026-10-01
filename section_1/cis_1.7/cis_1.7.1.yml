@@ -1,0 +1,28 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_1_7_1 }}
+file:
+  motd_message:
+    title: 1.7.1 | Ensure message of the day is configured properly
+    path: /etc/motd
+    exists: true
+    mode: "0644"
+    owner: root
+    group: root
+    contents:
+    - "![Cc]ent[Oo][Ss]"
+    - "![Rr]hel"
+    - "![Rr]ed[Hh]at"
+    - "!x86_64"
+    - "![Ll]inux"
+    - "![Aa]mazon"
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.7.1
+      NISTSP800-53-R5:
+      - CM-3
+  {{ end }}
+{{ end }}

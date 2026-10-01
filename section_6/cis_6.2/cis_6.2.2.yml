@@ -8,7 +8,7 @@ file:
     path: /etc/shadow
     exists: true
     contents:
-    - "!/^.*:\\!\\!:.*/"
+    - '!/^[^:]+::/'
     meta:
       server: 1
       workstation: NA
