@@ -2,6 +2,7 @@
 
 ## 1.3.1 based on v1.0.0
 
+- 5.1.3: lastlog typo fixed, lastlog/wtmp/btmp checked against benchmark modes
 - 4.6.1.4: flags only accounts with no, negative or over-30 inactive value; INACTIVE default range fixed
 - 4.6.5: checks login.defs and every shell initialization file for weak umask
 - 2.2.17: masked rpcbind.socket accepted (is-enabled exits 1)
