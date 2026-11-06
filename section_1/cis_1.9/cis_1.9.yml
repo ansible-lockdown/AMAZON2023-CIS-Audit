@@ -1,6 +1,7 @@
 ---
 
-{{ if .Vars.amzn2023cis_rule_1_9 }}
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_1_9 }}
 file:
   crypto_policies_config:
     title: 1.9 | Ensure system-wide crypto policy is not legacy
@@ -15,4 +16,5 @@ file:
       CIS_ID:
       - 1.9
       NISTSP800-53-R5: SC-8
+  {{ end }}
 {{ end }}

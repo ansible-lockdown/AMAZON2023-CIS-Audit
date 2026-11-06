@@ -1,6 +1,7 @@
 ---
 
-{{ if .Vars.amzn2023cis_rule_4_3_5 }}
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_4_3_5 }}
 command:
   sudo_timeout:
     title: 4.3.5 | Ensure sudo authentication timeout is configured correctly
@@ -11,8 +12,9 @@ command:
     - '/timestamp_timeout=([5-9]|1[0-5])/'
     meta:
       server: 1
-      workstation: 1
+      workstation: NA
       CIS_ID:
       - 4.3.5
       NISTSP800-53-R5: AC-6
+  {{ end }}
 {{ end }}

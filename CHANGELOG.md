@@ -31,6 +31,21 @@
 - 6.1.10: rpm -Va output piped instead of redirected
 - run_audit.sh: os-release fallback for report metadata
 - LICENSE: MindPoint Group - A Quantum Sky Company
+- 1.1.7.2, 1.1.7.3, 1.6.1.5: blank line after document start
+- 1.3.3, 1.4.1, 1.9, 2.1.1-2, 4.2.14, 4.3.5-6, 4.6.1.5, 4.6.6, 5.1.1.1-7, 5.1.2.x, 5.1.3: level_1 gates
+- 1.1.3.2-3, 1.1.7.2-3, 1.6.1.5, 4.2.13: meta server level matches benchmark profile
+- 1.3.3, 4.2.4, 4.2.14, 4.3.5, 4.4.1-2, 4.6.6, 5.1.2.x, 5.1.3, 5.2.1.4: meta workstation NA
+- 1.2.2, 1.2.4: repo file checks work across multiple .repo files
+- 1.2.2, 1.2.4: dnf.conf must set the key to 1
+- 4.2.14: any CRYPTO_POLICY line fails
+- 4.2.19: effective sshd -T value, 1-60 seconds
+- 4.3.2: broken sudoers.d check replaced with !use_pty check
+- 4.3.2: use_pty accepted in /etc/sudoers or /etc/sudoers.d
+- 5.2.4.5-7: benchmark find commands, any non-compliant file fails
+- 6.2.1: non-shadowed password fields detected
+- 6.2.8: benchmark root PATH checks
+- 6.2.9: UID 0 accounts other than root fail
+- 6.2.11: .forward, .rhost(s) and loose .netrc files found
 - Aug26_align branch
   - 4.4.2: pam_failock -> pam_faillock, repointed to /etc/pam.d files
   - 1.1.7.3: nonosuid -> nosuid

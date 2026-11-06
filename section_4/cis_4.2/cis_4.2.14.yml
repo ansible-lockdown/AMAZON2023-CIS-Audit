@@ -1,6 +1,7 @@
 ---
 
-{{ if .Vars.amzn2023cis_rule_4_2_14 }}
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_4_2_14 }}
 command:
   sshd_crypto:
     title: 4.2.14 | Ensure system-wide crypto policy is not over-ridden
@@ -10,14 +11,15 @@ command:
       - 0
       - 1
     stdout:
-    - '!/^CRYPTO_POLICY/'
+    - '!/./'
     meta:
       server: 1
-      workstation: 1
+      workstation: NA
       CIS_ID:
       - 4.2.14
       NISTSP800-53-R5:
       - SC-8
       - IA-5
       - AC-17
+  {{ end }}
 {{ end }}

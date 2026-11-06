@@ -1,7 +1,8 @@
 ---
 
 {{ if not .Vars.amzn2023cis_system_is_log_server }}
-  {{ if .Vars.amzn2023cis_rule_5_1_2_1_4 }}
+  {{ if .Vars.amzn2023cis_level_1 }}
+    {{ if .Vars.amzn2023cis_rule_5_1_2_1_4 }}
 service:
   systemd-journal-remote.socket:
     title: 5.1.2.1.4 | Ensure journald is not configured to receive logs from a remote client
@@ -9,7 +10,7 @@ service:
     enabled: false
     meta:
       server: 1
-      workstation: 1
+      workstation: NA
       CIS_ID:
       - 5.1.2.1.4
       NISTSP800-53-R5:
@@ -26,7 +27,7 @@ command:
     - '/^masked/'
     meta:
       server: 1
-      workstation: 1
+      workstation: NA
       CIS_ID:
       - 5.1.2.1.4
       NISTSP800-53-R5:
@@ -34,5 +35,6 @@ command:
       - AU-12
       - SI-5
       - CM-7
+    {{ end }}
   {{ end }}
 {{ end }}

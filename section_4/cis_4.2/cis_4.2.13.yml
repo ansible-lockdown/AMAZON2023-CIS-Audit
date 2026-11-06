@@ -11,7 +11,7 @@ file:
     - '/^AllowTcpForwarding no/'
     - '!/^AllowTcpForwarding yes/'
     meta:
-      server: 1
+      server: 2
       workstation: NA
       CIS_ID:
       - 4.2.13

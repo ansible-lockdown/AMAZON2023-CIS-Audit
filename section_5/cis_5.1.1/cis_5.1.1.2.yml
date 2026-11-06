@@ -1,6 +1,7 @@
 ---
 
-{{ if .Vars.amzn2023cis_rule_5_1_1_2 }}
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_1_1_2 }}
 service:
   rsyslog:
     title: 5.1.1.2 | Ensure rsyslog service is enabled
@@ -15,4 +16,5 @@ service:
       - AU-3
       - AU-12
       - SI-5
+  {{ end }}
 {{ end }}

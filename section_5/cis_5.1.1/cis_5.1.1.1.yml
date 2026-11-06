@@ -1,6 +1,7 @@
 ---
 
-{{ if .Vars.amzn2023cis_rule_5_1_1_1 }}
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_1_1_1 }}
 package:
   rsyslog:
     title: 5.1.1.1 | Ensure rsyslog is installed
@@ -14,4 +15,5 @@ package:
       - AU-3
       - AU-12
       - SI-5
+  {{ end }}
 {{ end }}

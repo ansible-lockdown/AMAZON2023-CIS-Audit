@@ -1,6 +1,7 @@
 ---
 
-{{ if .Vars.amzn2023cis_rule_5_1_1_5 }}
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_1_1_5 }}
 file:
   rsyslog_logging_config:
     title: 5.1.1.5 | Ensure logging is configured
@@ -29,4 +30,5 @@ file:
       - AU-2
       - AU-7
       - AU-12
+  {{ end }}
 {{ end }}

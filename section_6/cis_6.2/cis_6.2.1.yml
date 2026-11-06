@@ -8,8 +8,7 @@ file:
     path: /etc/passwd
     exists: true
     contents:
-    - "/^.*:x:*/"
-    - "!/^.*:[a-w][y-z]:.*"
+    - '!/^[^:]*:([^x]|x[^:])/'
     meta:
       server: 1
       workstation: NA

@@ -4,10 +4,10 @@
 command:
   audit_conf_perms:
     title: 5.2.4.5 | Ensure audit configuration files are 640 or more restrictive
-    exec: for file  in `find /etc/audit/ -type f \( -name '*.conf' -o -name '*.rules' \)`; do stat -Lc " %n_%a" $file; done
-    exit-status: 0
+    exec: find /etc/audit/ -type f \( -name '*.conf' -o -name '*.rules' \) -exec stat -Lc "%n %a" {} + | grep -Pv -- '^\h*\H+\h*([0,2,4,6][0,4]0)\h*$'
+    exit-status: 1
     stdout:
-    - '/.*_6(0|4)0$/'
+    - '!/./'
     meta:
       server: 2
       workstation: NA

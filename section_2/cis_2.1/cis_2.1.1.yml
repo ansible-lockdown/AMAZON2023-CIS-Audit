@@ -1,6 +1,7 @@
 ---
 
-{{ if .Vars.amzn2023cis_rule_2_1_1 }}
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_2_1_1 }}
 package:
   chrony:
     title: 2.1.1 | Ensure time synchronization is in use
@@ -13,4 +14,5 @@ package:
       NISTSP800-53-R5:
       - AU-3
       - AU-12
+  {{ end }}
 {{ end }}
