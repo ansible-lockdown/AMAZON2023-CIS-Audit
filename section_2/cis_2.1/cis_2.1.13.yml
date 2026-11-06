@@ -1,0 +1,50 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_2_1_13 }}
+    {{ if not .Vars.amzn2023cis_telnet_mask }}
+package:
+  cis_2_1_13_telnet_server_pkg:
+    title: 2.1.13 | Ensure telnet server services are not in use | telnet-server not installed
+    skip: {{ .Vars.amzn2023cis_telnet_server }}
+    skip-reason: a telnet server is required, amzn2023cis_telnet_server is true
+    name: telnet-server
+    installed: false
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 2.1.13
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-11
+      - CM-7
+    {{ end }}
+    {{ if .Vars.amzn2023cis_telnet_mask }}
+service:
+  cis_2_1_13_telnet_socket_masked:
+    title: 2.1.13 | Ensure telnet server services are not in use | telnet.socket masked
+    skip: {{ .Vars.amzn2023cis_telnet_server }}
+    skip-reason: a telnet server is required, amzn2023cis_telnet_server is true
+    name: telnet.socket
+    masked: true
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 2.1.13
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-11
+      - CM-7
+    {{ end }}
+  {{ end }}
+{{ end }}

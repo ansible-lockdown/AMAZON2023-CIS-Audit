@@ -1,0 +1,23 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_1_21 }}
+command:
+  ssh_permit_root_live:
+    title: 5.1.21 | Ensure sshd PermitRootLogin is disabled
+    exec: sshd -T 2>/dev/null | grep -i -- '^permitrootlogin\s'
+    exit-status: 0
+    stdout:
+    - '/(?i)^permitrootlogin no$/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.1.21
+      CISv8: 5.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: AC-6
+  {{ end }}
+{{ end }}

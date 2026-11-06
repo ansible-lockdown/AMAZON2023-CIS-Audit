@@ -1,0 +1,43 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_3_3_3_2 }}
+file:
+  pwhistory_enforce_for_root_system_auth:
+    title: 5.3.3.3.2 | Ensure password history is enforced for the root user | system-auth
+    path: /etc/pam.d/system-auth
+    exists: true
+    contents:
+    - '/(?i)^\s*password\s+(requisite|required)\s+pam_pwhistory\.so\s+([^#\n\r]+\s+)?enforce_for_root\b/'
+    skip: {{ not .Vars.amzn2023cis_disruption_high }}
+    skip-reason: amzn2023cis_disruption_high is false, the role does not change this setting
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.3.3.3.2
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: IA-5
+  pwhistory_enforce_for_root_password_auth:
+    title: 5.3.3.3.2 | Ensure password history is enforced for the root user | password-auth
+    path: /etc/pam.d/password-auth
+    exists: true
+    contents:
+    - '/(?i)^\s*password\s+(requisite|required)\s+pam_pwhistory\.so\s+([^#\n\r]+\s+)?enforce_for_root\b/'
+    skip: {{ not .Vars.amzn2023cis_disruption_high }}
+    skip-reason: amzn2023cis_disruption_high is false, the role does not change this setting
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.3.3.3.2
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: IA-5
+  {{ end }}
+{{ end }}

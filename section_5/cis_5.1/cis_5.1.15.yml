@@ -1,0 +1,23 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_1_15 }}
+command:
+  ssh_logingrace_live:
+    title: 5.1.15 | Ensure sshd LoginGraceTime is configured
+    exec: sshd -T 2>/dev/null | grep -i -- '^logingracetime\s'
+    exit-status: 0
+    stdout:
+    - '/(?i)^logingracetime ([1-9]|[1-5][0-9]|60)$/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.1.15
+      CISv8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: CM-6
+  {{ end }}
+{{ end }}

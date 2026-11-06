@@ -1,0 +1,45 @@
+---
+
+{{ if .Vars.amzn2023cis_level_2 }}
+  {{ if .Vars.amzn2023cis_rule_6_2_3_6 }}
+command:
+  auditd_6_2_3_6_cnf:
+    title: 6.2.3.6 | Ensure events that modify /etc/issue and /etc/issue.net are collected | conf check
+    exec: 'grep -Phs -- ''/etc/issue'' /etc/audit/rules.d/*.rules'
+    exit-status: 0
+    stdout:
+    - '/^\s*(-w /etc/issue/? -p wa -k system-locale|-a (always,exit|exit,always)( -F arch=b(32|64))? -S all -F (path|dir)=/etc/issue/? -F perm=wa (-k |-F key=)system-locale)\s*$/'
+    - '/^\s*(-w /etc/issue\.net/? -p wa -k system-locale|-a (always,exit|exit,always)( -F arch=b(32|64))? -S all -F (path|dir)=/etc/issue\.net/? -F perm=wa (-k |-F key=)system-locale)\s*$/'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 6.2.3.6
+      CISv8: 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AU-3
+      - CM-6
+  auditd_6_2_3_6_live:
+    title: 6.2.3.6 | Ensure events that modify /etc/issue and /etc/issue.net are collected | running
+    exec: 'auditctl -l | grep -P -- ''/etc/issue'''
+    exit-status: 0
+    stdout:
+    - '/^\s*(-w /etc/issue/? -p wa -k system-locale|-a (always,exit|exit,always)( -F arch=b(32|64))? -S all -F (path|dir)=/etc/issue/? -F perm=wa (-k |-F key=)system-locale)\s*$/'
+    - '/^\s*(-w /etc/issue\.net/? -p wa -k system-locale|-a (always,exit|exit,always)( -F arch=b(32|64))? -S all -F (path|dir)=/etc/issue\.net/? -F perm=wa (-k |-F key=)system-locale)\s*$/'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 6.2.3.6
+      CISv8: 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AU-3
+      - CM-6
+  {{ end }}
+{{ end }}

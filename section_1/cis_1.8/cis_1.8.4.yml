@@ -1,0 +1,27 @@
+---
+
+{{ if .Vars.amzn2023cis_gui }}
+  {{ if .Vars.amzn2023cis_level_1 }}
+    {{ if .Vars.amzn2023cis_rule_1_8_4 }}
+command:
+  gdm_automount_settings:
+    title: 1.8.4 | Ensure GDM automount is configured
+    exec: 'echo "automount_writable=$(gsettings writable org.gnome.desktop.media-handling automount)"; echo "automount_open_writable=$(gsettings writable org.gnome.desktop.media-handling automount-open)"; echo "automount=$(gsettings get org.gnome.desktop.media-handling automount)"; echo "automount_open=$(gsettings get org.gnome.desktop.media-handling automount-open)"'
+    exit-status: 0
+    stdout:
+    - '/^automount_writable=false$/'
+    - '/^automount_open_writable=false$/'
+    - '/^automount=false$/'
+    - '/^automount_open=false$/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.8.4
+      NIST800-53R5: IA-3
+      CCI:
+      - CCI-000778
+      - CCI-001958
+    {{ end }}
+  {{ end }}
+{{ end }}

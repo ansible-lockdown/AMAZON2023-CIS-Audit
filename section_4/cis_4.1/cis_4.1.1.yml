@@ -1,39 +1,16 @@
 ---
 
-{{ if .Vars.amzn2023cis_level_1 }}
+{{ if .Vars.amzn2023cis_level_2 }}
   {{ if .Vars.amzn2023cis_rule_4_1_1 }}
 package:
-  cronie:
-    title: 4.1.1 | Ensure cron daemon is installed and enabled  | cronie
+  firewalld:
+    title: 4.1.1 | Ensure firewalld is installed
     installed: true
     meta:
-      server: 1
+      server: 2
       workstation: NA
       CIS_ID:
       - 4.1.1
-      NISTSP800-53-R5:
-      - CM-1
-      - CM-2
-      - CM-6
-      - CM-7
-      - IA-5
-service:
-  crond:
-    title: 4.1.1 | Ensure cron daemon is installed and enabled | crond
-    running: true
-    enabled: true
-    meta:
-      server: 1
-      workstation: NA
-      CIS_ID:
-      - 4.1.1
-      NISTSP800-53-R5:
-      - CM-1
-      - CM-2
-      - CM-6
-      - CM-7
-      - IA-5
+      NIST800-53R5: CA-9
   {{ end }}
 {{ end }}
-
-

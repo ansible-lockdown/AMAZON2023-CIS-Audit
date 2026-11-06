@@ -1,0 +1,44 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_1_2_1_2 }}
+file:
+  gpgcheck_dnf_conf:
+    path: /etc/dnf/dnf.conf
+    title: 1.2.1.2 | Ensure gpgcheck is configured | global
+    exists: true
+    contents:
+    - '/(?i)^\s*gpgcheck\s*=\s*(1|true|yes)\b/'
+    - '!/(?i)^\s*gpgcheck\s*=\s*(0|false|no)\b/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.2.1.2
+      CISv8:
+      - 7.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: SI-2
+command:
+  gpg_check_repo:
+    title: 1.2.1.2 | Ensure gpgcheck is configured | no repository disables gpgcheck
+    exit-status: 0
+    exec: echo "gpgcheck_disabled_repos=$(grep -Pris -- '^\h*gpgcheck\h*=\h*(0|false|no)\b' /etc/yum.repos.d /etc/yum/repos.d /etc/distro.repos.d 2>/dev/null | wc -l)"
+    stdout:
+    - '/^gpgcheck_disabled_repos=0$/'
+    timeout: {{ .Vars.timeout_ms }}
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.2.1.2
+      CISv8:
+      - 7.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: SI-2
+  {{ end }}
+{{ end }}

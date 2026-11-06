@@ -1,13 +1,12 @@
-# AMAZON 2023 Goss config
+# AMAZON 2023 Syver config
 
 ## Overview
 
-### Based on CIS Benchmark for AMAZON 2023 Benchmark v1.0.0
+### Based on CIS Benchmark for Amazon Linux 2023 Benchmark v2.0.0
 
 [Centre For Internet Security]
 
-This repository is set of configuration files and directories to run the audit of the relevant benchmark of AMAZON 2023
-servers
+This repository is set of configuration files and directories to run the audit of the relevant benchmark of Amazon Linux 2023 servers
 
 This is configured in a directory structure level.
 
@@ -29,17 +28,17 @@ The listed variable for every control/benchmark can be turned on/off or section
 
 ## Requirements
 
-goss >= 0.4.4
+syver >= 0.16.0 - the continuation of goss, reading the same goss file format. Syver replaces goss as it is a signed fork that is regularly updated.
 root privileges
 
 ## Branches
 
 If running as part of the ansible playbook, this will pull in the relevant branch for the version of benchmark you are remediating.
 
-- e.g. v1.0.0 will pull in branch benchmark-v1.0.0
+- e.g. v2.0.0 will pull in branch benchmark-v2.0.0
 
 Devel is normally the latest benchmark version, so maybe different from the version of benchmark you wish to test.
-Details will show in the README as part of the remedation as to the benchmark for the version it is written for.
+Details will show in the README as part of the remediation as to the benchmark for the version it is written for.
 
 ## Usage
 
@@ -59,22 +58,35 @@ Ability to add your own requirements is available in several sections
 
 [MindPoint Group]
 
+## Contributing
+
+Bug reports and feature requests are welcome from everyone, please raise an issue.
+
+Pull requests are accepted from approved contributors only. To be onboarded, join the [Discord Server](https://www.lockdownenterprise.com/discord) and request contributor access. See [CONTRIBUTING.rst](CONTRIBUTING.rst) for the full process.
+
 ## Links and Further information
 
-- [Goss]
-  - [Goss documentation]
+- [Syver]
+  - [Syver documentation]
+  - [goss vs Syver]
 - [Centre For Internet Security]
 
 <!----
 README Links
 ---->
 
+[benchmark-type]: CIS
+[OS-VERSION]: AMAZON2023
+[os-type]: Linux
 [Centre For Internet Security]: https://www.cisecurity.org
 [Read the Docs - Audit]: https://ansible-lockdown.readthedocs.io/en/latest/audit/getting-started-audit.html
 
-[goss documentation]: (https://github.com/krameff/goss/blob/devel/docs/index.md)
+[Syver documentation]: https://github.com/krameff/syver/blob/main/docs/index.md
 
-[Goss]: https://goss.rocks
+[goss vs Syver]: https://github.com/krameff/syver/blob/main/docs/goss-vs-syver.md
+
+[Syver]: https://github.com/krameff/syver
+- [CIS standards](https://www.cisecurity.org)
 
 [MindPoint Group]: https://mindpointgroup.com/cybersecurity-consulting/automate/baseline-modernization#GH_LockdownReadMe
 [Discord Community Discussions]: https://www.lockdownenterprise.com/discord

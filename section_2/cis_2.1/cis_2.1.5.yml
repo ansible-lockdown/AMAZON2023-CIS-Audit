@@ -1,0 +1,50 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_2_1_5 }}
+    {{ if not .Vars.amzn2023cis_samba_mask }}
+package:
+  cis_2_1_5_samba_pkg:
+    title: 2.1.5 | Ensure samba file server services are not in use | samba not installed
+    skip: {{ .Vars.amzn2023cis_samba_server }}
+    skip-reason: a samba server is required, amzn2023cis_samba_server is true
+    name: samba
+    installed: false
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 2.1.5
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-6
+      - CM-7
+    {{ end }}
+    {{ if .Vars.amzn2023cis_samba_mask }}
+service:
+  cis_2_1_5_smb_service_masked:
+    title: 2.1.5 | Ensure samba file server services are not in use | smb.service masked
+    skip: {{ .Vars.amzn2023cis_samba_server }}
+    skip-reason: a samba server is required, amzn2023cis_samba_server is true
+    name: smb.service
+    masked: true
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 2.1.5
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-6
+      - CM-7
+    {{ end }}
+  {{ end }}
+{{ end }}

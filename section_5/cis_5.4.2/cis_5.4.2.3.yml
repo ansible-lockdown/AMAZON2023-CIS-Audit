@@ -1,0 +1,30 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_4_2_3 }}
+command:
+  group_root_only_0:
+    title: 5.4.2.3 | Ensure group root is the only GID 0 group
+    exec: |
+      awk -F: '($3 == 0 && $1 == "root") {print "root_ok"} ($3 == 0 && $1 != "root") {print "FAIL: " $1}' /etc/group
+    exit-status: 0
+    stdout:
+    - '/^root_ok$/'
+    - '!/^FAIL:/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.4.2.3
+      CISv8: NA
+      CISv8_IG1: NA
+      CISv8_IG2: NA
+      CISv8_IG3: NA
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+  {{ end }}
+{{ end }}

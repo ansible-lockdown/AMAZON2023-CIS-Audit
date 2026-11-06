@@ -1,0 +1,60 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_3_3_2_3 }}
+command:
+  password_complex:
+    title: 5.3.3.2.3 | Ensure password complexity is configured
+    exec: grep -Psi -- '^\h*(minclass|[dulo]credit)\b' /etc/security/pwquality.conf /etc/security/pwquality.conf.d/*.conf
+    exit-status:
+      or:
+      - 0
+      - 1
+      - 2
+    stdout:
+    {{ if eq .Vars.amzn2023cis_passwd_complex_option "minclass" }}
+      - '/.*\:minclass\s*=\s*([4-9]|[1-9][0-9])/'
+      - '!/.*\:minclass\s*=\s*[0-3]/'
+      - '!/.*\:(d|l|o|u)credit/'
+    {{ end }}
+    {{ if eq .Vars.amzn2023cis_passwd_complex_option "credits" }}
+      - '/.*\:dcredit\s*=\s*-\d/'
+      - '/.*\:lcredit\s*=\s*-\d/'
+      - '/.*\:ocredit\s*=\s*-\d/'
+      - '/.*\:ucredit\s*=\s*-\d/'
+      - '!/.*\:(d|l|o|u)credit\s*=\s*\d/'
+      - '!/.*\:minclass\s*=\s*/'
+    {{ end }}
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.3.3.2.3
+      CISv8:
+      - 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: IA-5
+  password_complex_not_pamd:
+    title: 5.3.3.2.3 | Ensure password complexity is configured
+    exec: grep -Psi -- '^\s*password\s+(requisite|required|sufficient)\s+pam_pwquality\.so\s+([^#\n\r]+\s+)?(minclass=\d*|[dulo]credit=-?\d*)\b' /etc/pam.d/system-auth /etc/pam.d/password-auth
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '!/.*/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.3.3.2.3
+      CISv8:
+      - 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: IA-5
+  {{ end }}
+{{ end }}

@@ -2,33 +2,45 @@
 
 {{ if .Vars.amzn2023cis_level_2 }}
   {{ if .Vars.amzn2023cis_rule_3_1_2 }}
-command:
-  dccp_disabled:
-    title: 3.1.2 | Ensure DCCP is disabled | modprobe
-    exit-status: 0
-    exec: "modprobe -n -v dccp | grep -E '(dccp|install)'"
-    stdout:
-    - install /bin/true
+    {{ if not .Vars.amzn2023cis_bluetooth_mask }}
+package:
+  cis_3_1_2_bluez_pkg:
+    title: 3.1.2 | Ensure bluetooth services are not in use | bluez not installed
+    skip: {{ .Vars.amzn2023cis_bluetooth_service }}
+    skip-reason: bluetooth is required, amzn2023cis_bluetooth_service is true
+    name: bluez
+    installed: false
     meta:
       server: 2
       workstation: NA
-      CIS_ID: 3.1.2
-      NISTSP800-53-R5:
-      - SI-4
-      - CM-7
-file:
-  blacklist_dccp:
-    title: 3.1.2 | Ensure DCCP is disabled | blacklist
-    exists: true
-    path: /etc/modprobe.d/blacklist.conf
-    contents:
-    - '/^blacklist dccp/'
+      CIS_ID:
+      - 3.1.2
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: CM-7
+    {{ end }}
+    {{ if .Vars.amzn2023cis_bluetooth_mask }}
+service:
+  cis_3_1_2_bluetooth_service_masked:
+    title: 3.1.2 | Ensure bluetooth services are not in use | bluetooth.service masked
+    skip: {{ .Vars.amzn2023cis_bluetooth_service }}
+    skip-reason: bluetooth is required, amzn2023cis_bluetooth_service is true
+    name: bluetooth.service
+    masked: true
     meta:
       server: 2
       workstation: NA
-      CIS_ID: 3.1.2
-      NISTSP800-53-R5:
-      - SI-4
-      - CM-7
+      CIS_ID:
+      - 3.1.2
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: CM-7
+    {{ end }}
   {{ end }}
 {{ end }}

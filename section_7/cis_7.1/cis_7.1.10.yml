@@ -1,0 +1,51 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_7_1_10 }}
+file:
+  cis_7_1_10_opasswd:
+    title: 7.1.10 | Ensure access to /etc/security/opasswd is configured | /etc/security/opasswd
+    path: /etc/security/opasswd
+    exists: true
+    owner: root
+    group: root
+    mode:
+      match-regexp: '^0[0246]00$'
+    skip: {{ not .Discovered.opasswd_exists }}
+    skip-reason: /etc/security/opasswd does not exist on this host, it is created when pam_pwhistory or pam_unix remember is in use
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 7.1.10
+      CISv8: 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+  cis_7_1_10_opasswd_old:
+    title: 7.1.10 | Ensure access to /etc/security/opasswd is configured | /etc/security/opasswd.old
+    path: /etc/security/opasswd.old
+    exists: true
+    owner: root
+    group: root
+    mode:
+      match-regexp: '^0[0246]00$'
+    skip: {{ not .Discovered.opasswd_old_exists }}
+    skip-reason: /etc/security/opasswd.old does not exist on this host, it is created when pam_pwhistory or pam_unix remember is in use
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 7.1.10
+      CISv8: 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+  {{ end }}
+{{ end }}

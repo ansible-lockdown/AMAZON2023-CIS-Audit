@@ -1,34 +1,19 @@
 ---
 
-{{ if .Vars.amzn2023cis_level_1 }}
+{{ if .Vars.amzn2023cis_level_2 }}
   {{ if .Vars.amzn2023cis_rule_4_1_8 }}
-file:
-  cron_deny_users:
-    title: 4.1.8 | Ensure cron is restricted to authorized users
-    path: /etc/cron.deny
-    exists: false
+command:
+  cis_4_1_8_default_zone_drop:
+    title: 4.1.8 | Ensure firewalld default zone is set to drop
+    exec: firewall-cmd --get-default-zone
+    exit-status: 0
+    stdout:
+    - '/^drop$/'
     meta:
-      server: 1
+      server: 2
       workstation: NA
       CIS_ID:
       - 4.1.8
-      NISTSP800-53-R5:
-      - AC-3
-      - MP-2
-  cron_allow_users:
-    title: 4.1.8 | Ensure cron is restricted to authorized users
-    path: /etc/cron.allow
-    exists: true
-    owner: root
-    group: root
-    mode: '0600'
-    meta:
-      server: 1
-      workstation: NA
-      CIS_ID:
-      - 4.1.8
-      NISTSP800-53-R5:
-      - AC-3
-      - MP-2
+      NIST800-53R5: CA-9
   {{ end }}
 {{ end }}

@@ -1,0 +1,43 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_2_12 }}
+file:
+  restrict_su:
+    title: 5.2.12 | Ensure access to the su command is restricted
+    path: /etc/pam.d/su
+    exists: true
+    contents:
+    - '/^\s*auth\s+(required|requisite)\s+pam_wheel\.so\s+(\S+\s+)*(use_uid\s+(\S+\s+)*group={{ .Vars.amzn2023cis_sugroup }}|group={{ .Vars.amzn2023cis_sugroup }}\s+(\S+\s+)*use_uid)\b/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.2.12
+      CISv8: 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+  sugroup_etc_group:
+    title: 5.2.12 | Ensure access to the su command is restricted | group is empty
+    path: /etc/group
+    exists: true
+    contents:
+    - '/^{{ .Vars.amzn2023cis_sugroup }}:[^:]*:[0-9]+:$/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.2.12
+      CISv8: 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+  {{ end }}
+{{ end }}

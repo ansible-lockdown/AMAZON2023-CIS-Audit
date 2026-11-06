@@ -1,0 +1,26 @@
+---
+
+{{ if .Vars.amzn2023cis_gui }}
+  {{ if .Vars.amzn2023cis_level_1 }}
+    {{ if .Vars.amzn2023cis_rule_1_8_3 }}
+command:
+  gdm_screen_lock_settings:
+    title: 1.8.3 | Ensure GDM screen lock is configured
+    exec: 'echo "idle_delay_writable=$(gsettings writable org.gnome.desktop.session idle-delay)"; echo "lock_delay_writable=$(gsettings writable org.gnome.desktop.screensaver lock-delay)"; echo "idle_delay=$(gsettings get org.gnome.desktop.session idle-delay)"; echo "lock_delay=$(gsettings get org.gnome.desktop.screensaver lock-delay)"'
+    exit-status: 0
+    stdout:
+    - '/^idle_delay_writable=false$/'
+    - '/^lock_delay_writable=false$/'
+    - '/^idle_delay=uint32 ([1-9]|[1-9][0-9]|[1-8][0-9]{2}|900)$/'
+    - '/^lock_delay=uint32 [0-5]$/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.8.3
+      NIST800-53R5: AC-11
+      CCI:
+      - CCI-000057
+    {{ end }}
+  {{ end }}
+{{ end }}

@@ -1,0 +1,29 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_1_10 }}
+command:
+  sshd_clientalive_live:
+    title: 5.1.10 | Ensure sshd ClientAliveInterval and ClientAliveCountMax are configured
+    exec: sshd -T 2>/dev/null | grep -Pi -- '^(clientaliveinterval|clientalivecountmax)\h'
+    exit-status: 0
+    stdout:
+    - '/(?i)^clientaliveinterval [1-9][0-9]*$/'
+    - '/(?i)^clientalivecountmax [1-9][0-9]*$/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.1.10
+      CISv8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+  {{ end }}
+{{ end }}

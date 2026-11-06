@@ -1,0 +1,28 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_1_14 }}
+command:
+  ssh_rhosts_live:
+    title: 5.1.14 | Ensure sshd IgnoreRhosts is enabled
+    exec: sshd -T 2>/dev/null | grep -i -- '^ignorerhosts\s'
+    exit-status: 0
+    stdout:
+    - '/(?i)^ignorerhosts yes$/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.1.14
+      CISv8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+  {{ end }}
+{{ end }}

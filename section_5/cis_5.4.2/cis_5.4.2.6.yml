@@ -1,0 +1,25 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_4_2_6 }}
+command:
+  root_umask_effective:
+    title: 5.4.2.6 | Ensure root user umask is configured
+    exec: su - root -c 'umask'
+    exit-status: 0
+    stdout:
+    - '/^0?[0-7][2367]7$/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.4.2.6
+      CISv8: 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+  {{ end }}
+{{ end }}

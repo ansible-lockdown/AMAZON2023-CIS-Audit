@@ -1,0 +1,39 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_1_5_4 }}
+kernel-param:
+  kernel.dmesg_restrict:
+    title: 1.5.4 | Ensure kernel.dmesg_restrict is configured | running
+    value: '1'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.5.4
+      NIST800-53R5:
+      - SC-2
+      - SC-4
+      CCI:
+      - CCI-001082
+      - CCI-001090
+command:
+  kernel_dmesg_restrict_persistent:
+    title: 1.5.4 | Ensure kernel.dmesg_restrict is configured | effective persistent setting
+    exec: "/usr/lib/systemd/systemd-sysctl --cat-config | grep -Eo '^[[:space:]]*kernel[.]dmesg_restrict[[:space:]]*=[[:space:]]*[^[:space:]]+' | tail -n 1"
+    exit-status: 0
+    stdout:
+    - '/^\s*kernel\.dmesg_restrict\s*=\s*1$/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.5.4
+      NIST800-53R5:
+      - SC-2
+      - SC-4
+      CCI:
+      - CCI-001082
+      - CCI-001090
+  {{ end }}
+{{ end }}

@@ -1,0 +1,46 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_2_1_16 }}
+    {{ if not .Vars.amzn2023cis_nginx_mask }}
+package:
+  cis_2_1_16_nginx_pkg:
+    title: 2.1.16 | Ensure web server services are not in use | nginx not installed
+    skip: {{ .Vars.amzn2023cis_nginx_server }}
+    skip-reason: an nginx web server is required, amzn2023cis_nginx_server is true
+    name: nginx
+    installed: false
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 2.1.16
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: CM-7
+    {{ end }}
+    {{ if .Vars.amzn2023cis_nginx_mask }}
+service:
+  cis_2_1_16_nginx_service_masked:
+    title: 2.1.16 | Ensure web server services are not in use | nginx.service masked
+    skip: {{ .Vars.amzn2023cis_nginx_server }}
+    skip-reason: an nginx web server is required, amzn2023cis_nginx_server is true
+    name: nginx.service
+    masked: true
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 2.1.16
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: CM-7
+    {{ end }}
+  {{ end }}
+{{ end }}

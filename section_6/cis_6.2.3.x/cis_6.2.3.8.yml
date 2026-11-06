@@ -1,0 +1,83 @@
+---
+
+{{ if .Vars.amzn2023cis_level_2 }}
+  {{ if .Vars.amzn2023cis_rule_6_2_3_8 }}
+command:
+  auditd_6_2_3_8_cnf:
+    title: 6.2.3.8 | Ensure events that modify /etc/sysconfig/network and /etc/NetworkManager/system-connections/ are collected | sysconfig/network | conf check
+    exec: 'grep -Phs -- ''sysconfig/network'' /etc/audit/rules.d/*.rules'
+    exit-status: 0
+    stdout:
+    - '/^\s*(-w /etc/sysconfig/network/? -p wa -k system-locale|-a (always,exit|exit,always)( -F arch=b(32|64))? -S all -F (path|dir)=/etc/sysconfig/network/? -F perm=wa (-k |-F key=)system-locale)\s*$/'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 6.2.3.8
+      CISv8: 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AU-3
+      - CM-6
+  auditd_6_2_3_8_live:
+    title: 6.2.3.8 | Ensure events that modify /etc/sysconfig/network and /etc/NetworkManager/system-connections/ are collected | sysconfig/network | running
+    exec: 'auditctl -l | grep -P -- ''sysconfig/network'''
+    exit-status: 0
+    stdout:
+    - '/^\s*(-w /etc/sysconfig/network/? -p wa -k system-locale|-a (always,exit|exit,always)( -F arch=b(32|64))? -S all -F (path|dir)=/etc/sysconfig/network/? -F perm=wa (-k |-F key=)system-locale)\s*$/'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 6.2.3.8
+      CISv8: 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AU-3
+      - CM-6
+  auditd_6_2_3_8_nm_cnf:
+    title: 6.2.3.8 | Ensure events that modify /etc/sysconfig/network and /etc/NetworkManager/system-connections/ are collected | system-connections | conf check
+    skip: {{ not .Discovered.nm_system_connections_dir }}
+    skip-reason: /etc/NetworkManager/system-connections does not exist (NetworkManager is not installed by default on Amazon Linux 2023)
+    exec: 'grep -Phs -- ''system-connections'' /etc/audit/rules.d/*.rules'
+    exit-status: 0
+    stdout:
+    - '/^\s*(-w /etc/NetworkManager/system\-connections/? -p wa -k system-locale|-a (always,exit|exit,always)( -F arch=b(32|64))? -S all -F (path|dir)=/etc/NetworkManager/system\-connections/? -F perm=wa (-k |-F key=)system-locale)\s*$/'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 6.2.3.8
+      CISv8: 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AU-3
+      - CM-6
+  auditd_6_2_3_8_nm_live:
+    title: 6.2.3.8 | Ensure events that modify /etc/sysconfig/network and /etc/NetworkManager/system-connections/ are collected | system-connections | running
+    skip: {{ not .Discovered.nm_system_connections_dir }}
+    skip-reason: /etc/NetworkManager/system-connections does not exist (NetworkManager is not installed by default on Amazon Linux 2023)
+    exec: 'auditctl -l | grep -P -- ''system-connections'''
+    exit-status: 0
+    stdout:
+    - '/^\s*(-w /etc/NetworkManager/system\-connections/? -p wa -k system-locale|-a (always,exit|exit,always)( -F arch=b(32|64))? -S all -F (path|dir)=/etc/NetworkManager/system\-connections/? -F perm=wa (-k |-F key=)system-locale)\s*$/'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 6.2.3.8
+      CISv8: 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AU-3
+      - CM-6
+  {{ end }}
+{{ end }}

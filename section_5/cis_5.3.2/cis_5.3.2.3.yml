@@ -1,0 +1,62 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_3_2_3 }}
+file:
+  pam_pwquality_enabled_system_auth:
+    title: 5.3.2.3 | Ensure pam_pwquality module is enabled | system-auth
+    path: /etc/pam.d/system-auth
+    exists: true
+    contents:
+    - '/^\s*password\s+(requisite|required)\s+pam_pwquality\.so/'
+    skip: {{ or (not .Vars.amzn2023cis_disruption_high) (not .Vars.amzn2023cis_allow_authselect_updates) }}
+    skip-reason: amzn2023cis_disruption_high or amzn2023cis_allow_authselect_updates is false, authselect is not managed by the role
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.3.2.3
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: CM-6
+  pam_pwquality_enabled_password_auth:
+    title: 5.3.2.3 | Ensure pam_pwquality module is enabled | password-auth
+    path: /etc/pam.d/password-auth
+    exists: true
+    contents:
+    - '/^\s*password\s+(requisite|required)\s+pam_pwquality\.so/'
+    skip: {{ or (not .Vars.amzn2023cis_disruption_high) (not .Vars.amzn2023cis_allow_authselect_updates) }}
+    skip-reason: amzn2023cis_disruption_high or amzn2023cis_allow_authselect_updates is false, authselect is not managed by the role
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.3.2.3
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: CM-6
+command:
+  authselect_check_5_3_2_3:
+    title: 5.3.2.3 | Ensure pam_pwquality module is enabled | authselect check
+    exec: authselect check
+    exit-status: 0
+    stdout:
+    - '/Current configuration is valid/'
+    skip: {{ or (not .Vars.amzn2023cis_disruption_high) (not .Vars.amzn2023cis_allow_authselect_updates) }}
+    skip-reason: amzn2023cis_disruption_high or amzn2023cis_allow_authselect_updates is false, authselect is not managed by the role
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.3.2.3
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: CM-6
+  {{ end }}
+{{ end }}

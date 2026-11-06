@@ -1,0 +1,57 @@
+---
+
+{{ if .Vars.amzn2023cis_level_2 }}
+  {{ if .Vars.amzn2023cis_rule_1_4_2 }}
+command:
+  grub_bootloader_files_access:
+    title: 1.4.2 | Ensure access to bootloader config is configured | grub files mode, owner and group
+    exec: |
+      find /boot -type f \( -name 'grub*' -o -name 'user.cfg' \) -exec stat -Lc '%n %a %U %G' {} + | awk '
+        $1 ~ /^\/boot\/efi\// && $2 !~ /^[0-7]00$/ { print "bad_mode: " $0; next }
+        $1 !~ /^\/boot\/efi\// && $2 !~ /^[0246]00$/ { print "bad_mode: " $0; next }
+        $3 != "root" || $4 != "root" { print "bad_owner: " $0 }'
+      echo "grub_files_checked"
+    exit-status: 0
+    stdout:
+    - '/^grub_files_checked$/'
+    - '!/^bad_(mode|owner): /'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 1.4.2
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: CM-6
+  efi_boot_opts:
+    title: 1.4.2 | Ensure access to bootloader config is configured | /boot/efi mount options
+    exec: |
+      l_opts="$(awk '$1 !~ /^#/ && $2 == "/boot/efi" {print $4}' /etc/fstab)"
+      if [ -z "$l_opts" ]; then
+        echo "efi_not_in_fstab"
+      else
+        for l_opt in fmask=0077 uid=0 gid=0; do
+          echo ",$l_opts," | grep -q ",$l_opt," || echo "efi_missing: $l_opt"
+        done
+        echo "efi_options_checked"
+      fi
+    exit-status: 0
+    stdout:
+    - '/^(efi_not_in_fstab|efi_options_checked)$/'
+    - '!/^efi_missing: /'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 1.4.2
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: CM-6
+  {{ end }}
+{{ end }}

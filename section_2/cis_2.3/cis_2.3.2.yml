@@ -1,18 +1,31 @@
 ---
 
 {{ if .Vars.amzn2023cis_level_1 }}
-package:
-  {{ if not .Vars.amzn2023cis_openldap_clients_required }}
-    {{ if .Vars.amzn2023cis_rule_2_3_2 }}
-  openldap-clients:
-    title: 2.3.2 | Ensure LDAP client is not installed
-    installed: false
+  {{ if .Vars.amzn2023cis_rule_2_3_2 }}
+command:
+  cis_2_3_2_chrony_sources:
+    title: 2.3.2 | Ensure chrony is configured | server, pool or refclock in chrony.conf, sourcedir or confdir
+    exec: |
+      grep -Ph -- '^\h*(server|pool|refclock)\h+\H+' /etc/chrony.conf 2>/dev/null
+      awk '/^[[:space:]]*(sourcedir|confdir)[[:space:]]+/{print $2}' /etc/chrony.conf 2>/dev/null | while IFS= read -r l_dir; do
+        grep -PhRs -- '^\h*(server|pool|refclock)\h+\H+' "$l_dir"
+      done
+      exit 0
+    exit-status: 0
+    stdout:
+    - '/^\s*(server|pool|refclock)\s+\S+/'
     meta:
       server: 1
       workstation: NA
       CIS_ID:
       - 2.3.2
-      NISTSP800-53-R5: CM-7
-    {{ end }}
+      CISv8:
+      - 8.4
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AU-12
+      - AU-3
   {{ end }}
 {{ end }}

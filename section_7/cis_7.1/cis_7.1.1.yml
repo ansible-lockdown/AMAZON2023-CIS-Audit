@@ -1,0 +1,27 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_7_1_1 }}
+file:
+  cis_7_1_1_passwd:
+    title: 7.1.1 | Ensure access to /etc/passwd is configured
+    path: /etc/passwd
+    exists: true
+    owner: root
+    group: root
+    mode:
+      match-regexp: '^0[0246][04][04]$'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 7.1.1
+      CISv8: 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+  {{ end }}
+{{ end }}

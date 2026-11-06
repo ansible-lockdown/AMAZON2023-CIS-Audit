@@ -1,0 +1,26 @@
+---
+
+{{ if .Vars.amzn2023cis_level_2 }}
+  {{ if .Vars.amzn2023cis_rule_6_1_2_10 }}
+package:
+  rsyslog-openssl:
+    title: 6.1.2.10 | Ensure a rsyslog TLS network stream driver is installed
+    skip: {{ not (and .Vars.amzn2023cis_remote_log_server .Vars.amzn2023cis_remote_log_tls) }}
+    skip-reason: TLS log forwarding is not configured (amzn2023cis_remote_log_server and amzn2023cis_remote_log_tls are not both true)
+    {{ if and .Vars.amzn2023cis_level_1 .Vars.amzn2023cis_rule_6_1_2_1 }}
+    depends-on:
+    - package:rsyslog
+    {{ end }}
+    installed: true
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 6.1.2.10
+      CISv8: 8.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: SC-8
+  {{ end }}
+{{ end }}

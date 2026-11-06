@@ -1,0 +1,36 @@
+---
+
+{{ if .Vars.amzn2023cis_level_2 }}
+  {{ if .Vars.amzn2023cis_rule_6_1_2_11 }}
+command:
+  rsyslog_forwarding_tls:
+    title: 6.1.2.11 | Ensure rsyslog network forwarding uses TLS
+    skip: {{ not (and .Vars.amzn2023cis_remote_log_server .Vars.amzn2023cis_remote_log_tls) }}
+    skip-reason: TLS log forwarding is not configured (amzn2023cis_remote_log_server and amzn2023cis_remote_log_tls are not both true)
+    {{ if and .Vars.amzn2023cis_level_1 .Vars.amzn2023cis_rule_6_1_2_1 }}
+    depends-on:
+    - package:rsyslog
+    {{ end }}
+    exec: |
+      grep -Psih -- '^[^#]*(StreamDriver|DefaultNetstreamDriver)(\.Name)?\s*[= ]\s*"?(gtls|ossl)"?' /etc/rsyslog.conf /etc/rsyslog.d/*.conf 2>/dev/null
+      grep -Psih -- '^[^#]*(StreamDriverMode\s*=\s*"?1"?|ActionSendStreamDriverMode\s+1)' /etc/rsyslog.conf /etc/rsyslog.d/*.conf 2>/dev/null
+      grep -Psih -- '^[^#]*(StreamDriverAuthMode\s*=\s*"?(x509/name|x509/certvalid|x509/fingerprint|anon)"?|ActionSendStreamDriverAuthMode\s+(x509/name|x509/certvalid|x509/fingerprint|anon))' /etc/rsyslog.conf /etc/rsyslog.d/*.conf 2>/dev/null
+      echo check_complete
+    exit-status: 0
+    stdout:
+    - '/^check_complete$/'
+    - '/(?i)(StreamDriver|DefaultNetstreamDriver)(\.Name)?\s*[= ]\s*"?(gtls|ossl)/'
+    - '/(?i)(StreamDriverMode\s*=\s*"?1|ActionSendStreamDriverMode\s+1)/'
+    - '/(?i)(StreamDriverAuthMode\s*=\s*"?|ActionSendStreamDriverAuthMode\s+)(x509/name|x509/certvalid|x509/fingerprint|anon)/'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 6.1.2.11
+      CISv8: 8.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: SC-8
+  {{ end }}
+{{ end }}

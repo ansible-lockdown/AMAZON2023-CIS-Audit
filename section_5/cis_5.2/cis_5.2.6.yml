@@ -1,0 +1,22 @@
+---
+
+{{ if .Vars.amzn2023cis_level_2 }}
+  {{ if .Vars.amzn2023cis_rule_5_2_6 }}
+command:
+  nopasswd_sudoers_d:
+    title: 5.2.6 | Ensure users must provide password for escalation
+    exec: grep -r "^[^#].*NOPASSWD" /etc/sudoers /etc/sudoers.d/
+    exit-status: 1
+    stdout:
+    - '!/./'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 5.2.6
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: AC-6
+  {{ end }}
+{{ end }}

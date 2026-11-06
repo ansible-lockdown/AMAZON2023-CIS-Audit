@@ -1,34 +1,37 @@
 ---
 
-{{ if .Vars.amzn2023cis_level_1 }}
+{{ if .Vars.amzn2023cis_level_2 }}
   {{ if .Vars.amzn2023cis_rule_4_1_9 }}
-file:
-  at_deny_users:
-    title: 4.1.9 | Ensure at is restricted to authorized users
-    exists: false
-    path: /etc/at.deny
+service:
+  cis_4_1_9_nftables_service:
+    title: 4.1.9 | Ensure conflicting firewall utilities are not in use with firewalld | nftables.service
+    name: nftables
+    enabled: false
+    running: false
     meta:
-      server: 1
+      server: 2
       workstation: NA
       CIS_ID:
       - 4.1.9
-      NISTSP800-53-R5:
-      - AC-3
-      - MP-2
-  at_allow_users:
-    title: 4.1.9 | Ensure at is restricted to authorized users
-    exists: true
-    path: /etc/at.allow
-    owner: root
-    group: root
-    mode: '0600'
+      NIST800-53R5: CA-9
+package:
+  iptables-services:
+    title: 4.1.9 | Ensure conflicting firewall utilities are not in use with firewalld | iptables-services
+    installed: false
     meta:
-      server: 1
+      server: 2
       workstation: NA
       CIS_ID:
       - 4.1.9
-      NISTSP800-53-R5:
-      - AC-3
-      - MP-2
+      NIST800-53R5: CA-9
+  ufw:
+    title: 4.1.9 | Ensure conflicting firewall utilities are not in use with firewalld | ufw
+    installed: false
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 4.1.9
+      NIST800-53R5: CA-9
   {{ end }}
 {{ end }}

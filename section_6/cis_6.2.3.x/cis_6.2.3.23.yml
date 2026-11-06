@@ -1,0 +1,75 @@
+---
+
+{{ if .Vars.amzn2023cis_level_2 }}
+  {{ if .Vars.amzn2023cis_rule_6_2_3_23 }}
+command:
+  auditd_6_2_3_23_lastlog_cnf:
+    title: 6.2.3.23 | Ensure login and logout events are collected | lastlog conf check
+    exec: 'grep -Phs -- ''lastlog'' /etc/audit/rules.d/*.rules'
+    exit-status: 0
+    stdout:
+    - '/^\s*(-w /var/log/lastlog/? -p wa -k logins|-a (always,exit|exit,always)( -F arch=b(32|64))? -S all -F (path|dir)=/var/log/lastlog/? -F perm=wa (-k |-F key=)logins)\s*$/'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 6.2.3.23
+      CISv8: 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: AU-12
+  auditd_6_2_3_23_lastlog_live:
+    title: 6.2.3.23 | Ensure login and logout events are collected | lastlog running
+    exec: 'auditctl -l | grep -P -- ''lastlog'''
+    exit-status: 0
+    stdout:
+    - '/^\s*(-w /var/log/lastlog/? -p wa -k logins|-a (always,exit|exit,always)( -F arch=b(32|64))? -S all -F (path|dir)=/var/log/lastlog/? -F perm=wa (-k |-F key=)logins)\s*$/'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 6.2.3.23
+      CISv8: 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: AU-12
+  auditd_6_2_3_23_faillock_cnf:
+    title: 6.2.3.23 | Ensure login and logout events are collected | faillock conf check
+    skip: {{ not .Discovered.faillock_dir }}
+    skip-reason: /var/run/faillock does not exist, the rule is only written when the directory exists
+    exec: 'grep -Phs -- ''faillock'' /etc/audit/rules.d/*.rules'
+    exit-status: 0
+    stdout:
+    - '/^\s*(-w /var/run/faillock/? -p wa -k logins|-a (always,exit|exit,always)( -F arch=b(32|64))? -S all -F (path|dir)=/var/run/faillock/? -F perm=wa (-k |-F key=)logins)\s*$/'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 6.2.3.23
+      CISv8: 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: AU-12
+  auditd_6_2_3_23_faillock_live:
+    title: 6.2.3.23 | Ensure login and logout events are collected | faillock running
+    skip: {{ not .Discovered.faillock_dir }}
+    skip-reason: /var/run/faillock does not exist, the rule is only written when the directory exists
+    exec: 'auditctl -l | grep -P -- ''faillock'''
+    exit-status: 0
+    stdout:
+    - '/^\s*(-w /var/run/faillock/? -p wa -k logins|-a (always,exit|exit,always)( -F arch=b(32|64))? -S all -F (path|dir)=/var/run/faillock/? -F perm=wa (-k |-F key=)logins)\s*$/'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 6.2.3.23
+      CISv8: 8.5
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: AU-12
+  {{ end }}
+{{ end }}

@@ -1,0 +1,62 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_3_2_5 }}
+file:
+  pam_unix_enabled_system_auth:
+    title: 5.3.2.5 | Ensure pam_unix module is enabled | system-auth
+    path: /etc/pam.d/system-auth
+    exists: true
+    contents:
+    - '/^\s*auth\s+\S+\s+pam_unix\.so/'
+    - '/^\s*account\s+\S+\s+pam_unix\.so/'
+    - '/^\s*password\s+\S+\s+pam_unix\.so/'
+    - '/^\s*session\s+\S+\s+pam_unix\.so/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.3.2.5
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: IA-5
+  pam_unix_enabled_password_auth:
+    title: 5.3.2.5 | Ensure pam_unix module is enabled | password-auth
+    path: /etc/pam.d/password-auth
+    exists: true
+    contents:
+    - '/^\s*auth\s+\S+\s+pam_unix\.so/'
+    - '/^\s*account\s+\S+\s+pam_unix\.so/'
+    - '/^\s*password\s+\S+\s+pam_unix\.so/'
+    - '/^\s*session\s+\S+\s+pam_unix\.so/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.3.2.5
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: IA-5
+command:
+  authselect_check_5_3_2_5:
+    title: 5.3.2.5 | Ensure pam_unix module is enabled | authselect check
+    exec: authselect check
+    exit-status: 0
+    stdout:
+    - '/Current configuration is valid/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.3.2.5
+      CISv8: 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: IA-5
+  {{ end }}
+{{ end }}

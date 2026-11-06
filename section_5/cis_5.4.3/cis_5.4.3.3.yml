@@ -1,0 +1,19 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_4_3_3 }}
+file:
+  login_defs_umask:
+    title: 5.4.3.3 | Ensure default user umask is configured in /etc/login.defs
+    path: /etc/login.defs
+    exists: true
+    contents:
+    - '/^\s*UMASK\s+0?[0-7][2367]7\b/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.4.3.3
+      NIST800-53R5: CM-6
+  {{ end }}
+{{ end }}

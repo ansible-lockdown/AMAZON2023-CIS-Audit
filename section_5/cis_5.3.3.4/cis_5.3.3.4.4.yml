@@ -1,0 +1,43 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_3_3_4_4 }}
+file:
+  pam_unix_use_authtok_password-auth:
+    title: 5.3.3.4.4 | Ensure pam_unix includes use_authtok | password-auth
+    path: /etc/pam.d/password-auth
+    exists: true
+    contents:
+    - '/password\s+([^#\n\r]+)\s+pam_unix\.so.*use_authtok/'
+    skip: {{ not .Vars.amzn2023cis_disruption_high }}
+    skip-reason: amzn2023cis_disruption_high is false, the role does not change this setting
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.3.3.4.4
+      CISv8: 3.11
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: IA-5
+  pam_unix_use_authtok_system-auth:
+    title: 5.3.3.4.4 | Ensure pam_unix includes use_authtok | system-auth
+    path: /etc/pam.d/system-auth
+    exists: true
+    contents:
+    - '/password\s+([^#\n\r]+)\s+pam_unix\.so.*use_authtok/'
+    skip: {{ not .Vars.amzn2023cis_disruption_high }}
+    skip-reason: amzn2023cis_disruption_high is false, the role does not change this setting
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.3.3.4.4
+      CISv8: 3.11
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: IA-5
+  {{ end }}
+{{ end }}

@@ -1,0 +1,24 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_2_2 }}
+command:
+  sudoers_files_access:
+    title: 5.2.2 | Ensure access on sudoers configuration files is configured
+    exec: |
+      find /etc/sudoers /etc/sudoers.d/ -type f \( -perm /0337 -o ! -user root -o ! -group root \) -printf 'FAIL: %p %m %u %g\n'
+      echo "scan_rc=$?"
+    exit-status: 0
+    stdout:
+    - '/^scan_rc=0$/'
+    - '!/^FAIL:/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.2.2
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+  {{ end }}
+{{ end }}

@@ -1,0 +1,26 @@
+---
+
+{{ if .Vars.amzn2023cis_level_2 }}
+  {{ if .Vars.amzn2023cis_rule_1_2_1_3 }}
+command:
+  repo_gpgcheck_global:
+    title: 1.2.1.3 | Ensure repo_gpgcheck is configured | global
+    exec: grep -Pi -- '^\h*repo_gpgcheck\h*=' /etc/dnf/dnf.conf
+    timeout: {{ .Vars.timeout_ms }}
+    exit-status: 0
+    stdout:
+    - '/(?i)^\s*repo_gpgcheck\s*=\s*(1|true|yes)\b/'
+    - '!/(?i)^\s*repo_gpgcheck\s*=\s*(0|false|no)\b/'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 1.2.1.3
+      CISv8:
+      - 7.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: SI-2
+  {{ end }}
+{{ end }}

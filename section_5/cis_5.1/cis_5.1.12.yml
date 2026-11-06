@@ -1,0 +1,23 @@
+---
+
+{{ if .Vars.amzn2023cis_level_2 }}
+  {{ if .Vars.amzn2023cis_rule_5_1_12 }}
+command:
+  ssh_gssapi_live:
+    title: 5.1.12 | Ensure sshd GSSAPIAuthentication is disabled
+    exec: sshd -T 2>/dev/null | grep -i -- '^gssapiauthentication\s'
+    exit-status: 0
+    stdout:
+    - '/(?i)^gssapiauthentication no$/'
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 5.1.12
+      CISv8: 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: CM-6
+  {{ end }}
+{{ end }}

@@ -1,18 +1,24 @@
 ---
 
-{{ if not .Vars.amzn2023cis_dhcp_server }}
-  {{ if .Vars.amzn2023cis_level_1 }}
-    {{ if .Vars.amzn2023cis_rule_2_2_4 }}
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_2_2_4 }}
 package:
-  dhcp-server:
-    title: 2.2.4 | Ensure a dhcp server is not installed
+  cis_2_2_4_tftp_pkg:
+    title: 2.2.4 | Ensure tftp client is not installed | tftp not installed
+    skip: {{ .Vars.amzn2023cis_tftp_client }}
+    skip-reason: a TFTP client is required, amzn2023cis_tftp_client is true
+    name: tftp
     installed: false
     meta:
       server: 1
       workstation: NA
       CIS_ID:
       - 2.2.4
-      NISTSP800-53-R5: CM-7
-    {{ end }}
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: CM-7
   {{ end }}
 {{ end }}

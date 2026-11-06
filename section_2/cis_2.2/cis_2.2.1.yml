@@ -1,16 +1,41 @@
 ---
 
-{{ if .Vars.amzn2023cis_level_2 }}
+{{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_2_2_1 }}
 package:
-  xorg-x11-server-common:
-    title: 2.2.1 | Ensure xorg-x11-server-common is not installed
+  cis_2_2_1_ftp_pkg:
+    title: 2.2.1 | Ensure ftp client is not installed | ftp not installed
+    skip: {{ .Vars.amzn2023cis_ftp_client }}
+    skip-reason: an FTP client is required, amzn2023cis_ftp_client is true
+    name: ftp
     installed: false
     meta:
-      server: 2
+      server: 1
       workstation: NA
       CIS_ID:
       - 2.2.1
-      NISTSP800-53-R5: CM-7
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: CM-7
+  cis_2_2_1_lftp_pkg:
+    title: 2.2.1 | Ensure ftp client is not installed | lftp not installed
+    skip: {{ .Vars.amzn2023cis_ftp_client }}
+    skip-reason: an FTP client is required, amzn2023cis_ftp_client is true
+    name: lftp
+    installed: false
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 2.2.1
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: CM-7
   {{ end }}
 {{ end }}

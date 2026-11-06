@@ -1,0 +1,29 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_1_5_3 }}
+kernel-param:
+  fs.suid_dumpable:
+    title: 1.5.3 | Ensure fs.suid_dumpable is configured | running
+    value: '0'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.5.3
+      NIST800-53R5: CM-6
+command:
+  fs_suid_dumpable_persistent:
+    title: 1.5.3 | Ensure fs.suid_dumpable is configured | effective persistent setting
+    exec: "/usr/lib/systemd/systemd-sysctl --cat-config | grep -Eo '^[[:space:]]*fs[.]suid_dumpable[[:space:]]*=[[:space:]]*[^[:space:]]+' | tail -n 1"
+    exit-status: 0
+    stdout:
+    - '/^\s*fs\.suid_dumpable\s*=\s*0$/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.5.3
+      NIST800-53R5: CM-6
+  {{ end }}
+{{ end }}

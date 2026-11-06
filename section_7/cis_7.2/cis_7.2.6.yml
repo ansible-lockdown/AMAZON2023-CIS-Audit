@@ -1,0 +1,26 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_7_2_6 }}
+command:
+  no_dup_username:
+    title: 7.2.6 | Ensure no duplicate user names exist
+    exec: |
+      cut -d: -f1 /etc/passwd | sort | uniq -d | sed 's/^/FAIL: duplicate user name /'
+      echo "scan_done"
+    exit-status: 0
+    stdout:
+    - '/^scan_done$/'
+    - '!/^FAIL:/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 7.2.6
+      CISv8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: IA-2
+  {{ end }}
+{{ end }}

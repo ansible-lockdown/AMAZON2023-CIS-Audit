@@ -1,18 +1,24 @@
 ---
 
-{{ if not .Vars.amzn2023cis_cups_server }}
-  {{ if .Vars.amzn2023cis_level_1 }}
-    {{ if .Vars.amzn2023cis_rule_2_2_3 }}
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_2_2_3 }}
 package:
-  cups:
-    title: 2.2.3 | Ensure a print server is not installed
+  cis_2_2_3_telnet_pkg:
+    title: 2.2.3 | Ensure telnet client is not installed | telnet not installed
+    skip: {{ .Vars.amzn2023cis_telnet_required }}
+    skip-reason: a telnet client is required, amzn2023cis_telnet_required is true
+    name: telnet
     installed: false
     meta:
       server: 1
       workstation: NA
       CIS_ID:
       - 2.2.3
-      NISTSP800-53-R5: CM-7
-    {{ end }}
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: CM-7
   {{ end }}
 {{ end }}

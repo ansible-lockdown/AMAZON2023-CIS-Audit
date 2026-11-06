@@ -1,0 +1,21 @@
+---
+
+{{ if .Vars.amzn2023cis_level_2 }}
+  {{ if .Vars.amzn2023cis_rule_2_1_20 }}
+package:
+  cis_2_1_20_xwayland_pkg:
+    title: 2.1.20 | Ensure Xwayland is not in use | xorg-x11-server-Xwayland not installed
+    skip: {{ or .Vars.amzn2023cis_gui .Vars.amzn2023cis_xwindow_server }}
+    skip-reason: a graphical user interface or X window server is required, amzn2023cis_gui or amzn2023cis_xwindow_server is true
+    name: xorg-x11-server-Xwayland
+    installed: false
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 2.1.20
+      NIST800-53R5:
+      - CM-11
+      - CM-7
+  {{ end }}
+{{ end }}

@@ -1,0 +1,25 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_3_3_2_1 }}
+command:
+  cis_3_3_2_1_force_forwarding:
+    title: 3.3.2.1 | Ensure net.ipv6.conf force_forwarding is not enabled | running config and systemd-sysctl config
+    skip: {{ or .Vars.amzn2023cis_is_router (not .Vars.amzn2023cis_ipv6_required) (not .Discovered.ipv6_force_forwarding_present) }}
+    skip-reason: {{ if .Vars.amzn2023cis_is_router }}this host is a router, amzn2023cis_is_router is true{{ else if not .Vars.amzn2023cis_ipv6_required }}IPv6 is not required, amzn2023cis_ipv6_required is false{{ else }}the kernel has no force_forwarding parameter{{ end }}
+    exec: |
+      sysctl -a 2>/dev/null | grep -P -- '^net\.ipv6\.conf\.\S+\.force_forwarding\h*=\h*1\b'
+      l_sysctl="$(readlink -e /usr/lib/systemd/systemd-sysctl || readlink -e /lib/systemd/systemd-sysctl)"
+      "$l_sysctl" --cat-config 2>/dev/null | awk '/^# \//{f=$2} /^[[:space:]]*net[./]ipv6[./]conf[./][^[:space:]=]+[./]force_forwarding[[:space:]]*=[[:space:]]*1([^0-9]|$)/{print f": "$0}'
+      exit 0
+    exit-status: 0
+    stdout:
+    - '!/./'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 3.3.2.1
+      NIST800-53R5: CM-6
+  {{ end }}
+{{ end }}

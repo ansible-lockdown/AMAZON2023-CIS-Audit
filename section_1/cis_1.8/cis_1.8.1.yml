@@ -1,0 +1,31 @@
+---
+
+{{ if .Vars.amzn2023cis_gui }}
+  {{ if .Vars.amzn2023cis_level_1 }}
+    {{ if .Vars.amzn2023cis_rule_1_8_1 }}
+command:
+  gdm_banner_settings:
+    title: 1.8.1 | Ensure GDM login banner is configured
+    exec: 'echo "banner_enable_writable=$(gsettings writable org.gnome.login-screen banner-message-enable)"; echo "banner_text_writable=$(gsettings writable org.gnome.login-screen banner-message-text)"; echo "banner_enable=$(gsettings get org.gnome.login-screen banner-message-enable)"; echo "banner_text=$(gsettings get org.gnome.login-screen banner-message-text)"'
+    exit-status: 0
+    stdout:
+    - '/^banner_enable_writable=false$/'
+    - '/^banner_text_writable=false$/'
+    - '/^banner_enable=true$/'
+    - "{{ trim .Vars.amzn2023cis_warning_banner }}"
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.8.1
+      NIST800-53R5: AC-8
+      CCI:
+      - CCI-000048
+      - CCI-001384
+      - CCI-001385
+      - CCI-001386
+      - CCI-001387
+      - CCI-001388
+    {{ end }}
+  {{ end }}
+{{ end }}

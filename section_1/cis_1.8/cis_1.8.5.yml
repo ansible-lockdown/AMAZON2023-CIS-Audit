@@ -1,0 +1,24 @@
+---
+
+{{ if .Vars.amzn2023cis_gui }}
+  {{ if .Vars.amzn2023cis_level_1 }}
+    {{ if .Vars.amzn2023cis_rule_1_8_5 }}
+command:
+  gdm_autorun_never_settings:
+    title: 1.8.5 | Ensure GDM autorun-never is configured
+    exec: 'echo "autorun_never_writable=$(gsettings writable org.gnome.desktop.media-handling autorun-never)"; echo "autorun_never=$(gsettings get org.gnome.desktop.media-handling autorun-never)"'
+    exit-status: 0
+    stdout:
+    - '/^autorun_never_writable=false$/'
+    - '/^autorun_never=true$/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.8.5
+      NIST800-53R5: CM-7(2)
+      CCI:
+      - CCI-001764
+    {{ end }}
+  {{ end }}
+{{ end }}

@@ -1,0 +1,32 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_4_2_2 }}
+command:
+  gid_0_check:
+    title: 5.4.2.2 | Ensure root is the only GID 0 account
+    exec: |
+      awk -F: '($4 == 0 && $1 == "root") {print "root_ok"} ($4 == 0 && $1 !~ /^(root|sync|shutdown|halt|operator)$/) {print "FAIL: " $1}' /etc/passwd
+    exit-status: 0
+    stdout:
+    - '/^root_ok$/'
+    - '!/^FAIL:/'
+    skip: {{ not .Vars.amzn2023cis_disruption_high }}
+    skip-reason: amzn2023cis_disruption_high is false, the role does not change this setting
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.4.2.2
+      CISv8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5:
+      - CM-1
+      - CM-2
+      - CM-6
+      - CM-7
+      - IA-5
+  {{ end }}
+{{ end }}

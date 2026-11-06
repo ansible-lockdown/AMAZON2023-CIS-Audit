@@ -1,0 +1,46 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_2_1_4 }}
+    {{ if not .Vars.amzn2023cis_dnsmasq_mask }}
+package:
+  cis_2_1_4_dnsmasq_pkg:
+    title: 2.1.4 | Ensure dnsmasq services are not in use | dnsmasq not installed
+    skip: {{ .Vars.amzn2023cis_dnsmasq_server }}
+    skip-reason: dnsmasq is required, amzn2023cis_dnsmasq_server is true
+    name: dnsmasq
+    installed: false
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 2.1.4
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: CM-7
+    {{ end }}
+    {{ if .Vars.amzn2023cis_dnsmasq_mask }}
+service:
+  cis_2_1_4_dnsmasq_service_masked:
+    title: 2.1.4 | Ensure dnsmasq services are not in use | dnsmasq.service masked
+    skip: {{ .Vars.amzn2023cis_dnsmasq_server }}
+    skip-reason: dnsmasq is required, amzn2023cis_dnsmasq_server is true
+    name: dnsmasq.service
+    masked: true
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 2.1.4
+      CISv8:
+      - 4.8
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: CM-7
+    {{ end }}
+  {{ end }}
+{{ end }}

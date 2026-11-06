@@ -1,0 +1,48 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_1_6_2 }}
+file:
+  crypto_policies_no_sha1_current:
+    title: 1.6.2 | Ensure system wide crypto policy disables sha1 hash and signature support | global hash, sign and certs
+    path: /etc/crypto-policies/state/CURRENT.pol
+    exists: true
+    contents:
+    - '/(?i)^\s*hash\s*=/'
+    - '!/(?i)^\s*(hash|sign)\s*=.*SHA-?1\b/'
+    - '!/(?i)^\s*sha1_in_certs\s*=\s*[1-9]/'
+    skip: {{ not .Vars.amzn2023cis_crypto_policy_ansiblemanaged }}
+    skip-reason: the crypto policy is not managed, amzn2023cis_crypto_policy_ansiblemanaged is false
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.6.2
+      CISv8:
+      - 3.10
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: SC-6
+command:
+  crypto_policies_no_sha1_scopes:
+    title: 1.6.2 | Ensure system wide crypto policy disables sha1 hash and signature support | no non-exempt scope enables SHA1
+    exec: echo "sha1_nonexempt_scopes=$(grep -Pi -- '^\h*(hash|sign)@\S+\h*=.*SHA-?1\b' /etc/crypto-policies/state/CURRENT.pol | grep -Piv -- '^\h*(hash|sign)@(nss-)?(rpm|dnssec|smime|pkcs12)[^\h=]*\h*=' | wc -l)"
+    exit-status: 0
+    stdout:
+    - '/^sha1_nonexempt_scopes=0$/'
+    skip: {{ not .Vars.amzn2023cis_crypto_policy_ansiblemanaged }}
+    skip-reason: the crypto policy is not managed, amzn2023cis_crypto_policy_ansiblemanaged is false
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.6.2
+      CISv8:
+      - 3.10
+      CISv8_IG1: false
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: SC-6
+  {{ end }}
+{{ end }}

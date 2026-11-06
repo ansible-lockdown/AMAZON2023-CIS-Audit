@@ -1,22 +1,18 @@
 ---
 
-{{ if .Vars.amzn2023cis_level_1 }}
+{{ if .Vars.amzn2023cis_level_2 }}
   {{ if .Vars.amzn2023cis_rule_4_1_2 }}
 file:
-  crontab_perms:
-    title: 4.1.2 | Ensure permissions on /etc/crontab are configured
+  /etc/firewalld/firewalld.conf:
+    title: 4.1.2 | Ensure firewalld backend is configured
     exists: true
-    path: /etc/crontab
-    owner: root
-    group: root
-    mode: '0600'
+    contents:
+    - '!/^\s*FirewallBackend\s*=\s*iptables\b/'
     meta:
-      server: 1
+      server: 2
       workstation: NA
       CIS_ID:
       - 4.1.2
-      NISTSP800-53-R5:
-      - AC-3
-      - MP-2
+      NIST800-53R5: CA-9
   {{ end }}
 {{ end }}

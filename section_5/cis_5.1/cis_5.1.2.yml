@@ -1,0 +1,24 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_1_2 }}
+command:
+  sshd_config_d_dir_perms:
+    title: 5.1.2 | Ensure access to /etc/ssh/sshd_config.d/ directory is configured
+    exec: |
+      find /etc/ssh/sshd_config.d/ -maxdepth 0 \( ! -user root -o ! -group root -o -perm /077 \) -printf 'FAIL: %p %m %u %g\n'
+      echo "scan_rc=$?"
+    exit-status: 0
+    stdout:
+    - '/^scan_rc=0$/'
+    - '!/^FAIL:/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.1.2
+      NIST800-53R5:
+      - AC-3
+      - MP-2
+  {{ end }}
+{{ end }}

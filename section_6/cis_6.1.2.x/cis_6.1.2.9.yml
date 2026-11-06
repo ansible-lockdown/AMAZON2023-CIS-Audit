@@ -1,0 +1,33 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_6_1_2_9 }}
+command:
+  rsyslog_remote_log_host:
+    title: 6.1.2.9 | Ensure rsyslog is configured to send logs to a remote log host
+    skip: {{ not .Vars.amzn2023cis_remote_log_server }}
+    skip-reason: remote log forwarding is not configured (amzn2023cis_remote_log_server is false)
+    {{ if and .Vars.amzn2023cis_level_1 .Vars.amzn2023cis_rule_6_1_2_1 }}
+    depends-on:
+    - package:rsyslog
+    {{ end }}
+    exec: |
+      grep -Psih -- '^\h*[^#]\S*\h+@@\S+' /etc/rsyslog.conf /etc/rsyslog.d/*.conf 2>/dev/null
+      grep -Psih -- '^\h*[^#]*\baction\h*\((?=[^#]*\bprotocol\h*=\h*"?tcp\b)[^#]*\btarget\h*=\h*"?[^#"\h)]+' /etc/rsyslog.conf /etc/rsyslog.d/*.conf 2>/dev/null
+      echo check_complete
+    exit-status: 0
+    stdout:
+    - '/^check_complete$/'
+    - '/(@@\S+|target="?{{ .Vars.amzn2023cis_remote_log_host }})/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 6.1.2.9
+      CISv8: 8.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: AU-6
+  {{ end }}
+{{ end }}

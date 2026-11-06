@@ -1,0 +1,49 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_3_3_2_5 }}
+command:
+  password_maxseq:
+    title: 5.3.3.2.5 | Ensure password maximum sequential characters is configured
+    exec: grep -Psi -- '^\s*maxsequence\s*=\s*[1-3]\b' /etc/security/pwquality.conf /etc/security/pwquality.conf.d/*.conf
+    exit-status:
+      or:
+      - 0
+      - 1
+      - 2
+    stdout:
+    - '/.*\:maxsequence\s*=\s*[1-3]/'
+    - '!/.*\:maxsequence\s*=\s*0/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.3.3.2.5
+      CISv8:
+      - 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: IA-5
+  maxseq_not_pamd:
+    title: 5.3.3.2.5 | Ensure password maximum sequential characters is configured
+    exec: grep -Psi -- '^\s*password\s+(requisite|required|sufficient)\s+pam_pwquality\.so\s+([^#\n\r]+\s+)?maxsequence\s*=\s*(0|[4-9]|[1-9][0-9]+)\b' /etc/pam.d/system-auth /etc/pam.d/password-auth
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '!/.*/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 5.3.3.2.5
+      CISv8:
+      - 5.2
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: IA-5
+  {{ end }}
+{{ end }}

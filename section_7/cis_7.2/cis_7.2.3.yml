@@ -1,0 +1,26 @@
+---
+
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_7_2_3 }}
+command:
+  passwd_group_exist:
+    title: 7.2.3 | Ensure all groups in /etc/passwd exist in /etc/group
+    exec: |
+      awk -F: 'NR == FNR { gid[$3]; next } !($4 in gid) { print "FAIL: " $1 " has GID " $4 " which does not exist in /etc/group" }' /etc/group /etc/passwd
+      echo "scan_done"
+    exit-status: 0
+    stdout:
+    - '/^scan_done$/'
+    - '!/^FAIL:/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 7.2.3
+      CISv8: 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+      NIST800-53R5: AC-2
+  {{ end }}
+{{ end }}

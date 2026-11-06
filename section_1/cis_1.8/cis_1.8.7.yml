@@ -1,0 +1,21 @@
+---
+
+{{ if .Vars.amzn2023cis_gui }}
+  {{ if .Vars.amzn2023cis_level_1 }}
+    {{ if .Vars.amzn2023cis_rule_1_8_7 }}
+command:
+  gdm_wayland_enabled:
+    title: 1.8.7 | Ensure Wayland is configured
+    exec: echo "wayland_disabled_lines=$(grep -Psi -- '^\h*WaylandEnable\h*=\h*false\b' /etc/gdm/custom.conf /etc/gdm3/custom.conf 2>/dev/null | wc -l)"
+    exit-status: 0
+    stdout:
+    - '/^wayland_disabled_lines=0$/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.8.7
+      NIST800-53R5: CM-6
+    {{ end }}
+  {{ end }}
+{{ end }}
