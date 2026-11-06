@@ -1,5 +1,38 @@
 # Amazon 2023 CIS Audit - 26th June 2023
 
+## CIS Benchmark 2.0.0
+## 2.0.0 based on v2.0.0
+
+- full rewrite for CIS Amazon Linux 2023 Benchmark v2.0.0, built from the RHEL9-CIS-Audit v3.0.0 content
+- 342 controls in 7 sections
+- goss.yml renamed syver.yml, syverfile includes
+- run_audit.sh uses syver v0.16.0 by default, BENCHMARK_VER 2.0.0
+- README describes syver
+- discovery for partitions, cron, at, backup files, faillock and network directories
+- opt-outs skipped with a reason instead of omitted
+- meta server levels match the benchmark, workstation NA
+- 1.1.1.x kernel modules checked with modprobe --showconfig and /sys/module
+- 1.1.1.5 unused filesystem kernel modules check added
+- 1.1.2.1.2 to 1.1.2.1.4 tmp.mount Options read correctly
+- 1.2.1.1 checks the Amazon Linux key
+- 1.2.2.1 checks for a newer Amazon Linux release
+- 1.4.2 grub and /boot/efi file modes and fstab options checked
+- 1.7.1 benchmark motd script
+- 2.1.x package and service names for AL2023, masked services checked with service masked
+- 2.1.17 checks ports 25, 465, 587 and postconf inet_interfaces
+- 2.3.2 reads chrony sourcedir and confdir sources
+- 2.4.x checks skipped when cronie or at is not installed
+- 3.1.1 kernel method checks ipv6.disable on every boot entry
+- 3.3.2.1 force_forwarding check added
+- 4.1.4 and 4.1.11 fail when no zone is active
+- 5.3.2.5 authselect check skipped when the role does not manage authselect
+- 5.3.3.3.x pam_pwhistory arguments checked in system-auth and password-auth
+- 6.1.2.x rsyslog checks depend on package:rsyslog
+- 6.2.3.x audit rules accept the -a always,exit -F path/dir form
+- 6.2.3.9 /etc/systemd/network and 6.2.3.34 audit task list checks added
+- 6.2.3.23 faillock rule skipped when /var/run/faillock does not exist
+- 7.1.1 to 7.1.10 typed file tests, mode or more restrictive
+
 ## 1.3.1 based on v1.0.0
 
 - 5.1.3: lastlog typo fixed, lastlog/wtmp/btmp checked against benchmark modes

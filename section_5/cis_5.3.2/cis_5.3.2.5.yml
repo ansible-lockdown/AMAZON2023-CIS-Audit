@@ -48,6 +48,8 @@ command:
     exit-status: 0
     stdout:
     - '/Current configuration is valid/'
+    skip: {{ or (not .Vars.amzn2023cis_disruption_high) (not .Vars.amzn2023cis_allow_authselect_updates) }}
+    skip-reason: amzn2023cis_disruption_high or amzn2023cis_allow_authselect_updates is false, authselect is not managed by the role
     meta:
       server: 1
       workstation: NA
