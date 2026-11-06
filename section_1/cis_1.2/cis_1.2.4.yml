@@ -6,9 +6,10 @@ command:
   repo_gpg_check_global:
     title: 1.2.4 | Ensure repo_gpgcheck is globally activated | dnf.conf
     exit-status: 0
-    exec: "if [ `grep -c -E '^\\s*repo_gpgcheck.*0' /etc/dnf/dnf.conf` -ge 1 ]; then echo FAIL; elif [ `grep -c -E '^\\s*repo_gpgcheck.*1' /etc/dnf/dnf.conf` -ge 1 ]; then echo Passed_Check;fi"
+    exec: 'grep -E "^\s*repo_gpgcheck\s*=" /etc/dnf/dnf.conf'
     stdout:
-    - '!/FAIL/'
+    - '/^\s*repo_gpgcheck\s*=\s*1\s*$/'
+    - '!/^\s*repo_gpgcheck\s*=\s*([^1\s]|1\S)/'
     timeout: {{ .Vars.timeout_ms }}
     meta:
       server: 2
@@ -18,11 +19,11 @@ command:
       NISTSP800-53-R5: SI-2
   repo_gpg_check_repo:
     title: 1.2.4 | Ensure repo_gpgcheck is globally activated | yum.repos.d
-    exit-status: 0
-    exec: "if [ `grep -c -E '^\\s*repo_gpgcheck.*0' /etc/yum.repos.d/*.repo` -ge 1 ]; then echo FAIL; elif [ `grep -c -E '^\\s*repo_gpgcheck.*1' /etc/yum.repos.d/*.repo` -ge 1 ]; then echo Passed_Check;fi"
+    exit-status: 1
+    exec: 'grep -Prs --include="*.repo" -- "^\h*repo_gpgcheck\h*=\h*0\b" /etc/yum.repos.d/'
     timeout: {{ .Vars.timeout_ms }}
     stdout:
-    - '!/FAIL/'
+    - '!/./'
     meta:
       server: 2
       workstation: NA

@@ -2,26 +2,25 @@
 
 {{ if .Vars.amzn2023cis_level_1 }}
   {{ if .Vars.amzn2023cis_rule_4_3_2 }}
-file:
+command:
   sudoers_pty:
-    title: 4.3.2 | Ensure sudo commands use pty | Config
-    path: /etc/sudoers
-    exists: true
-    contents:
-    - '/^Defaults.*\suse_pty/'
+    title: 4.3.2 | Ensure sudo commands use pty | use_pty set
+    exec: grep -rPi -- '^\h*Defaults\h+([^#\n\r]+,\h*)?use_pty\b' /etc/sudoers /etc/sudoers.d/
+    exit-status: 0
+    stdout:
+    - '/use_pty/'
     meta:
       server: 1
       workstation: NA
       CIS_ID:
       - 4.3.2
       NISTSP800-53-R5: NA
-command:
   pty_sudoers_d:
-    title: 4.3.2 | Ensure sudo commands use pty | sudoers.d
-    exec: "ls -1 /etc/sudoers.d/* > /dev/null 2>&1; if [ '$?' = '0' ]; then grep -c '^Defaults.*\\suse_pty' /etc/sudoers.d/*; else echo 99;fi"
-    exit-status: 0
+    title: 4.3.2 | Ensure sudo commands use pty | !use_pty not set
+    exec: grep -rPi -- '^\h*Defaults\h+([^#\n\r]+,\h*)?!use_pty\b' /etc/sudoers /etc/sudoers.d/
+    exit-status: 1
     stdout:
-    - '/[0-99]/'
+    - '!/./'
     meta:
       server: 1
       workstation: NA

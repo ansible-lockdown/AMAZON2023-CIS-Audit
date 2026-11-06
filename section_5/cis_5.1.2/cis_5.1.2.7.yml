@@ -1,6 +1,7 @@
 ---
 
-{{ if .Vars.amzn2023cis_rule_5_1_2_7 }}
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_1_2_7 }}
 command:
   /etc/tmpfiles.d/systemd.conf:
     title: 5.1.2.7 | Ensure journald default file permissions configured | Manual Check Required
@@ -10,7 +11,7 @@ command:
     - '!/^Manual/'
     meta:
       server: 1
-      workstation: 1
+      workstation: NA
       CIS_ID:
       - 5.1.2.7
       NISTSP800-53-R5:
@@ -19,4 +20,5 @@ command:
       - AU-12
       - MP-2
       - SI-5
+  {{ end }}
 {{ end }}

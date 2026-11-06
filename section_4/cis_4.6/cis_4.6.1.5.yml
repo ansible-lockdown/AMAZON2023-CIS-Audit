@@ -1,6 +1,7 @@
 ---
 
-{{ if .Vars.amzn2023cis_rule_4_6_1_5 }}
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_4_6_1_5 }}
 command:
   passwd_chg_past:
     title: 4.6.1.5 | Ensure all users last password change date is in the past
@@ -15,4 +16,5 @@ command:
       - 4.6.1.5
       NISTSP800-53-R5:
       - IA-5
+  {{ end }}
 {{ end }}

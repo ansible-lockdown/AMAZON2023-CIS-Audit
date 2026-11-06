@@ -13,7 +13,7 @@ file:
     - '/auth\s+required\s+pam_faillock.so authfail/'
     meta:
       server: 1
-      workstation: 1
+      workstation: NA
       CIS_ID:
       - 4.4.2
       NISTSP800-53-R5:
@@ -31,7 +31,7 @@ file:
     - '/auth\s+required\s+pam_faillock.so authfail/'
     meta:
       server: 1
-      workstation: 1
+      workstation: NA
       CIS_ID:
       - 4.4.2
       NISTSP800-53-R5:

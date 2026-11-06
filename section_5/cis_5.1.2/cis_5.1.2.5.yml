@@ -1,6 +1,7 @@
 ---
 
-{{ if .Vars.amzn2023cis_rule_5_1_2_5 }}
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_1_2_5 }}
 command:
   forward_journald_conf:
     title: 5.1.2.5 | Ensure journald is not configured to send logs to rsyslog
@@ -10,7 +11,7 @@ command:
     - '!/^\s*ForwardToSyslog/'
     meta:
       server: 1
-      workstation: 1
+      workstation: NA
       CIS_ID:
       - 5.1.2.5
       NISTSP800-53-R5:
@@ -18,4 +19,5 @@ command:
       - AU-6
       - AU-7
       - AU-12
+  {{ end }}
 {{ end }}

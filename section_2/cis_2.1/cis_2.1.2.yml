@@ -1,6 +1,7 @@
 ---
 
-{{ if .Vars.amzn2023cis_rule_2_1_2 }}
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_2_1_2 }}
 command:
   chrony_server_config:
     title: 2.1.2 | Ensure chrony is configured | server
@@ -22,4 +23,5 @@ command:
       NISTSP800-53-R5:
       - AU-3
       - AU-12
+  {{ end }}
 {{ end }}

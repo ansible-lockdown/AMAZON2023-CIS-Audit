@@ -10,7 +10,7 @@ mount:
     opts:
     - nosuid
     meta:
-      server: 2
+      server: 1
       workstation: NA
       CIS_ID:
       - 1.1.3.3

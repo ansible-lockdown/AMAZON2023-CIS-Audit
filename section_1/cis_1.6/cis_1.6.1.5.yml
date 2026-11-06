@@ -1,4 +1,5 @@
 ---
+
 {{ if not .Vars.amzn2023cis_selinux_disable }}
   {{ if .Vars.amzn2023cis_level_2 }}
     {{ if .Vars.amzn2023cis_selinux_enforce }}
@@ -25,7 +26,7 @@ command:
     stdout:
     - SELINUX=enforcing
     meta:
-      server: 1
+      server: 2
       workstation: NA
       CIS_ID:
       - 1.6.1.5

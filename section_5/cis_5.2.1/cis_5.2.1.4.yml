@@ -8,7 +8,7 @@ service:
     running: true
     meta:
       server: 2
-      workstation: 2
+      workstation: NA
       CIS_ID:
       - 5.2.1.4
       NISTSP800-53-R5:

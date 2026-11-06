@@ -1,6 +1,7 @@
 ---
 
-{{ if .Vars.amzn2023cis_rule_5_1_3 }}
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_1_3 }}
 command:
   logfile_configured:
     title: 5.1.3 | Ensure all logfiles have appropriate permissions and ownership
@@ -9,10 +10,11 @@ command:
     stdout: ['!/./']
     meta:
       server: 1
-      workstation: 1
+      workstation: NA
       CIS_ID:
       - 5.1.3
       NISTSP800-53-R5:
       - AC-3
       - MP-2
+  {{ end }}
 {{ end }}

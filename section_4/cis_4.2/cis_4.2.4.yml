@@ -26,7 +26,7 @@ command:
     {{ end }}
     meta:
       server: 1
-      workstation: 1
+      workstation: NA
       CIS_ID:
       - 4.2.4
       NISTSP800-53-R5:

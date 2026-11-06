@@ -1,6 +1,7 @@
 ---
 
-{{ if .Vars.amzn2023cis_rule_5_1_1_4 }}
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_5_1_1_4 }}
 file:
   rsyslog_perms:
     title: 5.1.1.4 | Ensure rsyslog default file permissions are configured
@@ -17,4 +18,5 @@ file:
       - AC-3
       - AC-6
       - MP-2
+  {{ end }}
 {{ end }}

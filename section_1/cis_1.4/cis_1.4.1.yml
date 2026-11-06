@@ -1,7 +1,8 @@
 ---
 
-{{ if .Vars.amzn2023cis_rule_1_4_1 }}
-  {{ if .Vars.amzn2023cis_legacy_boot }}
+{{ if .Vars.amzn2023cis_level_1 }}
+  {{ if .Vars.amzn2023cis_rule_1_4_1 }}
+    {{ if .Vars.amzn2023cis_legacy_boot }}
 file:
   /boot/grub2/grub.cfg:
     title: 1.4.1 | Ensure permissions on bootloader config are configured | grub file
@@ -15,8 +16,8 @@ file:
       CIS_ID:
       - 1.4.1
       NISTSP800-53-R5: NA
-  {{ end }}
-{{ if not .Vars.amzn2023cis_legacy_boot }}
+    {{ end }}
+    {{ if not .Vars.amzn2023cis_legacy_boot }}
 command:
   check_efi mount_opts:
     title: 1.4.1 | Ensure permissions on bootloader config are configured | efi mount check
@@ -30,5 +31,6 @@ command:
       CIS_ID:
       - 1.4.1
       NISTSP800-53-R5: NA
+    {{ end }}
   {{ end }}
 {{ end }}
